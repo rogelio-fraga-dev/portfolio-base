@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Currículo - Rogélio Claro Fraga</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root{
+ --header-bg:#1e293b;--header-text:#fff;--primary-color:#2563eb;--text-color:#334155;--light-text:#64748b;--border-color:#e2e8f0;--bg-color:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+body{font-family:'Inter',sans-serif;background:#f1f5f9;display:flex;justify-content:center;padding:20px;color:var(--text-color);} 
+.page{width:210mm;min-height:297mm;background:#fff;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);display:flex;flex-direction:column;overflow:hidden;}
+.header-container{background:var(--header-bg);color:var(--header-text);padding:25px 30px;display:flex;flex-direction:column;gap:10px;}
+.name-role h1{font-size:26px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px;}
+.name-role h2{font-size:13px;font-weight:600;color:#93c5fd;text-transform:uppercase;letter-spacing:1px;}
+.contact-bar{display:flex;flex-wrap:wrap;gap:15px 20px;margin-top:5px;font-size:11px;color:#cbd5e1;border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;}
+.contact-item{display:flex;align-items:center;gap:6px;}
+.contact-item i{color:#60a5fa;font-size:12px;}
+.contact-item a{color:inherit;text-decoration:none;}
+.main-body{display:flex;flex:1;padding:25px 30px;gap:30px;}
+.left-col{width:32%;display:flex;flex-direction:column;gap:25px;border-right:1px solid var(--border-color);padding-right:20px;}
+.right-col{width:68%;display:flex;flex-direction:column;gap:20px;}
+.section-title{font-size:14px;font-weight:700;color:var(--header-bg);text-transform:uppercase;border-bottom:2px solid var(--primary-color);padding-bottom:4px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.section-title i{color:var(--primary-color);} 
+p,li{font-size:11px;line-height:1.45;text-align:justify;} 
+.skills-grid{display:flex;flex-wrap:wrap;gap:6px;} 
+.skill-tag{background:#eff6ff;color:#1e40af;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;border:1px solid #dbeafe;} 
+.info-block{margin-bottom:12px;} 
+.info-block h4{font-size:12px;font-weight:700;color:var(--text-color);} 
+.info-block span{font-size:11px;color:var(--light-text);display:block;margin-bottom:2px;} 
+.date-badge{font-size:10px;font-weight:700;color:var(--primary-color);} 
+.exp-item{margin-bottom:18px;} 
+.exp-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;} 
+.exp-role{font-size:13px;font-weight:700;color:var(--text-color);} 
+.exp-meta{font-size:11px;font-weight:600;color:var(--primary-color);} 
+.exp-company{font-size:11px;color:var(--light-text);font-style:italic;margin-bottom:6px;display:block;} 
+.exp-list{list-style:none;} 
+.exp-list li{position:relative;padding-left:12px;margin-bottom:3px;color:#475569;} 
+.exp-list li::before{content:'•';color:var(--primary-color);position:absolute;left:0;font-weight:bold;} 
+@page{size:A4;margin:0;} 
+@media print{body{background:none;padding:0;} .page{box-shadow:none;} }
+</style>
+</head>
+<body>
+<div class='page'>
+<header class='header-container'>
+ <div class='name-role'>
+   <h1>Rogélio Claro Fraga</h1>
+   <h2>Desenvolvedor Java | Angular & Spring Boot | </h2>
+ </div>
+ <div class='contact-bar'>
+   <div class='contact-item'><i class='fa-solid fa-envelope'></i><a href='mailto:rogelio.claro@gmail.com'>rogelio.claro@gmail.com</a></div>
+   <div class='contact-item'><i class='fa-solid fa-phone'></i><span>(34) 98414-1504</span></div>
+   <div class='contact-item'><i class='fa-solid fa-location-dot'></i><span>Araguari, MG (Presencial/Híbrido/Remoto)</span></div>
+   <div class='contact-item'><i class='fa-brands fa-linkedin'></i><a href='https://linkedin.com/in/rogelio-fraga-dev'>/in/rogelio-fraga-dev</a></div>
+   <div class='contact-item'><i class='fa-brands fa-github'></i><a href='https://github.com/rogelio-fraga-dev'>/rogelio-fraga-dev</a></div>
+ </div>
+</header>
+
+<div class='main-body'>
+<aside class='left-col'>
+ <section>
+   <div class='section-title'><i class='fa-solid fa-code'></i> Tech Skills</div>
+   <div class='skills-grid'>
+     <div class='skill-tag'>Java 17</div><div class='skill-tag'>Spring Boot 3</div><div class='skill-tag'>JPA/Hibernate</div><div class='skill-tag'>Spring Security</div><div class='skill-tag'>NestJS</div><div class='skill-tag'>Node.js</div>
+     <div class='skill-tag'>TypeScript</div><div class='skill-tag'>Angular</div><div class='skill-tag'>React/Next.js</div><div class='skill-tag'>Tailwind</div><div class='skill-tag'>PrimeNG</div>
+     <div class='skill-tag'>PostgreSQL</div><div class='skill-tag'>MySQL</div><div class='skill-tag'>Docker</div><div class='skill-tag'>Prometheus</div><div class='skill-tag'>Grafana</div>
+   </div>
+ </section>
+ <section>
+   <div class='section-title'><i class='fa-solid fa-graduation-cap'></i> Formação</div>
+   <div class='info-block'>
+     <h4>Análise e Desenvolvimento de Sistemas</h4>
+     <span>Centro Universitário IMEPAC</span>
+     <span class='date-badge'>Conclusão: Jul/2026</span>
+   </div>
+ </section>
+ <section>
+   <div class='section-title'><i class='fa-solid fa-language'></i> Idiomas</div>
+   <div class='info-block'><h4>Inglês</h4><span>B1 - Intermediário (Intermediate)</span></div>
+   <div class='info-block'><h4>Português</h4><span>Nativo</span></div>
+ </section>
+</aside>
+
+<main class='right-col'>
+ <section>
+   <div class='section-title'><i class='fa-solid fa-user-tie'></i> Perfil Profissional</div>
+   <p>Desenvolvedor Full Stack focado em sistemas web e APIs REST. Atuo com Java (Spring Boot) e TypeScript (NestJS, Angular e React), integrando backend, frontend e banco de dados. Experiência em projetos acadêmicos, extensionistas e autônomos, incluindo autenticação JWT, RBAC, modelagem de domínio e integrações com APIs externas (WhatsApp, OpenAI). Busco oportunidades como Desenvolvedor Júnior Backend ou Full Stack.</p>
+ </section>
+
+ <section>
+   <div class='section-title'><i class='fa-solid fa-briefcase'></i> Experiência Profissional</div>
+
+   <div class='exp-item'>
+     <div class='exp-header'>
+       <span class='exp-role'>Desenvolvedor Full Stack (Projetos Autônomos)</span>
+       <span class='exp-meta'>Jun 2024 – Atual</span>
+     </div>
+     <span class='exp-company'>Rogelio Fraga Dev • Remoto</span>
+     <ul class='exp-list'>
+       <li>Desenvolvimento de APIs REST com Java/Spring Boot e NestJS.</li>
+       <li>Aplicações completas em Angular e React, consumindo APIs próprias.</li>
+       <li>Modelagem de bancos PostgreSQL/MySQL com entidades e relacionamentos.</li>
+       <li>Ambientes com Docker Compose (backend, banco, monitoramento).</li>
+       <li>Implantação de métricas com Prometheus e Grafana em ambiente de estudo.</li>
+     </ul>
+   </div>
+
+   <div class='exp-item'>
+     <div class='exp-header'>
+       <span class='exp-role'>Scrum Master & Referência Técnica (Projeto de Extensão)</span>
+       <span class='exp-meta'>Ago 2025 – Dez 2025</span>
+     </div>
+     <span class='exp-company'>Abrigo Cristo Rei • Híbrido/Remoto</span>
+     <ul class='exp-list'>
+       <li>Liderança de equipe multidisciplinar (~25 pessoas).</li>
+       <li>Gestão de backlog e condução de cerimônias Scrum.</li>
+       <li>Tradução de requisitos da diretoria em soluções técnicas.</li>
+       <li>Entrega do módulo de doações (incluindo PIX).</li>
+     </ul>
+   </div>
+
+   <div class='exp-item'>
+     <div class='exp-header'>
+       <span class='exp-role'>Agente Censitário Supervisor</span>
+       <span class='exp-meta'>Jun 2022 – Jun 2023</span>
+     </div>
+     <span class='exp-company'>IBGE • Presencial</span>
+     <ul classon='exp-list'>
+       <li>Supervisão de equipes e garantia da integridade dos dados.</li>
+       <li>Gestão operacional e uso de SIG.</li>
+       <li>Resolução de conflitos e apoio técnico.</li>
+     </ul>
+   </div>
+ </section>
+
+ <section>
+   <div class='section-title'><i class='fa-solid fa-diagram-project'></i> Projetos em Destaque</div>
+
+   <div class='exp-item'>
+     <span class='exp-role'>Sistema de Gestão de Clínicas (Full Stack — NestJS & Angular)</span>
+     <ul class='exp-list'>
+       <li>Aplicação com módulos: pacientes, funcionários, consultas, prontuários.</li>
+       <li>Backend com JWT, RBAC, TypeORM e PostgreSQL.</li>
+       <li>Frontend Angular 20 com Signals e PrimeNG.</li>
+       <li>Ambiente Docker Compose com Prometheus/Grafana.</li>
+     </ul>
+   </div>
+
+   <div class='exp-item'>
+     <span class='exp-role'>BarberBot Assist (Spring Boot + WhatsApp + IA)</span>
+     <ul class='exp-list'>
+       <li>Automação de atendimento via WhatsApp (Evolution API).</li>
+       <li>Integração com OpenAI via LangChain4j.</li>
+       <li>PostgreSQL + Flyway; execução via Docker.</li>
+     </ul>
+   </div>
+ </section>
+</main>
+</div>
+</body>
+</html>

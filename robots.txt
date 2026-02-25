@@ -1,0 +1,17 @@
+# robots.txt para rogeliofraga.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rogeliofraga.dev/sitemap.xml
+
+# Desabilitar crawling de arquivos desnecessários
+Disallow: /imagens/
+Disallow: /*.pdf$
+
+# Permitir recursos importantes
+Allow: /styles.css
+Allow: /index.html
+Allow: /favicon.ico
+
