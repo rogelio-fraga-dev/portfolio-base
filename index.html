@@ -85,6 +85,20 @@
     />
 
     <style>
+      /* --- CORREÇÃO DE ROLAGEM (SCROLL SNAP) NO MOBILE --- */
+      html,
+      body {
+        scroll-snap-type: none !important;
+        overscroll-behavior-y: auto !important;
+      }
+      *,
+      section,
+      .page-section,
+      .masthead {
+        scroll-snap-align: none !important;
+      }
+      /* --------------------------------------------------- */
+
       /* --- CORREÇÃO DE ESPAÇAMENTO ENTRE SOBRE E HABILIDADES --- */
       #sobre.page-section {
         padding-bottom: 2rem !important;
@@ -1274,7 +1288,7 @@
       document.addEventListener("DOMContentLoaded", function () {
         // Inicializar EmailJS
         (function () {
-          emailjs.init("8cxTYRk_BBQCt-q1D");
+          emailjs.init("8cxTYRk_BBQCt-q1D"); // Lembre-se de colocar sua chave pública aqui!
         })();
 
         // Feedback do Formulário de Contato com EmailJS
