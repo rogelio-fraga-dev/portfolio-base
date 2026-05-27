@@ -23,14 +23,15 @@
 }
 html {
   scroll-behavior: smooth;
-  background: transparent !important;
+  background-color: var(--body-background);
 }
 body {
   font-family: "Lato", sans-serif;
   color: var(--text-light);
-  background: transparent !important;
+  background: transparent;
   line-height: 1.7;
   overflow-x: hidden;
+  isolation: isolate;
 }
 
 /* Prefer Reduced Motion - Acessibilidade */
