@@ -23,11 +23,12 @@
 }
 html {
   scroll-behavior: smooth;
+  background-color: var(--body-background);
 }
 body {
   font-family: "Lato", sans-serif;
   color: var(--text-light);
-  background-color: var(--body-background);
+  background-color: transparent;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -94,14 +95,14 @@ h4 {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 0; /* Alterado de -1 para 0 para renderizar acima do canvas base do body */
+  z-index: -1; /* Alterado de 0 para -1 para garantir que fique sempre abaixo de todo o conteúdo e não bloqueie cliques */
   background: radial-gradient(
     circle at center,
     rgba(30, 21, 42, 0.95) 0%,
     var(--body-background) 100%
   );
   overflow: hidden;
-  contain: layout style paint;
+  /* contain removido para evitar que o navegador poupe a renderização dos ícones criados fora dos limites da tela */
 }
 .animated-background ul {
   position: absolute;
@@ -116,14 +117,14 @@ h4 {
   display: block;
   width: 40px;
   height: 40px;
-  bottom: -150px;
+  bottom: -70px;
   animation: animate-icons 15s linear infinite; /* Aumentada a velocidade geral */
   will-change: transform;
 }
 .animated-background li i {
   font-size: 2.2rem;
-  color: rgba(156, 106, 214, 0.35); /* Aumentada a visibilidade para 35% de opacidade */
-  text-shadow: 0 0 12px rgba(156, 106, 214, 0.4);
+  color: rgba(156, 106, 214, 0.45); /* Aumentada a opacidade para 45% para visibilidade perfeita */
+  text-shadow: 0 0 15px rgba(156, 106, 214, 0.6);
 }
 /* Configuração dinâmica para 15 ícones flutuantes */
 .animated-background li:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
@@ -148,7 +149,7 @@ h4 {
     opacity: 0.8;
   }
   100% {
-    transform: translateY(-100vh);
+    transform: translateY(-120vh);
     opacity: 0;
   }
 }
