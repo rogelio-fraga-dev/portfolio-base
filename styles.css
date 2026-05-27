@@ -94,7 +94,7 @@ h4 {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: 0; /* Alterado de -1 para 0 para renderizar acima do canvas base do body */
   background: radial-gradient(
     circle at center,
     rgba(30, 21, 42, 0.95) 0%,
@@ -117,59 +117,30 @@ h4 {
   width: 40px;
   height: 40px;
   bottom: -150px;
-  animation: animate-icons 30s linear infinite;
+  animation: animate-icons 15s linear infinite; /* Aumentada a velocidade geral */
   will-change: transform;
 }
 .animated-background li i {
   font-size: 2.2rem;
-  color: rgba(156, 106, 214, 0.22); /* Aumentada a opacidade para visibilidade perfeita */
-  text-shadow: 0 0 10px rgba(156, 106, 214, 0.2);
+  color: rgba(156, 106, 214, 0.35); /* Aumentada a visibilidade para 35% de opacidade */
+  text-shadow: 0 0 12px rgba(156, 106, 214, 0.4);
 }
-/* Reduzir para 8 ícones apenas */
-.animated-background li:nth-child(1) {
-  left: 10%;
-  animation-duration: 25s;
-  animation-delay: 0s;
-}
-.animated-background li:nth-child(2) {
-  left: 30%;
-  animation-duration: 28s;
-  animation-delay: 3s;
-}
-.animated-background li:nth-child(3) {
-  left: 50%;
-  animation-duration: 32s;
-  animation-delay: 6s;
-}
-.animated-background li:nth-child(4) {
-  left: 70%;
-  animation-duration: 27s;
-  animation-delay: 2s;
-}
-.animated-background li:nth-child(5) {
-  left: 20%;
-  animation-duration: 30s;
-  animation-delay: 5s;
-}
-.animated-background li:nth-child(6) {
-  left: 60%;
-  animation-duration: 29s;
-  animation-delay: 4s;
-}
-.animated-background li:nth-child(7) {
-  left: 80%;
-  animation-duration: 26s;
-  animation-delay: 1s;
-}
-.animated-background li:nth-child(8) {
-  left: 40%;
-  animation-duration: 31s;
-  animation-delay: 7s;
-}
-/* Esconder os outros */
-.animated-background li:nth-child(n + 9) {
-  display: none;
-}
+/* Configuração dinâmica para 15 ícones flutuantes */
+.animated-background li:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; }
+.animated-background li:nth-child(2) { left: 15%; animation-duration: 15s; animation-delay: 2s; }
+.animated-background li:nth-child(3) { left: 25%; animation-duration: 18s; animation-delay: 4s; }
+.animated-background li:nth-child(4) { left: 35%; animation-duration: 13s; animation-delay: 1s; }
+.animated-background li:nth-child(5) { left: 45%; animation-duration: 16s; animation-delay: 3s; }
+.animated-background li:nth-child(6) { left: 55%; animation-duration: 14s; animation-delay: 5s; }
+.animated-background li:nth-child(7) { left: 65%; animation-duration: 17s; animation-delay: 2s; }
+.animated-background li:nth-child(8) { left: 75%; animation-duration: 11s; animation-delay: 0s; }
+.animated-background li:nth-child(9) { left: 85%; animation-duration: 15s; animation-delay: 4s; }
+.animated-background li:nth-child(10) { left: 95%; animation-duration: 13s; animation-delay: 1s; }
+.animated-background li:nth-child(11) { left: 10%; animation-duration: 16s; animation-delay: 5s; }
+.animated-background li:nth-child(12) { left: 30%; animation-duration: 12s; animation-delay: 3s; }
+.animated-background li:nth-child(13) { left: 50%; animation-duration: 17s; animation-delay: 1s; }
+.animated-background li:nth-child(14) { left: 70%; animation-duration: 14s; animation-delay: 4s; }
+.animated-background li:nth-child(15) { left: 90%; animation-duration: 15s; animation-delay: 2s; }
 
 @keyframes animate-icons {
   0% {
