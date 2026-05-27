@@ -506,32 +506,34 @@
       .skill-item {
         position: relative;
       }
-      .skill-item::after {
-        content: attr(data-tooltip);
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translate(-50%, 100%) scale(0.8);
-        background: rgba(28, 20, 40, 0.95);
-        border: 1px solid rgba(156, 106, 214, 0.4);
-        color: var(--text-light);
-        padding: 0.6rem 1rem;
-        border-radius: 8px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-align: center;
-        width: 220px;
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        z-index: 100;
-        font-family: 'Lato', sans-serif;
-        line-height: 1.4;
-      }
-      .skill-item:hover::after {
-        opacity: 1;
-        transform: translate(-50%, calc(100% + 10px)) scale(1);
+      @media (hover: hover) {
+        .skill-item::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          top: -10px;
+          left: 50%;
+          transform: translate(-50%, -100%) scale(0.8);
+          background: rgba(28, 20, 40, 0.95);
+          border: 1px solid rgba(156, 106, 214, 0.4);
+          color: var(--text-light);
+          padding: 0.6rem 1rem;
+          border-radius: 8px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          text-align: center;
+          width: 220px;
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+          z-index: 100;
+          font-family: 'Lato', sans-serif;
+          line-height: 1.4;
+        }
+        .skill-item:hover::after {
+          opacity: 1;
+          transform: translate(-50%, calc(-100% - 10px)) scale(1);
+        }
       }
 
       /* --- GALERIA PLACEHOLDER EM BREVE --- */
@@ -573,14 +575,14 @@
 
     <div class="animated-background">
       <ul>
-        <li><i class="devicon-java-plain"></i></li>
-        <li><i class="devicon-spring-plain"></i></li>
-        <li><i class="devicon-docker-plain"></i></li>
-        <li><i class="devicon-angular-plain"></i></li>
-        <li><i class="devicon-typescript-plain"></i></li>
-        <li><i class="devicon-mysql-plain"></i></li>
-        <li><i class="devicon-git-plain"></i></li>
-        <li><i class="devicon-postgresql-plain"></i></li>
+        <li><i class="devicon-java-plain devicon"></i></li>
+        <li><i class="devicon-spring-original devicon"></i></li>
+        <li><i class="devicon-docker-plain devicon"></i></li>
+        <li><i class="devicon-angularjs-plain devicon"></i></li>
+        <li><i class="devicon-typescript-plain devicon"></i></li>
+        <li><i class="devicon-mysql-plain devicon"></i></li>
+        <li><i class="devicon-git-plain devicon"></i></li>
+        <li><i class="devicon-postgresql-plain devicon"></i></li>
       </ul>
     </div>
 
@@ -1729,25 +1731,25 @@
           });
         }
 
-        // Rolagem Suave Universal para Âncoras
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            e.preventDefault();
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
-            } else if (targetId === '#page-top') {
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-              });
+        // Rolagem Suave Universal para Âncoras (jQuery)
+        $('a[href^="#"]').on('click', function (e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          e.preventDefault();
+          
+          let targetOffset = 0;
+          if (targetId !== '#page-top') {
+            const $target = $(targetId);
+            if ($target.length) {
+              targetOffset = $target.offset().top - 80; // Desconto da navbar sticky para não encavalar o título
+            } else {
+              return;
             }
-          });
+          }
+          
+          $('html, body').animate({
+            scrollTop: targetOffset
+          }, 800);
         });
 
         // Botão Voltar ao Topo (Visibilidade)

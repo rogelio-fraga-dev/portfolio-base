@@ -121,8 +121,9 @@ h4 {
   will-change: transform;
 }
 .animated-background li i {
-  font-size: 2rem;
-  color: rgba(156, 106, 214, 0.08);
+  font-size: 2.2rem;
+  color: rgba(156, 106, 214, 0.22); /* Aumentada a opacidade para visibilidade perfeita */
+  text-shadow: 0 0 10px rgba(156, 106, 214, 0.2);
 }
 /* Reduzir para 8 ícones apenas */
 .animated-background li:nth-child(1) {
