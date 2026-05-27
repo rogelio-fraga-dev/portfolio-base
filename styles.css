@@ -43,6 +43,15 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* Exceções: O usuário solicitou explicitamente que os ícones do background e brilho funcionassem */
+  .animated-background li {
+    animation-duration: 40s !important; /* Mais lento, mas não invisível */
+    animation-iteration-count: infinite !important;
+  }
+  .mouse-glow {
+    transition-duration: 0.5s !important;
+  }
 }
 
 /* Skip Links - Acessibilidade */
