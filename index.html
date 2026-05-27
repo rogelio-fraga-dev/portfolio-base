@@ -284,10 +284,289 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+
+      /* --- ESTILOS ADICIONAIS PARA PLACEHOLDER EM BREVE --- */
+      .coming-soon-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 380px;
+        background: rgba(156, 106, 214, 0.05);
+        border: 2px dashed rgba(156, 106, 214, 0.4);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .coming-soon-placeholder::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(156, 106, 214, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .coming-soon-icon {
+        font-size: 3.5rem;
+        margin-bottom: 1.2rem;
+        color: var(--accent-color);
+        text-shadow: 0 0 20px rgba(156, 106, 214, 0.6);
+        animation: float-soon 3s ease-in-out infinite;
+      }
+      .coming-soon-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 1px;
+      }
+      .coming-soon-text {
+        font-size: 1rem;
+        color: var(--text-light);
+        opacity: 0.8;
+        max-width: 280px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+      @keyframes float-soon {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* --- MELHORIA DE SEGURANÇA CONTRA TRAVAMENTO DE SCROLL NO CELULAR & PLAY OVERLAY --- */
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        cursor: pointer;
+        border-radius: 13px;
+        overflow: hidden;
+      }
+      .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        pointer-events: none; /* Bloqueia hijacking de gestos de rolagem no mobile por padrão */
+        transition: all 0.3s ease;
+      }
+      .video-wrapper.active iframe {
+        pointer-events: auto; /* Habilita controle total após ativar a reprodução */
+      }
+      .play-trigger {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(28, 20, 40, 0.45);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        cursor: pointer;
+      }
+      .play-trigger i {
+        font-size: 2.5rem;
+        color: #fff;
+        background: var(--accent-color);
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 0 25px rgba(156, 106, 214, 0.7);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        padding-left: 5px; /* Ajuste visual do ícone */
+      }
+      .video-wrapper:hover .play-trigger {
+        background: rgba(28, 20, 40, 0.2);
+      }
+      .video-wrapper:hover .play-trigger i {
+        transform: scale(1.12);
+        background: var(--divider-light-color);
+        box-shadow: 0 0 35px rgba(156, 106, 214, 0.9);
+      }
+      .video-wrapper.active .play-trigger {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* --- BADGE DE DISPONIBILIDADE --- */
+      .availability-badge-container {
+        margin-bottom: 1.5rem;
+      }
+      .availability-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: #10b981;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-family: 'Montserrat', sans-serif;
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+      }
+      .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #10b981;
+        border-radius: 50%;
+        position: relative;
+      }
+      .pulse-dot::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #10b981;
+        border-radius: 50%;
+        animation: pulse-green 1.8s ease-in-out infinite;
+      }
+      @keyframes pulse-green {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2.5);
+          opacity: 0;
+        }
+      }
+
+      /* --- FILTROS DE PROJETOS --- */
+      .projects-filter-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 4rem;
+        padding: 0 1rem;
+      }
+      .filter-pill {
+        background: rgba(156, 106, 214, 0.05);
+        border: 1px solid rgba(156, 106, 214, 0.2);
+        color: var(--text-light);
+        padding: 0.6rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .filter-pill:hover {
+        background: rgba(156, 106, 214, 0.15);
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+      .filter-pill.active {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+        color: var(--body-background);
+        box-shadow: 0 5px 20px rgba(156, 106, 214, 0.4);
+      }
+      .showcase-project {
+        transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      /* --- MOUSE GLOW --- */
+      .mouse-glow {
+        position: fixed;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(156, 106, 214, 0.04) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        will-change: left, top;
+      }
+
+      /* --- INTERACTIVE SKILL TOOLTIPS --- */
+      .skill-item {
+        position: relative;
+      }
+      .skill-item::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translate(-50%, 100%) scale(0.8);
+        background: rgba(28, 20, 40, 0.95);
+        border: 1px solid rgba(156, 106, 214, 0.4);
+        color: var(--text-light);
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-align: center;
+        width: 220px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        z-index: 100;
+        font-family: 'Lato', sans-serif;
+        line-height: 1.4;
+      }
+      .skill-item:hover::after {
+        opacity: 1;
+        transform: translate(-50%, calc(100% + 10px)) scale(1);
+      }
+
+      /* --- GALERIA PLACEHOLDER EM BREVE --- */
+      .gallery-soon-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 120px;
+        background: rgba(156, 106, 214, 0.03);
+        border: 2px dashed rgba(156, 106, 214, 0.2);
+        border-radius: 8px;
+        color: var(--text-light);
+        opacity: 0.6;
+        gap: 0.5rem;
+      }
+      .gallery-soon-placeholder i {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+      }
+      .gallery-soon-placeholder span {
+        font-size: 0.8rem;
+        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+      }
+      @media (max-width: 768px) {
+        .gallery-soon-placeholder {
+          height: 90px !important;
+        }
+      }
     </style>
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body id="page-top">
+    <div id="mouseGlow" class="mouse-glow"></div>
     <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
     <a href="#portfolio" class="skip-link">Pular para portfólio</a>
     <a href="#contato" class="skip-link">Pular para contato</a>
@@ -365,6 +644,12 @@
         <div class="container masthead-container">
           <div class="masthead-content">
             <div class="masthead-text">
+              <div class="availability-badge-container">
+                <span class="availability-badge">
+                  <span class="pulse-dot"></span>
+                  Disponível para Freelancer & Projetos
+                </span>
+              </div>
               <h1 class="masthead-heading">
                 <span class="masthead-name">Rogélio Claro Fraga</span>
               </h1>
@@ -417,26 +702,6 @@
                   </a>
                 </div>
                 <div class="masthead-actions">
-                  <a
-                    href="curriculo.pdf"
-                    class="btn-download-cv"
-                    id="downloadCV"
-                    download="Rogelio_Claro_Fraga_Curriculo.pdf"
-                    aria-label="Baixar currículo em PDF"
-                  >
-                    <i class="fas fa-download"></i>
-                    <span>Baixar Currículo</span>
-                  </a>
-                  <a
-                    href="curriculo.html"
-                    class="btn-skills"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Visualizar currículo online"
-                  >
-                    <i class="fas fa-file-alt"></i>
-                    <span>Ver Currículo</span>
-                  </a>
                   <a href="#habilidades" class="btn-skills">
                     <i class="fas fa-code"></i>
                     <span>Ver Habilidades</span>
@@ -579,47 +844,47 @@
           </div>
 
           <div class="skills-grid">
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Desenvolvimento robusto com POO, coleções e concorrência.">
               <i class="devicon-java-plain colored"></i>
               <span>Java</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Criação de APIs REST, Spring Security (JWT) e JPA/Hibernate.">
               <i class="devicon-spring-original colored"></i>
               <span>Spring Boot</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="SPAs dinâmicas, RxJS, arquitetura modular e PrimeNG.">
               <i class="devicon-angularjs-plain colored"></i>
               <span>Angular</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Tipagem estática, interfaces, decorators e código escalável.">
               <i class="devicon-typescript-plain colored"></i>
               <span>TypeScript</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Backends modulares robustos com padrões arquiteturais modernos.">
               <i class="devicon-nestjs-plain colored"></i>
               <span>NestJS</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Desenvolvimento assíncrono rápido, APIs com Express e Fastify.">
               <i class="devicon-nodejs-plain colored"></i>
               <span>Node.js</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Queries complexas, indexação, e modelagem relacional de dados.">
               <i class="devicon-postgresql-plain colored"></i>
               <span>PostgreSQL</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Administração, performance tuning e segurança de bancos relacionais.">
               <i class="devicon-mysql-plain colored"></i>
               <span>MySQL</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Containerização completa de microsserviços e setups de homologação.">
               <i class="devicon-docker-plain colored"></i>
               <span>Docker</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Criação de UIs customizadas com design responsivo fluido.">
               <i class="devicon-tailwindcss-original colored"></i>
               <span>Tailwind CSS</span>
             </div>
-            <div class="skill-item">
+            <div class="skill-item" data-tooltip="Controle de versão complexo, git flow e colaboração de código.">
               <i class="devicon-git-plain colored"></i>
               <span>Git</span>
             </div>
@@ -643,8 +908,16 @@
           <div class="divider-custom-line"></div>
         </div>
 
+        <!-- Filtro Interativo de Projetos -->
+        <div class="projects-filter-container">
+          <button class="filter-pill active" data-filter="all">Todos</button>
+          <button class="filter-pill" data-filter="frontend">Frontend & UI/UX</button>
+          <button class="filter-pill" data-filter="backend">Backend & Microserviços</button>
+          <button class="filter-pill" data-filter="ia">Automação & IA</button>
+        </div>
+
         <div class="container showcase-container">
-          <div class="showcase-project">
+          <div class="showcase-project" data-category="frontend">
             <div class="showcase-main">
               <div class="showcase-text">
                 <span class="showcase-category">Frontend & UI/UX</span>
@@ -677,10 +950,13 @@
               <div class="showcase-video">
                 <div class="video-wrapper">
                   <iframe
-                    src="https://www.youtube.com/embed/ck5C8gFH9aA"
+                    src="https://www.youtube.com/embed/_Rh7Q1d6en0"
                     title="Apresentação Gestão Clínica"
                     allowfullscreen
                   ></iframe>
+                  <div class="play-trigger">
+                    <i class="fas fa-play"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -713,22 +989,19 @@
             </div>
           </div>
 
-          <div class="showcase-project">
+          <div class="showcase-project" data-category="backend">
             <div class="showcase-main reverse">
               <div class="showcase-text">
                 <span class="showcase-category">Backend & Arquitetura</span>
-                <h3 class="showcase-title">Core API Clínica Médica</h3>
+                <h3 class="showcase-title">Core API Clínica Médica (Microserviços)</h3>
                 <p class="showcase-desc">
-                  Engine construída em Java 17 e Spring Boot 3. Implementa
-                  Spring Security com JWT para proteção de dados sensíveis e
-                  padrões de projeto robustos (DTOs, Service Layer) que garantem
-                  uma manutenção escalável. Um projeto que demonstra domínio
-                  sólido em regras de negócio complexas e persistência de dados.
+                  Engine robusta construída com Java 17, Spring Boot 3 e arquitetura de microserviços escaláveis. Implementa Spring Security com JWT para proteção de dados sensíveis e padrões de projeto consolidados que garantem alta disponibilidade, resiliência e manutenção simplificada no ecossistema corporativo.
                 </p>
                 <div class="showcase-tech">
                   <span class="tech-pill">Java 17</span>
                   <span class="tech-pill">Spring Boot 3</span>
                   <span class="tech-pill">Spring Security</span>
+                  <span class="tech-pill">Microserviços</span>
                   <span class="tech-pill">MySQL</span>
                 </div>
                 <div style="margin-top: 1rem">
@@ -746,10 +1019,13 @@
               <div class="showcase-video">
                 <div class="video-wrapper">
                   <iframe
-                    src="https://www.youtube.com/embed/8A6l1o2SAv8"
+                    src="https://www.youtube.com/embed/Nm-8f4JVR8I"
                     title="Apresentação API Backend"
                     allowfullscreen
                   ></iframe>
+                  <div class="play-trigger">
+                    <i class="fas fa-play"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -782,29 +1058,27 @@
             </div>
           </div>
 
-          <div class="showcase-project">
+          <div class="showcase-project" data-category="ia">
             <div class="showcase-main">
               <div class="showcase-text">
                 <span class="showcase-category">Automação & IA</span>
                 <h3 class="showcase-title">
-                  BarberBot (WhatsApp Intelligence)
+                  BarberBot AI (WhatsApp Intelligence)
                 </h3>
                 <p class="showcase-desc">
-                  Solução de automação para agendamento em tempo real via
-                  WhatsApp. Demonstra habilidade avançada em lidar com fluxos
-                  assíncronos, integração com APIs de terceiros (Evolution API)
-                  e lógica de máquinas de estado acoplada à Inteligência
-                  Artificial.
+                  Solução corporativa inteligente para atendimento, agendamento autônomo e CRM via WhatsApp voltada para barbearias e centros de estética. Construída sobre uma arquitetura corporativa em Spring Boot 3 e PostgreSQL (Flyway), integra inteligência artificial avançada da OpenAI (GPT-4o e Whisper) para transcrição nativa de áudios e conversas automáticas de alta performance. Utiliza processamento de mensagens assíncronas com Evolution API, assegurando operação 100% autônoma para otimizar o faturamento comercial.
                 </p>
                 <div class="showcase-tech">
-                  <span class="tech-pill">Node.js</span>
-                  <span class="tech-pill">TypeScript</span>
-                  <span class="tech-pill">WhatsApp API</span>
-                  <span class="tech-pill">OpenAI</span>
+                  <span class="tech-pill">Spring Boot 3</span>
+                  <span class="tech-pill">Java 17</span>
+                  <span class="tech-pill">OpenAI (GPT-4o)</span>
+                  <span class="tech-pill">Whisper API</span>
+                  <span class="tech-pill">PostgreSQL</span>
+                  <span class="tech-pill">Evolution API</span>
                 </div>
                 <div style="margin-top: 1rem">
                   <a
-                    href="https://github.com/rogelio-fraga-dev/barberbot"
+                    href="https://github.com/rogelio-fraga-dev/barberbot-core"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn-github-new"
@@ -815,45 +1089,43 @@
                 </div>
               </div>
               <div class="showcase-video" style="flex: 0.5">
-                <div class="video-wrapper" style="padding-bottom: 177.78%">
-                  <iframe
-                    src="https://www.youtube.com/embed/JxWr1rCJD4I"
-                    title="Apresentação BarberBot"
-                    allowfullscreen
-                  ></iframe>
+                <div class="coming-soon-placeholder">
+                  <div class="coming-soon-content">
+                    <div class="coming-soon-icon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="coming-soon-title">Em Breve</h4>
+                    <p class="coming-soon-text">
+                      O vídeo demonstrativo deste projeto está sendo preparado e estará disponível em breve!
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div class="showcase-gallery">
-              <a href="imagens/projeto3-img1.jpg" data-lightbox="proj3"
+              <a href="imagens/barberbot.png" data-lightbox="proj3"
                 ><img
-                  src="imagens/projeto3-img1.jpg"
-                  alt="Print 1"
+                  src="imagens/barberbot.png"
+                  alt="Apresentação BarberBot"
                   loading="lazy"
               /></a>
-              <a href="imagens/projeto3-img2.jpg" data-lightbox="proj3"
-                ><img
-                  src="imagens/projeto3-img2.jpg"
-                  alt="Print 2"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto3-img3.jpg" data-lightbox="proj3"
-                ><img
-                  src="imagens/projeto3-img3.jpg"
-                  alt="Print 3"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto3-img4.jpg" data-lightbox="proj3"
-                ><img
-                  src="imagens/projeto3-img4.jpg"
-                  alt="Print 4"
-                  loading="lazy"
-              /></a>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
             </div>
           </div>
 
-          <div class="showcase-project">
+          <div class="showcase-project" data-category="frontend">
             <div class="showcase-main reverse">
               <div class="showcase-text">
                 <span class="showcase-category"
@@ -909,10 +1181,13 @@
               <div class="showcase-video">
                 <div class="video-wrapper">
                   <iframe
-                    src="https://www.youtube.com/embed/I_sfRnWSn2M"
+                    src="https://www.youtube.com/embed/hdUYjLQvbVU"
                     title="Apresentação Clínica de Psicologia"
                     allowfullscreen
                   ></iframe>
+                  <div class="play-trigger">
+                    <i class="fas fa-play"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1458,22 +1733,28 @@
           });
         }
 
-        // Botão de Download de Currículo
-        const downloadCVBtn = document.getElementById("downloadCV");
-        if (downloadCVBtn) {
-          downloadCVBtn.addEventListener("click", function (e) {
+        // Rolagem Suave Universal para Âncoras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
             e.preventDefault();
-            const link = document.createElement("a");
-            link.href = "curriculo.pdf";
-            link.download = "Rogelio_Claro_Fraga_Curriculo.pdf";
-            link.target = "_blank";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            } else if (targetId === '#page-top') {
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            }
           });
-        }
+        });
 
-        // Botão Voltar ao Topo
+        // Botão Voltar ao Topo (Visibilidade)
         const backToTopContainer =
           document.getElementById("backToTopContainer");
         if (backToTopContainer) {
@@ -1481,6 +1762,63 @@
             if (window.scrollY > 300)
               backToTopContainer.classList.add("visible");
             else backToTopContainer.classList.remove("visible");
+          });
+        }
+
+        // Ativação e reprodução automática de vídeos ao clicar no Play Overlay
+        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+          wrapper.addEventListener('click', function() {
+            if (!this.classList.contains('active')) {
+              this.classList.add('active');
+              const iframe = this.querySelector('iframe');
+              if (iframe) {
+                let src = iframe.src;
+                if (src.indexOf('autoplay=1') === -1) {
+                  src += (src.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1';
+                  iframe.src = src;
+                }
+              }
+            }
+          });
+        });
+
+        // Filtro Interativo de Projetos
+        const filterButtons = document.querySelectorAll('.filter-pill');
+        const projectCards = document.querySelectorAll('.showcase-project');
+
+        filterButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.95)';
+              
+              setTimeout(() => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                  card.style.display = 'block';
+                  setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                  }, 50);
+                } else {
+                  card.style.display = 'none';
+                }
+              }, 300);
+            });
+          });
+        });
+
+        // Efeito de Mouse Glow (Desktop)
+        const mouseGlow = document.getElementById('mouseGlow');
+        if (mouseGlow && window.innerWidth > 992) {
+          window.addEventListener('mousemove', (e) => {
+            mouseGlow.style.left = e.clientX + 'px';
+            mouseGlow.style.top = e.clientY + 'px';
           });
         }
 
