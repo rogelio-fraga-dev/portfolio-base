@@ -23,11 +23,12 @@
 }
 html {
   scroll-behavior: smooth;
+  background: transparent !important;
 }
 body {
   font-family: "Lato", sans-serif;
   color: var(--text-light);
-  background-color: var(--body-background);
+  background: transparent !important;
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -94,7 +95,7 @@ h4 {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 0; /* Configurado como 0 para forçar a renderização acima do canvas base do body em todos os browsers (incluindo desktop) */
+  z-index: -1; /* Colocado em -1 para garantir que fique sempre abaixo de todo o conteúdo. Como html/body são transparentes, ele fica perfeitamente visível em todos os browsers. */
   background: radial-gradient(
     circle at center,
     rgba(30, 21, 42, 0.95) 0%,
