@@ -23,12 +23,13 @@
 }
 html {
   scroll-behavior: smooth;
-  background-color: var(--body-background);
 }
 body {
   font-family: "Lato", sans-serif;
   color: var(--text-light);
-  background-color: transparent;
+  background-color: var(--body-background);
+  position: relative;
+  z-index: 1; /* Cria um contexto de empilhamento para que elementos com z-index: -1 fiquem acima do background mas atrás do conteúdo */
   line-height: 1.7;
   overflow-x: hidden;
 }
@@ -1349,6 +1350,7 @@ h4 {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  touch-action: pan-y !important; /* Prioriza a rolagem vertical nativa no mobile, evitando travamento */
 }
 .skill-item {
   padding: 2.5rem 1.5rem;
@@ -1363,6 +1365,7 @@ h4 {
     background-color 0.2s ease,
     transform 0.2s ease;
   position: relative;
+  touch-action: pan-y !important; /* Prioriza a rolagem vertical nativa no mobile, evitando travamento */
 }
 .skill-item:hover {
   transform: translateY(-5px);
@@ -1622,7 +1625,6 @@ h4 {
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  contain: layout style;
 }
 .project-item-new {
   padding: 0;
@@ -1633,7 +1635,7 @@ h4 {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  contain: layout style paint;
+  touch-action: pan-y !important; /* Prioriza a rolagem vertical nativa no mobile, evitando travamento */
 }
 .project-item-new:last-child {
   border-bottom: none;
@@ -1646,7 +1648,7 @@ h4 {
   padding: 3.5rem;
   box-shadow: 0 8px 20px rgba(156, 106, 214, 0.1);
   position: relative;
-  contain: layout style paint;
+  touch-action: pan-y !important; /* Prioriza a rolagem vertical nativa no mobile, evitando travamento */
 }
 .project-container-translucent::before {
   content: "";
@@ -1932,7 +1934,6 @@ h4 {
   border: 2px solid rgba(156, 106, 214, 0.4);
   box-shadow: 0 10px 30px rgba(156, 106, 214, 0.15);
   background: rgba(28, 20, 40, 0.3);
-  contain: layout style paint;
 }
 .video-container-large:hover {
   border-color: var(--accent-color);
@@ -1953,6 +1954,7 @@ h4 {
   overflow: hidden;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
+  touch-action: pan-y !important; /* Prioriza a rolagem vertical nativa no mobile, evitando travamento */
 }
 .project-card::before {
   content: "";
