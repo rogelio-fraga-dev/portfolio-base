@@ -9,32 +9,32 @@
     />
     <meta
       name="description"
-      content="Portfólio de Rogélio Claro Fraga, Desenvolvedor Web Full Stack e especialista em backend Java com arquitetura de microserviços."
+      content="Portfólio de Rogélio Claro Fraga — Desenvolvedor Full Stack (Java, Spring Boot, Angular), graduado em Análise e Desenvolvimento de Sistemas, professor de Técnicas de Programação para Internet e engenheiro principal na InovaLayer."
     />
     <meta
       name="keywords"
-      content="Rogélio Claro Fraga, Desenvolvedor Full Stack, Java, Spring Boot, Angular, NestJS, Microserviços, Portfólio, Desenvolvedor Web, Backend, Frontend"
+      content="Rogélio Claro Fraga, Desenvolvedor Full Stack, Java, Spring Boot, Angular, NestJS, Terraform, AWS, Microserviços, Portfólio, Desenvolvedor Web, Backend, Frontend, Professor de Programação, Análise e Desenvolvimento de Sistemas, Araguari MG"
     />
     <meta name="author" content="Rogélio Claro Fraga" />
     <meta name="robots" content="index, follow" />
 
     <title>
-      Rogélio Claro Fraga | Desenvolvedor Full Stack | Portfólio Profissional
+      Rogélio Claro Fraga | Desenvolvedor Full Stack & Professor | Portfólio
     </title>
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rogeliofraga.com.br/" />
+    <meta property="og:url" content="https://rogeliofragadev.com.br/" />
     <meta
       property="og:title"
-      content="Rogélio Claro Fraga | Desenvolvedor Full Stack"
+      content="Rogélio Claro Fraga | Desenvolvedor Full Stack & Professor"
     />
     <meta
       property="og:description"
-      content="Desenvolvedor Web Full Stack especialista em Java, Spring Boot, Angular e NestJS. Transformando conceitos em realidade com tecnologia de ponta e arquitetura escalável."
+      content="Desenvolvedor Full Stack especialista em Java, Spring Boot, Angular e NestJS. Graduado em Análise e Desenvolvimento de Sistemas, professor de Técnicas de Programação para Internet e engenheiro principal na InovaLayer."
     />
     <meta
       property="og:image"
-      content="https://rogeliofraga.com.br/imagens/avatar.jpg"
+      content="https://rogeliofragadev.com.br/imagens/avatar.jpg"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -42,7 +42,7 @@
     <meta property="og:site_name" content="Rogélio Claro Fraga - Portfólio" />
 
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="canonical" href="https://rogeliofraga.com.br/" />
+    <link rel="canonical" href="https://rogeliofragadev.com.br/" />
 
     <link
       rel="preload"
@@ -553,6 +553,187 @@
           height: 90px !important;
         }
       }
+
+      /* ===== Formacao & Atuacao ===== */
+      .trajetoria {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      /* o card da graduacao ocupa a linha inteira: e a manchete da secao */
+      .trajetoria-card.destaque {
+        grid-column: 1 / -1;
+      }
+      .trajetoria-card {
+        display: flex;
+        gap: 1.25rem;
+        padding: 1.75rem;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(156, 106, 214, 0.18);
+        border-left: 3px solid var(--accent-color);
+        transition: transform 0.25s ease, border-color 0.25s ease,
+          background 0.25s ease;
+      }
+      .trajetoria-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(156, 106, 214, 0.55);
+        background: rgba(156, 106, 214, 0.07);
+      }
+      .trajetoria-card.destaque {
+        background: linear-gradient(
+          115deg,
+          rgba(156, 106, 214, 0.14) 0%,
+          rgba(255, 255, 255, 0.03) 55%
+        );
+        border-color: rgba(156, 106, 214, 0.4);
+      }
+      .trajetoria-icone {
+        flex: 0 0 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: rgba(156, 106, 214, 0.12);
+        border: 1px solid rgba(156, 106, 214, 0.3);
+        color: var(--accent-color);
+        font-size: 1.4rem;
+        transition: transform 0.25s ease;
+      }
+      .trajetoria-card:hover .trajetoria-icone {
+        transform: rotate(-6deg) scale(1.08);
+      }
+      .trajetoria-card.destaque .trajetoria-icone {
+        flex-basis: 68px;
+        height: 68px;
+        font-size: 1.9rem;
+      }
+      .trajetoria-corpo {
+        min-width: 0;
+      }
+      .trajetoria-periodo {
+        display: inline-block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--accent-color);
+        background: rgba(156, 106, 214, 0.12);
+        border: 1px solid rgba(156, 106, 214, 0.28);
+        padding: 0.25rem 0.7rem;
+        border-radius: 50px;
+        margin-bottom: 0.7rem;
+      }
+      .trajetoria-titulo {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-light);
+        line-height: 1.3;
+        margin: 0 0 0.35rem;
+      }
+      .trajetoria-card.destaque .trajetoria-titulo {
+        font-size: 1.6rem;
+      }
+      .trajetoria-org {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        opacity: 0.9;
+        margin-bottom: 0.8rem;
+      }
+      .trajetoria-desc {
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--text-light);
+        opacity: 0.82;
+        margin: 0;
+      }
+      .trajetoria-desc strong {
+        opacity: 1;
+        color: var(--text-light);
+      }
+      @media (max-width: 992px) {
+        .trajetoria {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 576px) {
+        .trajetoria-card {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1.4rem;
+        }
+        .trajetoria-card.destaque .trajetoria-titulo {
+          font-size: 1.3rem;
+        }
+      }
+      .marca-vitrine {
+        width: 100%;
+        min-height: 240px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2.5rem;
+        border-radius: 15px;
+        border: 1px solid rgba(156, 106, 214, 0.28);
+        background: radial-gradient(
+          circle at 50% 40%,
+          rgba(156, 106, 214, 0.14) 0%,
+          rgba(255, 255, 255, 0.02) 65%
+        );
+      }
+      .marca-vitrine img {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+        display: block;
+      }
+      /* a marca do Razor e desenhada para fundo escuro: nao leva o wash claro */
+      .marca-vitrine.razor {
+        background: #0a0a0c;
+        border-color: rgba(62, 99, 255, 0.35);
+      }
+      .hero-soon-placeholder {
+        width: 100%;
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        border-radius: 15px;
+        border: 2px dashed rgba(156, 106, 214, 0.4);
+        background: rgba(156, 106, 214, 0.05);
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .hero-soon-placeholder i {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        opacity: 0.7;
+      }
+      .hero-soon-placeholder span {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+      }
+      .hero-soon-placeholder small {
+        font-size: 0.82rem;
+        opacity: 0.65;
+        line-height: 1.5;
+        max-width: 24ch;
+      }
+      @media (max-width: 768px) {
+        .hero-soon-placeholder {
+          min-height: 180px;
+        }
+      }
     </style>
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
@@ -599,6 +780,15 @@
                 role="menuitem"
                 aria-label="Ir para seção Sobre"
                 >Sobre</a
+              >
+            </li>
+            <li class="nav-item" role="none">
+              <a
+                class="nav-link"
+                href="#formacao"
+                role="menuitem"
+                aria-label="Ir para seção Formação e Atuação"
+                >Formação</a
               >
             </li>
             <li class="nav-item" role="none">
@@ -658,7 +848,9 @@
               <p class="masthead-description">
                 <strong>Desenvolvedor de soluções digitais</strong> que
                 transforma conceitos em realidade. Construo sistemas focados em
-                arquitetura escalável e performance excepcional.
+                arquitetura escalável e performance excepcional — e, desde
+                agosto de 2026, também <strong>ensino</strong> a próxima turma a
+                construir os deles.
               </p>
               <div class="masthead-social-container">
                 <div class="social-icons-masthead">
@@ -735,25 +927,35 @@
           <div class="about-content">
             <div class="about-intro-section">
               <p class="about-intro">
-                Tenho <strong>25 anos</strong> e sou estudante de
-                <strong>Análise e Desenvolvimento de Sistemas</strong> no
+                Tenho <strong>25 anos</strong> e sou
+                <strong>graduado em Análise e Desenvolvimento de Sistemas</strong>
+                pelo
                 <a
                   href="https://imepac.edu.br/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="imepac-link"
                   >Centro Universitário IMEPAC</a
-                >. Atualmente, atuo no desenvolvimento de software para um
-                projeto de pesquisa e inovação tecnológica da
-                <strong>UFU</strong> (Universidade Federal de Uberlândia),
-                fomentado por uma bolsa da <strong>FAPEMIG</strong>. Essa
-                experiência me permite aplicar minha paixão por código na
-                construção de soluções reais, com foco rigoroso em performance,
-                segurança e arquitetura escalável. Hoje desenvolvo, em paralelo,
-                um <strong>SaaS multiplataforma</strong> (web + desktop), um
-                <strong>marketplace</strong> com arquitetura hexagonal/DDD e uma
-                <strong>plataforma fullstack de gestão financeira</strong> —
-                sempre do banco de dados ao deploy.
+                >, com colação de grau em <strong>agosto de 2026</strong>. Atuo
+                como <strong>engenheiro principal</strong> na
+                <strong>InovaLayer</strong>, projeto de pesquisa e inovação
+                tecnológica ligado à <strong>UFU</strong> (Universidade Federal
+                de Uberlândia) e fomentado por bolsa da
+                <strong>FAPEMIG</strong> — onde levo o produto do modelo de
+                domínio ao provisionamento da nuvem em <strong>Terraform</strong>.
+                Em paralelo, sou <strong>professor de Técnicas de Programação
+                para Internet</strong> no curso técnico em Informática, dando
+                aula para duas turmas em uma plataforma de ensino que eu mesmo
+                construí e mantenho no ar.
+              </p>
+              <p class="about-intro">
+                Meu portfólio nasce sempre do mesmo lugar: sistemas que precisam
+                funcionar de verdade, com gente usando do outro lado. Um
+                <strong>SaaS multiplataforma</strong> (web + desktop), um
+                <strong>marketplace</strong> com arquitetura hexagonal/DDD, uma
+                <strong>plataforma de gestão financeira</strong> e um
+                <strong>sistema de aulas em produção</strong> — sempre do banco
+                de dados ao deploy.
               </p>
             </div>
 
@@ -831,6 +1033,107 @@
       </section>
 
       <section
+        id="formacao"
+        class="page-section"
+        aria-labelledby="formacao-heading"
+      >
+        <div class="container">
+          <h2 id="formacao-heading" class="page-section-heading text-center">
+            Formação &amp; Atuação
+          </h2>
+          <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="divider-custom-line"></div>
+          </div>
+
+          <div class="trajetoria">
+            <article class="trajetoria-card destaque">
+              <div class="trajetoria-icone">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div class="trajetoria-corpo">
+                <span class="trajetoria-periodo">Concluído em Ago/2026</span>
+                <h3 class="trajetoria-titulo">
+                  Análise e Desenvolvimento de Sistemas
+                </h3>
+                <span class="trajetoria-org">Centro Universitário IMEPAC</span>
+                <p class="trajetoria-desc">
+                  Graduação concluída em <strong>26 de agosto de 2026</strong>.
+                  Os projetos integradores do curso viraram sistemas de verdade,
+                  com usuários reais — não pararam na entrega.
+                </p>
+              </div>
+            </article>
+
+            <article class="trajetoria-card">
+              <div class="trajetoria-icone">
+                <i class="fas fa-chalkboard-user"></i>
+              </div>
+              <div class="trajetoria-corpo">
+                <span class="trajetoria-periodo">Ago/2026 — Atual</span>
+                <h3 class="trajetoria-titulo">
+                  Professor · Técnicas de Programação para Internet
+                </h3>
+                <span class="trajetoria-org"
+                  ><a
+                    href="https://www.educarearaguari.com.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="imepac-link"
+                    >Educare Araguari</a
+                  >
+                  · Trilhas do Futuro</span
+                >
+                <p class="trajetoria-desc">
+                  Disciplina de <strong>80h</strong> no curso técnico em
+                  Informática, para <strong>duas turmas</strong> de
+                  adolescentes, a maioria sem nenhum contato prévio com código.
+                  Escrevo o material, a apostila e a plataforma que eles usam em
+                  sala.
+                </p>
+              </div>
+            </article>
+
+            <article class="trajetoria-card">
+              <div class="trajetoria-icone"><i class="fas fa-flask"></i></div>
+              <div class="trajetoria-corpo">
+                <span class="trajetoria-periodo">Pesquisa &amp; Inovação</span>
+                <h3 class="trajetoria-titulo">
+                  Engenheiro Principal · InovaLayer / MADA
+                </h3>
+                <span class="trajetoria-org">UFU · Bolsa FAPEMIG</span>
+                <p class="trajetoria-desc">
+                  Responsável técnico pela plataforma de orçamentação para
+                  <strong>manufatura aditiva metálica (WAAM)</strong>: API,
+                  aplicação web, app desktop e toda a infraestrutura AWS
+                  provisionada em <strong>Terraform</strong>.
+                </p>
+              </div>
+            </article>
+
+            <article class="trajetoria-card">
+              <div class="trajetoria-icone">
+                <i class="fas fa-code-branch"></i>
+              </div>
+              <div class="trajetoria-corpo">
+                <span class="trajetoria-periodo">Colaboração</span>
+                <h3 class="trajetoria-titulo">Desenvolvedor · WireArc3D</h3>
+                <span class="trajetoria-org">Software de trajetórias WAAM</span>
+                <p class="trajetoria-desc">
+                  Passo a <strong>contribuir</strong> com o software de geração
+                  de trajetórias para manufatura aditiva por deposição a arco —
+                  aplicação desktop em Python com aceleração por GPU.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
         id="habilidades"
         class="page-section"
         aria-labelledby="habilidades-heading"
@@ -894,13 +1197,41 @@
               <i class="devicon-electron-original colored"></i>
               <span>Electron</span>
             </div>
-            <div class="skill-item" data-tooltip="Deploy em nuvem: EC2, RDS, S3, CloudFront e SES.">
+            <div class="skill-item" data-tooltip="Infra em produção: EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM e CloudWatch.">
               <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
               <span>AWS</span>
             </div>
             <div class="skill-item" data-tooltip="Criação de UIs customizadas com design responsivo fluido.">
               <i class="devicon-tailwindcss-original colored"></i>
               <span>Tailwind CSS</span>
+            </div>
+            <div class="skill-item" data-tooltip="Infraestrutura como código: VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM e IAM.">
+              <i class="devicon-terraform-plain colored"></i>
+              <span>Terraform</span>
+            </div>
+            <div class="skill-item" data-tooltip="Automação, scripts de build e geração de material; desktop com PyQt5.">
+              <i class="devicon-python-plain colored"></i>
+              <span>Python</span>
+            </div>
+            <div class="skill-item" data-tooltip="SPAs com hooks, componentes tipados e build com Vite.">
+              <i class="devicon-react-original colored"></i>
+              <span>React</span>
+            </div>
+            <div class="skill-item" data-tooltip="Renderização no servidor integrada ao Spring, sem SPA.">
+              <i class="devicon-thymeleaf-plain colored"></i>
+              <span>Thymeleaf</span>
+            </div>
+            <div class="skill-item" data-tooltip="CI/CD com testes, OIDC sem chave de acesso e deploy via SSM.">
+              <i class="devicon-githubactions-plain colored"></i>
+              <span>GitHub Actions</span>
+            </div>
+            <div class="skill-item" data-tooltip="Proxy reverso, TLS com certbot e servir estáticos em produção.">
+              <i class="devicon-nginx-original colored"></i>
+              <span>Nginx</span>
+            </div>
+            <div class="skill-item" data-tooltip="Testes unitários e de integração com Testcontainers em banco real.">
+              <i class="devicon-junit-plain colored"></i>
+              <span>JUnit</span>
             </div>
             <div class="skill-item" data-tooltip="Controle de versão complexo, git flow e colaboração de código.">
               <i class="devicon-git-plain colored"></i>
@@ -933,6 +1264,7 @@
           <button class="filter-pill" data-filter="frontend">Frontend & UI/UX</button>
           <button class="filter-pill" data-filter="backend">Backend & Microserviços</button>
           <button class="filter-pill" data-filter="ia">Automação & IA</button>
+          <button class="filter-pill" data-filter="pesquisa">Pesquisa & Engenharia</button>
         </div>
 
         <div class="container showcase-container">
@@ -1030,13 +1362,13 @@
           </div>
 
           <!-- DESTAQUE: InovaLayer / MADA (NDA) -->
-          <div class="showcase-project" data-category="fullstack">
+          <div class="showcase-project" data-category="pesquisa">
             <div class="showcase-main">
               <div class="showcase-text">
-                <span class="showcase-category">Full Stack · Pesquisa & Inovação</span>
-                <h3 class="showcase-title">InovaLayer / MADA — SaaS de Pesquisa & Inovação</h3>
+                <span class="showcase-category">Pesquisa & Inovação · Engenheiro Principal</span>
+                <h3 class="showcase-title">InovaLayer / MADA — SaaS de Manufatura Aditiva (WAAM)</h3>
                 <p class="showcase-desc">
-                  SaaS B2B multiplataforma desenvolvido em ambiente de pesquisa e inovação, onde atuo como <strong>engenheiro principal</strong>. Aplicação web + <strong>app desktop (Electron)</strong> + API, com internacionalização (PT/EN), autenticação JWT (httpOnly), deploy em nuvem <strong>AWS</strong> e múltiplas auditorias de segurança. <em>Detalhes de domínio e regras de negócio omitidos por NDA.</em>
+                  SaaS B2B multiplataforma para orçamentação de peças em <strong>manufatura aditiva metálica (WAAM)</strong>, onde atuo como <strong>engenheiro principal</strong>. Transforma uma solicitação do cliente em proposta técnica e custeada por um motor de modelagem de custos industriais. Aplicação web + <strong>app desktop (Electron)</strong> + API, com internacionalização (PT/EN), autenticação JWT (httpOnly) e <strong>infraestrutura AWS inteira provisionada em Terraform</strong> — VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM e alarmes no CloudWatch — com deploy contínuo via OIDC, sem chave de acesso de longa duração. <em>Detalhes de domínio e regras de negócio omitidos por NDA.</em>
                 </p>
                 <div class="showcase-tech">
                   <span class="tech-pill">Spring Boot</span>
@@ -1044,21 +1376,142 @@
                   <span class="tech-pill">Angular 21</span>
                   <span class="tech-pill">Electron</span>
                   <span class="tech-pill">PostgreSQL</span>
-                  <span class="tech-pill">AWS</span>
+                  <span class="tech-pill">Terraform</span>
+                  <span class="tech-pill">AWS (EC2/RDS/S3/CloudFront)</span>
+                  <span class="tech-pill">GitHub Actions (OIDC)</span>
                   <span class="tech-pill">i18n</span>
                 </div>
                 <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                  <a
+                    href="https://inovalayer.com.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-github-new"
+                    style="padding: 1rem 2rem; font-size: 1rem; background: var(--accent-color); color: white;"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Ver ao Vivo
+                  </a>
                   <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
-                    <i class="fas fa-lock"></i> Protegido por NDA
+                    <i class="fas fa-lock"></i> Código sob NDA
                   </span>
-                  <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;"><i class="fas fa-link"></i> Site em breve</span>
                 </div>
               </div>
               <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
-                <div style="width: 100%; min-height: 240px; border-radius: 15px; border: 2px dashed rgba(156, 106, 214, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; color: rgba(255, 255, 255, 0.65); background: rgba(156, 106, 214, 0.05);">
-                  <i class="fas fa-shield-halved" style="font-size: 2.5rem; opacity: 0.6;"></i>
-                  <span style="font-weight: 600;">Imagens em breve</span>
-                  <span style="font-size: 0.85rem; opacity: 0.7;"><i class="fas fa-lock"></i> Protegido por NDA</span>
+                <div class="marca-vitrine">
+                  <img
+                    src="imagens/inovalayer-logo.png"
+                    alt="Logotipo da InovaLayer — Manufatura Aditiva por Deposição a Arco"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-gallery">
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-project" data-category="fullstack">
+            <div class="showcase-main reverse">
+              <div class="showcase-text">
+                <span class="showcase-category">Full Stack · Educação · Em Produção</span>
+                <h3 class="showcase-title">Sistema de Aulas — Plataforma de Ensino em Produção</h3>
+                <p class="showcase-desc">
+                  Plataforma que eu construí para dar aula e que hoje é usada por <strong>~75 alunos</strong> em duas turmas do curso técnico. Nasceu de uma restrição real: as máquinas do laboratório são lentas e não dá para instalar nada nelas. Rodando no navegador, não exige instalação — e abre no celular, o que derruba a desculpa de não ter computador em casa. O aluno tem <strong>editor de código com prévia ao vivo</strong>, salvamento automático, quiz com ranking em tempo real e revisão do que errou. O recurso central é o <strong>painel-modelo</strong>: o código da aula fica ao lado e <em>cada linha digitada corretamente some do painel</em>, então o sistema sabe exatamente onde o aluno parou. O professor abre e fecha quizzes, acompanha o código de cada aluno e confere presença. Os prazos abrem e fecham sozinhos pelo calendário de cada turma.
+                </p>
+                <p class="showcase-desc">
+                  Do lado da operação: <strong>244 testes verdes</strong>, deploy automatizado em dois minutos por <strong>GitHub Actions com OIDC</strong> (nenhuma chave da AWS guardada) e <strong>SSM</strong> (porta 22 pode ficar fechada), com <code>pg_dump</code> antes de toda migração e trava de horário para não reiniciar a aplicação enquanto uma turma está digitando.
+                </p>
+                <div class="showcase-tech">
+                  <span class="tech-pill">Spring Boot 3.4</span>
+                  <span class="tech-pill">Java 21</span>
+                  <span class="tech-pill">Thymeleaf</span>
+                  <span class="tech-pill">PostgreSQL + Flyway</span>
+                  <span class="tech-pill">Docker</span>
+                  <span class="tech-pill">AWS EC2</span>
+                  <span class="tech-pill">GitHub Actions (OIDC/SSM)</span>
+                  <span class="tech-pill">Nginx</span>
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
+                    <i class="fas fa-lock"></i> Repositório privado
+                  </span>
+                  <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;"><i class="fas fa-user-shield"></i> Sem link público: é uma área de alunos menores de idade</span>
+                </div>
+              </div>
+              <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
+                <div class="hero-soon-placeholder">
+                  <i class="fas fa-chalkboard-user"></i>
+                  <span>Prints em breve</span>
+                  <small>Editor, quiz, ranking e painel do professor</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-gallery">
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+              <div class="gallery-soon-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Em Breve</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-project" data-category="pesquisa">
+            <div class="showcase-main">
+              <div class="showcase-text">
+                <span class="showcase-category">Pesquisa & Engenharia · Contribuição</span>
+                <h3 class="showcase-title">WireArc3D — Trajetórias para Manufatura Aditiva (WAAM)</h3>
+                <p class="showcase-desc">
+                  Aplicação desktop para <strong>geração de trajetórias otimizadas</strong> em manufatura aditiva por deposição a arco. O sistema lê um modelo <strong>STL</strong>, fatia a peça em camadas, agrupa os pontos, resolve um problema de <strong>caixeiro-viajante (TSP)</strong> para ordenar o percurso e exporta o <strong>G-code</strong> de fabricação, com visualização 3D interativa e <strong>aceleração por GPU</strong>. É um projeto <strong>de terceiros</strong>, para o qual passo a <strong>contribuir como desenvolvedor</strong> — a primeira frente é a interface desktop.
+                </p>
+                <div class="showcase-tech">
+                  <span class="tech-pill">Python 3.12</span>
+                  <span class="tech-pill">PyQt5</span>
+                  <span class="tech-pill">PyVista</span>
+                  <span class="tech-pill">CUDA / CuPy</span>
+                  <span class="tech-pill">FastAPI</span>
+                  <span class="tech-pill">TSP (LKH)</span>
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
+                    <i class="fas fa-lock"></i> Repositório privado de terceiros
+                  </span>
+                  <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;"><i class="fas fa-code-branch"></i> Atuação como colaborador</span>
+                </div>
+              </div>
+              <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
+                <div class="hero-soon-placeholder">
+                  <i class="fas fa-cubes"></i>
+                  <span>Prints em breve</span>
+                  <small>Viewport 3D, fatiamento e trajetórias</small>
                 </div>
               </div>
             </div>
@@ -1208,38 +1661,39 @@
           <div class="showcase-project" data-category="ia">
             <div class="showcase-main">
               <div class="showcase-text">
-                <span class="showcase-category">Automação & IA</span>
+                <span class="showcase-category">Automação & IA · SaaS Multi-tenant</span>
                 <h3 class="showcase-title">
-                  BarberBot AI (WhatsApp Intelligence)
+                  Razor — O Sistema Operacional da Barbearia
                 </h3>
                 <p class="showcase-desc">
-                  Solução corporativa inteligente para atendimento, agendamento autônomo e CRM via WhatsApp voltada para barbearias e centros de estética. Construída sobre uma arquitetura corporativa em Spring Boot 3 e PostgreSQL (Flyway), integra inteligência artificial avançada da OpenAI (GPT-4o e Whisper) para transcrição nativa de áudios e conversas automáticas de alta performance. Utiliza processamento de mensagens assíncronas com Evolution API, assegurando operação 100% autônoma para otimizar o faturamento comercial.
+                  <strong>Evolução do BarberBot AI</strong>, reposicionado de bot para produto. SaaS B2B2C <strong>multi-tenant</strong> onde uma IA conversacional atende, agenda e cobra pelo WhatsApp, enquanto o dono administra tudo por um painel web. Arquitetura de schema compartilhado com isolamento por <code>barbershop_id</code> e resolução de tenant <em>fail-closed</em> — instância desconhecida tem a mensagem descartada, nunca cai em um tenant padrão. Inclui agenda multiprofissional, financeiro com DRE, comissões, estoque, clube de assinatura, fila de espera, cartão fidelidade, PIX e transferência para humano. Cobre ainda um <strong>site white-label</strong> com três templates para a barbearia. <strong>235 testes</strong>, com integração rodando em PostgreSQL real via Testcontainers.
                 </p>
                 <div class="showcase-tech">
                   <span class="tech-pill">Spring Boot 3</span>
-                  <span class="tech-pill">Java 17</span>
+                  <span class="tech-pill">Java</span>
+                  <span class="tech-pill">React 18 + Vite</span>
                   <span class="tech-pill">OpenAI (GPT-4o)</span>
                   <span class="tech-pill">Whisper API</span>
-                  <span class="tech-pill">PostgreSQL</span>
+                  <span class="tech-pill">PostgreSQL + Flyway</span>
+                  <span class="tech-pill">Multi-tenant</span>
                   <span class="tech-pill">Evolution API</span>
+                  <span class="tech-pill">Testcontainers</span>
                 </div>
                 <div style="margin-top: 1rem">
-                  <a
-                    href="https://github.com/rogelio-fraga-dev/barberbot-core"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem"
-                  >
-                    <i class="fab fa-github"></i> Repositório
-                  </a>
+                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
+                    <i class="fas fa-lock"></i> Repositório privado — produto proprietário
+                  </span>
                 </div>
               </div>
               <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
                 <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
-                  <a href="imagens/barberbot.png" data-lightbox="proj3-main">
-                    <img src="imagens/barberbot.png" alt="Apresentação BarberBot AI" style="width: 100%; height: auto; display: block; object-fit: cover;">
-                  </a>
+                  <div class="marca-vitrine razor">
+                    <img
+                      src="imagens/razor-logo.svg"
+                      alt="Logotipo do Razor"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
                 <div class="video-soon-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(156, 106, 214, 0.1); border: 1px solid rgba(156, 106, 214, 0.3); color: var(--accent-color); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(156, 106, 214, 0.3);">
                   <i class="fas fa-clock"></i>
@@ -1296,15 +1750,6 @@
                     flex-wrap: wrap;
                   "
                 >
-                  <a
-                    href="https://github.com/rogelio-fraga-dev/psicologa-vanessa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem"
-                  >
-                    <i class="fab fa-github"></i> Repositório
-                  </a>
                   <a
                     href="https://psialvesvanessa.com.br"
                     target="_blank"
@@ -1678,6 +2123,10 @@
           <i class="fas fa-code"></i>
           <span class="btt-label">Habilidades</span>
         </a>
+        <a href="#formacao" class="btt-link" aria-label="Ir para Formação">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="btt-label">Formação</span>
+        </a>
         <a href="#sobre" class="btt-link" aria-label="Ir para Sobre">
           <i class="fas fa-user"></i>
           <span class="btt-label">Sobre</span>
@@ -1977,6 +2426,7 @@
         sr.reveal(".masthead-avatar", { delay: 200 });
         sr.reveal(".masthead-heading", { delay: 300, origin: "top" });
         sr.reveal(".masthead-description", { delay: 400, origin: "bottom" });
+        sr.reveal(".trajetoria-card", { interval: 150, origin: "bottom" });
         sr.reveal(".skill-item", { interval: 100 });
         sr.reveal(".showcase-project", {
           interval: 200,

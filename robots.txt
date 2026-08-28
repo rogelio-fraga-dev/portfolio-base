@@ -1,17 +1,17 @@
-# robots.txt para rogeliofraga.dev
+# robots.txt para rogeliofragadev.com.br
 
 User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://rogeliofraga.dev/sitemap.xml
+Sitemap: https://rogeliofragadev.com.br/sitemap.xml
 
-# Desabilitar crawling de arquivos desnecessários
-Disallow: /imagens/
+# Nao indexar o PDF do curriculo diretamente
 Disallow: /*.pdf$
 
-# Permitir recursos importantes
+# Recursos que precisam ser rastreaveis
+# (imagens/ fica liberado: e de la que sai a og:image dos compartilhamentos)
 Allow: /styles.css
 Allow: /index.html
+Allow: /imagens/
 Allow: /favicon.ico
-
