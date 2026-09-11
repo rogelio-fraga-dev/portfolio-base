@@ -792,31 +792,35 @@
           font-size: 1.3rem;
         }
       }
-      .marca-vitrine {
-        width: 100%;
-        min-height: 240px;
+      /* video + marca no mesmo quadro: o video ocupa o topo e a marca vira um rodape */
+      .showcase-video.com-marca .video-wrapper {
+        border-radius: 0;
+      }
+      .marca-faixa {
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 2.5rem;
-        border-radius: 15px;
-        border: 1px solid rgba(156, 106, 214, 0.28);
+        gap: 1rem;
+        padding: 0.9rem 1.2rem;
+        border-top: 1px solid rgba(156, 106, 214, 0.28);
         background: radial-gradient(
-          circle at 50% 40%,
-          rgba(156, 106, 214, 0.14) 0%,
-          rgba(255, 255, 255, 0.02) 65%
+          circle at 0% 50%,
+          rgba(156, 106, 214, 0.16) 0%,
+          rgba(255, 255, 255, 0.02) 70%
         );
       }
-      .marca-vitrine img {
-        width: 100%;
-        max-width: 340px;
-        height: auto;
+      .marca-faixa img {
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+        border-radius: 10px;
         display: block;
       }
-      /* a marca do Razor e desenhada para fundo escuro: nao leva o wash claro */
-      .marca-vitrine.razor {
-        background: #0a0a0c;
-        border-color: rgba(62, 99, 255, 0.35);
+      .marca-faixa span {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.65);
+      }
+      .marca-faixa strong {
+        color: var(--text-light);
       }
       .hero-soon-placeholder {
         width: 100%;
@@ -1482,12 +1486,28 @@
                   </a>
                 </div>
               </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
-                <div style="width: 100%; min-height: 240px; border-radius: 15px; border: 2px dashed rgba(156, 106, 214, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: rgba(255, 255, 255, 0.65); background: rgba(156, 106, 214, 0.05);">
-                  <i class="fas fa-camera-retro" style="font-size: 2.5rem; opacity: 0.6;"></i>
-                  <span style="font-weight: 600;">Imagens em breve</span>
+              <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
+                <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
+                  <a href="imagens/obracerta-landing.png" data-lightbox="obracerta" data-title="Landing page">
+                    <img src="imagens/obracerta-landing.png" alt="ObraCerta: landing page com profissionais avaliados" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                  </a>
                 </div>
               </div>
+            </div>
+
+            <div class="showcase-gallery">
+              <a href="imagens/obracerta-contratante.png" data-lightbox="obracerta" data-title="Painel do contratante"
+                ><img src="imagens/obracerta-contratante.png" alt="ObraCerta: painel do contratante com pedidos e compromissos" loading="lazy"
+              /></a>
+              <a href="imagens/obracerta-obras.png" data-lightbox="obracerta" data-title="Obras publicadas e lances"
+                ><img src="imagens/obracerta-obras.png" alt="ObraCerta: obras publicadas e status dos lances" loading="lazy"
+              /></a>
+              <a href="imagens/obracerta-admin.png" data-lightbox="obracerta" data-title="Painel administrativo"
+                ><img src="imagens/obracerta-admin.png" alt="ObraCerta: painel administrativo com métricas do produto" loading="lazy"
+              /></a>
+              <a href="imagens/obracerta-dores.png" data-lightbox="obracerta" data-title="As dores que o produto resolve"
+                ><img src="imagens/obracerta-dores.png" alt="ObraCerta: seção com as dores de quem contrata" loading="lazy"
+              /></a>
             </div>
           </div>
 
@@ -1526,34 +1546,41 @@
                   </span>
                 </div>
               </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
-                <div class="marca-vitrine">
+              <div class="showcase-video com-marca">
+                <div class="video-wrapper">
+                  <iframe
+                    src="https://www.youtube.com/embed/4XpnnLjJ8ik"
+                    title="Vídeo de apresentação da InovaLayer"
+                    allowfullscreen
+                  ></iframe>
+                  <div class="play-trigger">
+                    <i class="fas fa-play"></i>
+                  </div>
+                </div>
+                <div class="marca-faixa">
                   <img
                     src="imagens/inovalayer-logo.png"
                     alt="Logotipo da InovaLayer: Manufatura Aditiva por Deposição a Arco"
                     loading="lazy"
                   />
+                  <span>Vídeo oficial · <strong>inovalayer.com.br</strong></span>
                 </div>
               </div>
             </div>
 
             <div class="showcase-gallery">
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
+              <a href="imagens/inovalayer-hero-pt.png" data-lightbox="inovalayer" data-title="Site institucional em português"
+                ><img src="imagens/inovalayer-hero-pt.png" alt="InovaLayer: página inicial do site em português" loading="lazy"
+              /></a>
+              <a href="imagens/inovalayer-hero-en.png" data-lightbox="inovalayer" data-title="A mesma página em inglês (i18n)"
+                ><img src="imagens/inovalayer-hero-en.png" alt="InovaLayer: página inicial do site em inglês" loading="lazy"
+              /></a>
+              <a href="imagens/inovalayer-projetos-pt.png" data-lightbox="inovalayer" data-title="Projetos reais, no tema escuro"
+                ><img src="imagens/inovalayer-projetos-pt.png" alt="InovaLayer: seção de projetos em português no tema escuro" loading="lazy"
+              /></a>
+              <a href="imagens/inovalayer-projetos-en.png" data-lightbox="inovalayer" data-title="Projetos em inglês, no tema escuro"
+                ><img src="imagens/inovalayer-projetos-en.png" alt="InovaLayer: seção de projetos em inglês no tema escuro" loading="lazy"
+              /></a>
             </div>
           </div>
 
@@ -1585,32 +1612,30 @@
                   <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;"><i class="fas fa-user-shield"></i> Sem link público: é uma área de alunos menores de idade</span>
                 </div>
               </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
-                <div class="hero-soon-placeholder">
-                  <i class="fas fa-chalkboard-user"></i>
-                  <span>Prints em breve</span>
-                  <small>Editor, quiz, ranking e painel do professor</small>
+              <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
+                <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
+                  <a href="imagens/aulas-editor.png" data-lightbox="aulas" data-title="Editor com prévia ao vivo e o painel-modelo da aula">
+                    <img src="imagens/aulas-editor.png" alt="Sistema de Aulas: editor de código com prévia ao vivo e o painel-modelo da aula" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                  </a>
                 </div>
               </div>
             </div>
 
             <div class="showcase-gallery">
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
+              <a href="imagens/aulas-inicio.png" data-lightbox="aulas" data-title="Início do aluno: o que falta fazer"
+                ><img src="imagens/aulas-inicio.png" alt="Sistema de Aulas: tela inicial do aluno com as atividades pendentes" loading="lazy"
+              /></a>
+              <a href="imagens/aulas-quiz.png" data-lightbox="aulas" data-title="Quiz da aula"
+                ><img src="imagens/aulas-quiz.png" alt="Sistema de Aulas: pergunta de quiz" loading="lazy"
+              /></a>
+              <a href="imagens/aulas-ranking.png" data-lightbox="aulas" data-title="Ranking da turma e revisão dos erros"
+                ><img src="imagens/aulas-ranking.png" alt="Sistema de Aulas: ranking da turma e revisão do que o aluno errou" loading="lazy"
+              /></a>
+              <a href="imagens/aulas-referencia.png" data-lightbox="aulas" data-title="Referência: o que cada linha faz"
+                ><img src="imagens/aulas-referencia.png" alt="Sistema de Aulas: referência explicando cada tag HTML da aula" loading="lazy"
+              /></a>
+              <a href="imagens/aulas-atividades.png" data-lightbox="aulas" data-title="Atividades por bloco do curso" hidden></a>
+              <a href="imagens/aulas-perfil.png" data-lightbox="aulas" data-title="Perfil e notas do aluno" hidden></a>
             </div>
           </div>
 
@@ -1817,13 +1842,9 @@
               </div>
               <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
                 <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
-                  <div class="marca-vitrine razor">
-                    <img
-                      src="imagens/razor-logo.svg"
-                      alt="Logotipo do Razor"
-                      loading="lazy"
-                    />
-                  </div>
+                  <a href="imagens/razor-landing.png" data-lightbox="razor" data-title="Landing page do produto">
+                    <img src="imagens/razor-landing.png" alt="Razor: landing page com a conversa da IA no WhatsApp" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                  </a>
                 </div>
                 <div class="video-soon-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(156, 106, 214, 0.1); border: 1px solid rgba(156, 106, 214, 0.3); color: var(--accent-color); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(156, 106, 214, 0.3);">
                   <i class="fas fa-clock"></i>
@@ -1833,22 +1854,20 @@
             </div>
 
             <div class="showcase-gallery">
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
-              <div class="gallery-soon-placeholder">
-                <i class="fas fa-image"></i>
-                <span>Em Breve</span>
-              </div>
+              <a href="imagens/razor-painel.png" data-lightbox="razor" data-title="Painel analítico do dono"
+                ><img src="imagens/razor-painel.png" alt="Razor: painel analítico com meta do mês e faturamento" loading="lazy"
+              /></a>
+              <a href="imagens/razor-caixa.png" data-lightbox="razor" data-title="Caixa do dia"
+                ><img src="imagens/razor-caixa.png" alt="Razor: caixa do dia com vendas, sangrias e suprimentos" loading="lazy"
+              /></a>
+              <a href="imagens/razor-configuracoes.png" data-lightbox="razor" data-title="Configurações do bot e da barbearia"
+                ><img src="imagens/razor-configuracoes.png" alt="Razor: configurações do bot, do WhatsApp e da barbearia" loading="lazy"
+              /></a>
+              <a href="imagens/razor-modulos.png" data-lightbox="razor" data-title="Os módulos da plataforma"
+                ><img src="imagens/razor-modulos.png" alt="Razor: módulos da plataforma na landing page" loading="lazy"
+              /></a>
+              <a href="imagens/razor-onboarding.png" data-lightbox="razor" data-title="Onboarding guiado em 8 passos" hidden></a>
+              <a href="imagens/razor-problema.png" data-lightbox="razor" data-title="O problema e como funciona" hidden></a>
             </div>
           </div>
 
