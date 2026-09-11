@@ -8,17 +8,26 @@ Este documento contém instruções para configurar os serviços que foram imple
 
 - **Status**: Implementado
 - **Localização**: `<head>` do `index.html`
-- **Nota**: Não inclui Twitter Cards conforme solicitado
+- **Nota**: Twitter Cards (`summary_large_image`) adicionados em 01/09/2026.
 
 ### 2. ✅ Schema.org JSON-LD
 
-- **Status**: Já estava implementado
+- **Status**: Implementado em 01/09/2026.
+- **Correção**: este documento afirmava que o JSON-LD "já estava implementado",
+  mas **não havia nenhum bloco `application/ld+json` no `index.html`**. Agora
+  existem dois: `ProfilePage` (com um `Person` em `mainEntity`) e `WebSite`.
 - **Localização**: `<head>` do `index.html`
 
-### 3. ✅ Formulário Funcional com EmailJS
+### 3. ⚠️ Formulário com EmailJS — NÃO ESTÁ ENVIANDO
 
-- **Status**: Implementado (requer configuração)
-- **Localização**: `index.html` (linha ~1594)
+- **Status**: implementado, porém **inoperante**. A chamada `emailjs.init()`
+  usava o texto literal `"SUA_PUBLIC_KEY"`, então nenhuma mensagem enviada pelo
+  site chegou até hoje — e falhava em silêncio, sem erro visível.
+- **Como corrigir**: pegue a chave em
+  <https://dashboard.emailjs.com/admin/account> ("Public Key") e substitua o
+  valor da constante `EMAILJS_PUBLIC_KEY` no `index.html`. Essa chave é pública
+  por design e pode ficar no HTML.
+- **Localização**: `index.html`, constante `EMAILJS_PUBLIC_KEY`
 
 ### 4. ✅ Validação de Formulário
 
@@ -34,10 +43,13 @@ Este documento contém instruções para configurar os serviços que foram imple
 - **Status**: Criados
 - **Localização**: Raiz do projeto
 
-### 6. ✅ Google Analytics
+### 6. ❌ Google Analytics — NÃO INSTALADO
 
-- **Status**: Implementado (requer configuração)
-- **Localização**: `<head>` do `index.html`
+- **Status**: **não implementado**. Este documento afirmava o contrário, mas não
+  existe nenhuma tag `gtag` nem `googletagmanager` no `index.html`. O que existe
+  é apenas a permissão para esses domínios na CSP.
+- **Nota**: o site usa Vercel Analytics (`/_vercel/insights/script.js`), esse sim
+  ativo.
 
 ### 7. ✅ Content Security Policy (CSP)
 
@@ -56,7 +68,11 @@ Este documento contém instruções para configurar os serviços que foram imple
 
 ### 9. ✅ Preload de Fontes
 
-- **Status**: Implementado
+- **Status**: Implementado e **corrigido** em 01/09/2026.
+- **Correção**: havia um `<link rel="preload">` do Google Fonts **sem** o
+  `<link rel="stylesheet">` correspondente — a fonte era baixada e nunca
+  aplicada. Faltavam também os pesos 800 e 900 do Montserrat, usados no CSS,
+  que o navegador vinha sintetizando.
 - **Localização**: `<head>` do `index.html`
 
 ---

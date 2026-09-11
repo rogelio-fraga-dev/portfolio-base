@@ -6,8 +6,11 @@ Allow: /
 # Sitemap
 Sitemap: https://rogeliofragadev.com.br/sitemap.xml
 
-# Nao indexar o PDF do curriculo diretamente
-Disallow: /*.pdf$
+# O "Disallow: /*.pdf$" que existia aqui bloqueava o proprio curriculo de ser
+# indexado. Como o curriculo e justamente o que se quer que apareca quando
+# alguem busca o nome, ele agora e rastreavel.
+Allow: /curriculo.pdf
+Allow: /curriculo.html
 
 # Recursos que precisam ser rastreaveis
 # (imagens/ fica liberado: e de la que sai a og:image dos compartilhamentos)

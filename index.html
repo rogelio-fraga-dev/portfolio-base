@@ -18,8 +18,10 @@
     <meta name="author" content="Rogélio Claro Fraga" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Titulo mantido em ~60 caracteres para nao truncar no resultado do Google,
+         e liderado pelas palavras que o recrutador realmente busca. -->
     <title>
-      Rogélio Claro Fraga | Desenvolvedor Full Stack & Professor | Portfólio
+      Rogélio Claro Fraga | Desenvolvedor Full Stack Java e Angular
     </title>
 
     <meta property="og:type" content="website" />
@@ -41,13 +43,131 @@
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="Rogélio Claro Fraga - Portfólio" />
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rogélio Claro Fraga | Desenvolvedor Full Stack Java e Angular" />
+    <meta
+      name="twitter:description"
+      content="Desenvolvedor Full Stack com Java, Spring Boot, Angular e TypeScript. Infraestrutura AWS em Terraform, CI/CD em GitHub Actions e sistemas em produção."
+    />
+    <meta name="twitter:image" content="https://rogeliofragadev.com.br/imagens/avatar.jpg" />
+
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="canonical" href="https://rogeliofragadev.com.br/" />
 
+    <!-- Dados estruturados. O sameAs e o que permite ao Google confirmar que
+         estes perfis sao da mesma pessoa real e tratar o site como a entidade
+         canonica dela. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://rogeliofragadev.com.br/#profilepage",
+        "url": "https://rogeliofragadev.com.br/",
+        "name": "Rogélio Claro Fraga | Desenvolvedor Full Stack Java e Angular",
+        "inLanguage": "pt-BR",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://rogeliofragadev.com.br/#person",
+          "name": "Rogélio Claro Fraga",
+          "givenName": "Rogélio",
+          "familyName": "Claro Fraga",
+          "jobTitle": "Desenvolvedor Full Stack",
+          "description": "Desenvolvedor Full Stack com Java 21, Spring Boot, Angular e TypeScript. Responsável técnico de um SaaS B2B em ambiente de pesquisa vinculado à UFU e professor de Técnicas de Programação para Internet.",
+          "email": "mailto:rogelio.claro@gmail.com",
+          "telephone": "+55-34-98444-2479",
+          "url": "https://rogeliofragadev.com.br/",
+          "image": "https://rogeliofragadev.com.br/imagens/avatar.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Araguari",
+            "addressRegion": "MG",
+            "addressCountry": "BR"
+          },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Centro Universitário IMEPAC",
+            "url": "https://imepac.edu.br/"
+          },
+          "worksFor": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "UFU - Universidade Federal de Uberlândia",
+              "url": "https://ufu.br/"
+            },
+            {
+              "@type": "EducationalOrganization",
+              "name": "Educare Araguari",
+              "url": "https://www.educarearaguari.com.br/"
+            }
+          ],
+          "knowsLanguage": [
+            { "@type": "Language", "name": "Português", "alternateName": "pt" },
+            { "@type": "Language", "name": "Inglês", "alternateName": "en" }
+          ],
+          "knowsAbout": [
+            "Java",
+            "Spring Boot",
+            "Spring Security",
+            "JPA/Hibernate",
+            "API REST",
+            "Microserviços",
+            "Angular",
+            "TypeScript",
+            "React",
+            "Next.js",
+            "NestJS",
+            "Node.js",
+            "PostgreSQL",
+            "MySQL",
+            "Redis",
+            "Docker",
+            "AWS",
+            "Terraform",
+            "GitHub Actions",
+            "CI/CD",
+            "Nginx",
+            "JUnit",
+            "Testcontainers",
+            "Clean Code",
+            "SOLID",
+            "Design Patterns",
+            "DDD",
+            "Scrum"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/rogelio-fraga-dev/",
+            "https://github.com/rogelio-fraga-dev",
+            "https://www.instagram.com/rogeliofraga.dev/"
+          ]
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://rogeliofragadev.com.br/#website",
+        "url": "https://rogeliofragadev.com.br/",
+        "name": "Rogélio Claro Fraga - Portfólio",
+        "inLanguage": "pt-BR",
+        "author": { "@id": "https://rogeliofragadev.com.br/#person" },
+        "publisher": { "@id": "https://rogeliofragadev.com.br/#person" }
+      }
+    </script>
+
+    <!-- Havia um preload desta folha sem o <link rel="stylesheet"> correspondente:
+         a fonte era baixada e nunca aplicada. Os pesos 800 e 900 sao usados em
+         .masthead-name e .about-philosophy e antes nao eram carregados, entao o
+         navegador sintetizava o negrito. -->
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;800;900&display=swap"
       as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;800;900&display=swap"
     />
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
@@ -824,8 +944,9 @@
     </header>
 
     <main id="main-content" role="main">
+      <!-- O id "page-top" ja existe no <body>. Ter os dois tornava o HTML
+           invalido; os links #page-top continuam funcionando pelo body. -->
       <section
-        id="page-top"
         class="masthead"
         aria-label="Apresentação principal"
       >
@@ -838,13 +959,17 @@
                   Disponível para Freelancer & Projetos
                 </span>
               </div>
+              <!-- O cargo agora vive DENTRO do h1: antes o h1 continha so o nome,
+                   e o unico h1 da pagina nao carregava nenhuma palavra-chave.
+                   .masthead-role e display:flex, entao um <span> renderiza igual
+                   ao <div> anterior e o h1 continua com HTML valido. -->
               <h1 class="masthead-heading">
                 <span class="masthead-name">Rogélio Claro Fraga</span>
+                <span class="masthead-role">
+                  <span class="role-large">DESENVOLVEDOR</span>
+                  <span class="role-accent">FULL STACK</span>
+                </span>
               </h1>
-              <div class="masthead-role">
-                <span class="role-large">DESENVOLVEDOR</span>
-                <span class="role-accent">FULL STACK</span>
-              </div>
               <p class="masthead-description">
                 <strong>Desenvolvedor de soluções digitais</strong> que
                 transforma conceitos em realidade. Construo sistemas focados em
@@ -892,6 +1017,10 @@
                   </a>
                 </div>
                 <div class="masthead-actions">
+                  <a href="curriculo.pdf" class="btn-download-cv" download>
+                    <i class="fas fa-file-arrow-down"></i>
+                    <span>Baixar Currículo</span>
+                  </a>
                   <a href="#habilidades" class="btn-skills">
                     <i class="fas fa-code"></i>
                     <span>Ver Habilidades</span>
@@ -1566,25 +1695,25 @@
               <a href="imagens/projeto1-img1.jpg" data-lightbox="proj1"
                 ><img
                   src="imagens/projeto1-img1.jpg"
-                  alt="Print 1"
+                  alt="Sistema de Gestão Clínica em Angular: tela de agendamento de consultas"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto1-img2.jpg" data-lightbox="proj1"
                 ><img
                   src="imagens/projeto1-img2.jpg"
-                  alt="Print 2"
+                  alt="Sistema de Gestão Clínica em Angular: cadastro de pacientes"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto1-img3.jpg" data-lightbox="proj1"
                 ><img
                   src="imagens/projeto1-img3.jpg"
-                  alt="Print 3"
+                  alt="Sistema de Gestão Clínica em Angular: prontuário eletrônico"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto1-img4.jpg" data-lightbox="proj1"
                 ><img
                   src="imagens/projeto1-img4.jpg"
-                  alt="Print 4"
+                  alt="Sistema de Gestão Clínica em Angular: painel administrativo com PrimeNG"
                   loading="lazy"
               /></a>
             </div>
@@ -1635,25 +1764,25 @@
               <a href="imagens/projeto2-img1.jpg" data-lightbox="proj2"
                 ><img
                   src="imagens/projeto2-img1.jpg"
-                  alt="Print 1"
+                  alt="Core API da Clínica Médica em Spring Boot: documentação dos endpoints REST"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto2-img2.jpg" data-lightbox="proj2"
                 ><img
                   src="imagens/projeto2-img2.jpg"
-                  alt="Print 2"
+                  alt="Core API da Clínica Médica: autenticação JWT com Spring Security"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto2-img3.jpg" data-lightbox="proj2"
                 ><img
                   src="imagens/projeto2-img3.jpg"
-                  alt="Print 3"
+                  alt="Core API da Clínica Médica: arquitetura de microserviços com Spring Cloud"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto2-img4.jpg" data-lightbox="proj2"
                 ><img
                   src="imagens/projeto2-img4.jpg"
-                  alt="Print 4"
+                  alt="Core API da Clínica Médica: modelagem do banco de dados"
                   loading="lazy"
               /></a>
             </div>
@@ -1785,25 +1914,25 @@
               <a href="imagens/projeto4-img1.jpg" data-lightbox="proj4"
                 ><img
                   src="imagens/projeto4-img1.jpg"
-                  alt="Print 1"
+                  alt="Landing page da Clínica de Psicologia: seção principal"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto4-img2.jpg" data-lightbox="proj4"
                 ><img
                   src="imagens/projeto4-img2.jpg"
-                  alt="Print 2"
+                  alt="Landing page da Clínica de Psicologia: apresentação dos serviços"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto4-img3.jpg" data-lightbox="proj4"
                 ><img
                   src="imagens/projeto4-img3.jpg"
-                  alt="Print 3"
+                  alt="Landing page da Clínica de Psicologia: layout responsivo no celular"
                   loading="lazy"
               /></a>
               <a href="imagens/projeto4-img4.jpg" data-lightbox="proj4"
                 ><img
                   src="imagens/projeto4-img4.jpg"
-                  alt="Print 4"
+                  alt="Landing page da Clínica de Psicologia: formulário de contato"
                   loading="lazy"
               /></a>
             </div>
@@ -2155,8 +2284,22 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Inicializar EmailJS
+        // ATENCAO: enquanto esta constante for o texto abaixo, o formulario de
+        // contato NAO envia nada. A chave publica do EmailJS fica em
+        // https://dashboard.emailjs.com/admin/account -> "Public Key".
+        // Ela e publica por design (fica exposta no HTML), nao e segredo.
+        const EMAILJS_PUBLIC_KEY = "SUA_PUBLIC_KEY";
         (function () {
-          emailjs.init("SUA_PUBLIC_KEY"); // Lembre-se de colocar sua chave pública aqui!
+          if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY === "SUA_PUBLIC_KEY") {
+            // Antes isto falhava em silencio: o visitante via "Enviando..." e a
+            // mensagem simplesmente sumia. Agora o erro fica visivel no console.
+            console.error(
+              "[contato] EmailJS sem chave publica configurada — o formulario " +
+                "de contato NAO vai enviar. Defina EMAILJS_PUBLIC_KEY."
+            );
+            return;
+          }
+          emailjs.init(EMAILJS_PUBLIC_KEY);
         })();
 
         // Feedback do Formulário de Contato com EmailJS
