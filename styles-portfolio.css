@@ -1,0 +1,849 @@
+/* Estilos do portfolio (antes inline no index.html).
+   Compartilhado entre a versao em portugues e a versao em ingles. */
+
+/* --- CORREÇÃO DE ROLAGEM (SCROLL SNAP) NO MOBILE --- */
+html,
+body {
+  scroll-snap-type: none !important;
+  overscroll-behavior-y: auto !important;
+}
+*,
+section,
+.page-section,
+.masthead {
+  scroll-snap-align: none !important;
+}
+/* --------------------------------------------------- */
+
+/* --- CORREÇÃO DE ESPAÇAMENTO ENTRE SOBRE E HABILIDADES --- */
+#sobre.page-section {
+  padding-bottom: 2rem !important;
+}
+#habilidades.page-section {
+  padding-top: 2rem !important;
+}
+/* --------------------------------------------------------- */
+
+.showcase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin-top: 4rem;
+}
+.showcase-project {
+  background: rgba(28, 20, 40, 0.7);
+  border-radius: 25px;
+  border: 1px solid rgba(156, 106, 214, 0.3);
+  padding: 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+.showcase-project:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+}
+.showcase-main {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.showcase-main.reverse {
+  flex-direction: row-reverse;
+}
+.showcase-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.showcase-category {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 0.5rem 1.2rem;
+  background: rgba(156, 106, 214, 0.15);
+  border: 1px solid rgba(156, 106, 214, 0.3);
+  border-radius: 50px;
+  width: fit-content;
+}
+.showcase-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--text-light);
+  line-height: 1.2;
+  font-family: "Montserrat", sans-serif;
+}
+.showcase-desc {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+.showcase-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.tech-pill {
+  padding: 0.4rem 1rem;
+  background: rgba(156, 106, 214, 0.1);
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+.showcase-video {
+  flex: 1.2;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(156, 106, 214, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.showcase-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(156, 106, 214, 0.2);
+}
+.showcase-gallery img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.showcase-gallery img:hover {
+  transform: scale(1.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 5px 15px rgba(156, 106, 214, 0.4);
+}
+
+/* Ajuste da Seção de Habilidades */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.skill-item {
+  background: rgba(156, 106, 214, 0.08);
+  border: 1px solid rgba(156, 106, 214, 0.2);
+  padding: 2rem 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.skill-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 25px rgba(156, 106, 214, 0.2);
+  background: rgba(156, 106, 214, 0.15);
+}
+.skill-item i {
+  font-size: 3.5rem;
+}
+
+@media (max-width: 1100px) {
+  .showcase-main,
+  .showcase-main.reverse {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .showcase-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .showcase-gallery img {
+    height: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .showcase-project {
+    padding: 2rem;
+  }
+  .showcase-title {
+    font-size: 2rem;
+  }
+  .showcase-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* --- MELHORIA DE SEGURANÇA CONTRA TRAVAMENTO DE SCROLL NO CELULAR & PLAY OVERLAY --- */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  cursor: pointer;
+  border-radius: 13px;
+  overflow: hidden;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none; /* Bloqueia hijacking de gestos de rolagem no mobile por padrão */
+  transition: all 0.3s ease;
+}
+.video-wrapper.active iframe {
+  pointer-events: auto; /* Habilita controle total após ativar a reprodução */
+}
+.play-trigger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(28, 20, 40, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  touch-action: pan-y !important;
+}
+.play-trigger i {
+  font-size: 2.5rem;
+  color: #fff;
+  background: var(--accent-color);
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(156, 106, 214, 0.7);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding-left: 5px; /* Ajuste visual do ícone */
+}
+.video-wrapper:hover .play-trigger {
+  background: rgba(28, 20, 40, 0.2);
+}
+.video-wrapper:hover .play-trigger i {
+  transform: scale(1.12);
+  background: var(--divider-light-color);
+  box-shadow: 0 0 35px rgba(156, 106, 214, 0.9);
+}
+.video-wrapper.active .play-trigger {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- BADGE DE DISPONIBILIDADE --- */
+.availability-badge-container {
+  margin-bottom: 1.5rem;
+}
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  position: relative;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulse-green 1.8s ease-in-out infinite;
+}
+@keyframes pulse-green {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* --- ANIMAÇÃO DE ENTRADA ---
+   Sem a classe .anima-entrada no <html> (que o JS só adiciona quando pode
+   animar), nada aqui se aplica: o conteudo fica visivel por padrao. */
+.anima-entrada .entra {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s cubic-bezier(0.5, 0, 0, 1),
+    transform 0.9s cubic-bezier(0.5, 0, 0, 1);
+  will-change: opacity, transform;
+}
+.anima-entrada .entra.visivel {
+  opacity: 1;
+  transform: none;
+}
+/* escalona os cards de uma mesma grade, no lugar do "interval" antigo */
+.anima-entrada .skill-item:nth-child(even).entra,
+.anima-entrada .trajetoria-card:nth-child(even).entra,
+.anima-entrada .outro-card:nth-child(even).entra {
+  transition-delay: 0.12s;
+}
+
+/* --- INTERACTIVE SKILL TOOLTIPS --- */
+.skill-item {
+  position: relative;
+}
+@media (hover: hover) {
+  .skill-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%, -100%) scale(0.8);
+    background: rgba(28, 20, 40, 0.95);
+    border: 1px solid rgba(156, 106, 214, 0.4);
+    color: var(--text-light);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    width: 220px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.4;
+  }
+  .skill-item:hover::after {
+    opacity: 1;
+    transform: translate(-50%, calc(-100% - 10px)) scale(1);
+  }
+}
+
+/* ===== Experiencia & Formacao ===== */
+.trajetoria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+/* o card de destaque ocupa a linha inteira: e a manchete da secao */
+.trajetoria-card.destaque {
+  grid-column: 1 / -1;
+}
+.trajetoria-card {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(156, 106, 214, 0.18);
+  border-left: 3px solid var(--accent-color);
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    background 0.25s ease;
+}
+.trajetoria-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(156, 106, 214, 0.55);
+  background: rgba(156, 106, 214, 0.07);
+}
+.trajetoria-card.destaque {
+  background: linear-gradient(
+    115deg,
+    rgba(156, 106, 214, 0.14) 0%,
+    rgba(255, 255, 255, 0.03) 55%
+  );
+  border-color: rgba(156, 106, 214, 0.4);
+}
+.trajetoria-icone {
+  flex: 0 0 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(156, 106, 214, 0.12);
+  border: 1px solid rgba(156, 106, 214, 0.3);
+  color: var(--accent-color);
+  font-size: 1.4rem;
+  transition: transform 0.25s ease;
+}
+.trajetoria-card:hover .trajetoria-icone {
+  transform: rotate(-6deg) scale(1.08);
+}
+.trajetoria-card.destaque .trajetoria-icone {
+  flex-basis: 68px;
+  height: 68px;
+  font-size: 1.9rem;
+}
+.trajetoria-corpo {
+  min-width: 0;
+}
+.trajetoria-periodo {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  background: rgba(156, 106, 214, 0.12);
+  border: 1px solid rgba(156, 106, 214, 0.28);
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  margin-bottom: 0.7rem;
+}
+.trajetoria-titulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-light);
+  line-height: 1.3;
+  margin: 0 0 0.35rem;
+}
+.trajetoria-card.destaque .trajetoria-titulo {
+  font-size: 1.6rem;
+}
+.trajetoria-org {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  opacity: 0.9;
+  margin-bottom: 0.8rem;
+}
+.trajetoria-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-light);
+  opacity: 0.82;
+  margin: 0;
+}
+.trajetoria-desc strong {
+  opacity: 1;
+  color: var(--text-light);
+}
+@media (max-width: 992px) {
+  .trajetoria {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .trajetoria-card {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.4rem;
+  }
+  .trajetoria-card.destaque .trajetoria-titulo {
+    font-size: 1.3rem;
+  }
+}
+/* video + marca no mesmo quadro: o video ocupa o topo e a marca vira um rodape */
+.showcase-video.com-marca .video-wrapper {
+  border-radius: 0;
+}
+.marca-faixa {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-top: 1px solid rgba(156, 106, 214, 0.28);
+  background: radial-gradient(
+    circle at 0% 50%,
+    rgba(156, 106, 214, 0.16) 0%,
+    rgba(255, 255, 255, 0.02) 70%
+  );
+}
+.marca-faixa img {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: block;
+}
+.marca-faixa span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+.marca-faixa strong {
+  color: var(--text-light);
+}
+.about-intro + .about-intro {
+  margin-top: 1.25rem;
+}
+
+/* ===== Topo: numeros que sustentam a frase de apresentacao ===== */
+.masthead-stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 40rem;
+  margin: 1.75rem 0 2rem;
+  padding: 0;
+}
+.masthead-stats li {
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--accent-color);
+  border-radius: 0 10px 10px 0;
+  background: rgba(156, 106, 214, 0.08);
+}
+.masthead-stats strong {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-light);
+}
+.masthead-stats span {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Projetos ===== */
+.portfolio-intro {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text-light);
+  opacity: 0.85;
+}
+/* a imagem divide o card meio a meio com o texto, em vez de ficar num canto */
+.showcase-media {
+  flex: 1;
+  min-width: 0;
+}
+.media-frame {
+  border-radius: 15px;
+  overflow: hidden;
+  border: 2px solid rgba(156, 106, 214, 0.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+.media-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.media-frame a:hover img,
+.media-frame a:focus-visible img {
+  transform: scale(1.03);
+}
+.showcase-pontos {
+  list-style: none;
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+.showcase-pontos li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-light);
+  opacity: 0.9;
+}
+.showcase-pontos li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--accent-color);
+}
+.showcase-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+.showcase-links .btn-github-new {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+.diagrama {
+  margin: 2.5rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(156, 106, 214, 0.2);
+}
+.diagrama img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(156, 106, 214, 0.25);
+  background: rgba(12, 8, 18, 0.45);
+}
+.diagrama figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+@media (max-width: 768px) {
+  /* no celular o diagrama rola dentro da propria caixa, para o texto
+     dele nao virar 4px de altura */
+  .diagrama {
+    overflow-x: auto;
+  }
+  .diagrama img {
+    min-width: 680px;
+  }
+}
+.showcase-nota {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== Outros projetos: grade compacta ===== */
+.outros-projetos {
+  margin-top: 5rem;
+}
+.outros-titulo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  color: var(--text-light);
+  margin: 0 0 1.5rem;
+}
+.outros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.outro-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: rgba(28, 20, 40, 0.7);
+  border: 1px solid rgba(156, 106, 214, 0.25);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.outro-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+}
+.outro-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+.outro-card h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin: 0;
+}
+.outro-card p {
+  flex: 1;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  opacity: 0.82;
+}
+.outro-stack {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+.outro-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(156, 106, 214, 0.18);
+}
+.outro-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.outro-links a:hover,
+.outro-links a:focus-visible {
+  color: var(--text-light);
+}
+.outro-links .showcase-nota {
+  font-size: 0.85rem;
+}
+
+/* ===== Contato: canais diretos, sem formulario ===== */
+.contato-card {
+  max-width: 56rem;
+  margin: 3rem auto 0;
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: rgba(28, 20, 40, 0.7);
+  border: 1px solid rgba(156, 106, 214, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.contato-acoes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.contato-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(156, 106, 214, 0.35);
+  background: rgba(156, 106, 214, 0.08);
+  color: var(--text-light);
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    background 0.25s ease;
+}
+.contato-btn:hover,
+.contato-btn:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  background: rgba(156, 106, 214, 0.16);
+  color: var(--text-light);
+}
+.contato-btn i {
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  color: var(--accent-color);
+}
+.contato-btn-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.contato-btn strong {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.05rem;
+}
+.contato-btn small {
+  font-size: 0.82rem;
+  opacity: 0.75;
+  overflow-wrap: anywhere;
+}
+/* texto escuro sobre o roxo claro: branco sobre o roxo dava 3,9:1, abaixo do AA */
+.contato-btn.primario {
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    var(--divider-light-color)
+  );
+  border-color: var(--accent-color);
+  color: var(--body-background);
+  box-shadow: 0 8px 24px rgba(156, 106, 214, 0.35);
+}
+.contato-btn.primario i,
+.contato-btn.primario small {
+  color: inherit;
+  opacity: 0.85;
+}
+.contato-btn.primario:hover,
+.contato-btn.primario:focus-visible {
+  color: var(--body-background);
+  box-shadow: 0 12px 30px rgba(156, 106, 214, 0.55);
+}
+.contato-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(156, 106, 214, 0.2);
+}
+.contato-local {
+  color: rgba(255, 255, 255, 0.7);
+}
+.contato-extras {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.contato-cv {
+  margin-right: 0.5rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+.contato-cv:hover,
+.contato-cv:focus-visible {
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .contato-acoes {
+    grid-template-columns: 1fr;
+  }
+  .contato-card {
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .masthead-stats {
+    grid-template-columns: 1fr;
+  }
+}

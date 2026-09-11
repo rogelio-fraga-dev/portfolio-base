@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- O Chrome copia este <title> para o metadado /Title do PDF, que alguns parsers leem.
+     Por isso: sem acento, sem prefixo "Curriculo -", so nome + cargo. -->
+<title>Rogelio Claro Fraga - Full Stack Developer (Java and Angular)</title>
+<meta name="description" content="Currículo de Rogélio Claro Fraga, Desenvolvedor Full Stack com Java, Spring Boot, Angular, TypeScript, PostgreSQL, Docker, AWS e Terraform." />
+<meta name="author" content="Rogélio Claro Fraga" />
+<link rel="canonical" href="https://rogeliofragadev.com.br/curriculo.html" />
+<style>
+/* ---------------------------------------------------------------
+   Currículo ATS-safe.
+   Regras que NAO podem ser quebradas neste arquivo:
+   - coluna unica: nada de flex/grid/float/column-count para conteudo
+   - nenhuma fonte de icone (Font Awesome extrai como lixo no parser)
+   - nenhuma <table> e nenhum text box
+   - contato no corpo do documento, nunca em header/footer de pagina
+   - fonte de sistema, corpo entre 10pt e 12pt
+   --------------------------------------------------------------- */
+:root{
+  --ink:#1f2430;
+  --ink-soft:#3d4453;
+  --ink-mute:#5b6274;
+  --accent:#5d3f6a;
+  --accent-bright:#7b4ea2;
+  --rule:#d7d3de;
+  --band:#2f2440;
+  --band-text:#ffffff;
+  --band-soft:#d9cfe8;
+  --chip-bg:#f2edf7;
+  --chip-border:#d8cae6;
+}
+*{box-sizing:border-box;margin:0;padding:0;
+  -webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:#e9e7ec;
+  color:var(--ink);
+  padding:24px 16px;
+  font-size:10pt;
+  line-height:1.28;
+  text-align:left;              /* nunca justify: os vaos viram espacos extras na extracao */
+  hyphens:none;
+  /* Ligaduras desligadas: "fi"/"fl" viram um glifo so e podem extrair como lixo
+     em palavras como "configuracao" e "perfil". */
+  font-variant-ligatures:none;
+  font-feature-settings:"liga" 0,"clig" 0,"dlig" 0;
+}
+
+.page{
+  width:186mm;          /* A4 (210mm) menos as margens de impressao (2 x 12mm) */
+  margin:0 auto;
+  background:#fff;
+  box-shadow:0 6px 24px rgba(0,0,0,.14);
+  padding:12mm;
+}
+
+/* ---------- cabecalho ---------- */
+.band{
+  background:var(--band);
+  color:var(--band-text);
+  padding:5mm 7mm 4.5mm 7mm;
+  border-bottom:3px solid var(--accent-bright);
+  margin-bottom:5mm;
+}
+/* letter-spacing acima de ~0.3px faz o pdftotext ler os vaos entre glifos como
+   quebra de palavra e extrair "R o g e l i o". Manter minimo. */
+.band h1{
+  font-size:21pt;
+  font-weight:bold;
+  letter-spacing:.2px;
+  line-height:1.1;
+  margin-bottom:2mm;
+}
+.band .role{
+  font-size:11pt;
+  font-weight:bold;
+  color:#c9b6e0;
+  margin-bottom:3.5mm;
+}
+/* Contato: texto puro, com rotulo escrito. Sem icone, sem tabela.       */
+/* Cada linha e um <p> proprio para o parser nao grudar tudo numa string. */
+.band .contact{
+  font-size:9.5pt;
+  line-height:1.55;
+  color:var(--band-soft);
+}
+/* Precisa vir com especificidade maior que a regra generica `p{color:...}`
+   la embaixo, senao os VALORES do contato herdam a cor escura do corpo e
+   ficam escuro-sobre-escuro dentro da faixa. */
+.band .contact p{color:var(--band-soft);font-size:9.5pt;}
+.band .contact a{color:var(--band-soft);text-decoration:none;}
+.band .contact strong{color:#fff;font-weight:bold;}
+
+/* ---------- corpo ---------- */
+section{margin-bottom:3.8mm;}
+
+/* Sem text-transform:uppercase. O Chrome grava o texto JA transformado no PDF,
+   entao "Experiência Profissional" sairia como "EXPERIÊNCIA PROFISSIONAL" e
+   deixaria de bater literalmente com o cabecalho padrao que o ATS procura.
+   A hierarquia vem de tamanho, peso, cor e regua. */
+h2{
+  font-size:12.5pt;
+  font-weight:bold;
+  color:var(--accent);
+  letter-spacing:.2px;
+  padding-bottom:1.2mm;
+  margin-bottom:3mm;
+  border-bottom:2px solid var(--accent-bright);
+}
+
+p{font-size:10pt;color:var(--ink-soft);}
+
+/* ---------- habilidades ---------- */
+/* Categoria em texto ("Backend:") para o ATS conseguir agrupar. */
+.skill-row{margin-bottom:2mm;}
+.skill-label{
+  font-size:10pt;
+  font-weight:bold;
+  color:var(--ink);
+}
+.chip{
+  display:inline-block;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-border);
+  color:var(--accent);
+  font-size:8.5pt;
+  font-weight:bold;
+  padding:.6mm 1.8mm;
+  border-radius:3px;
+  margin:.8mm .8mm 0 0;
+  white-space:nowrap;
+}
+
+/* ---------- entradas ---------- */
+.entry{
+  margin-bottom:2.8mm;
+  page-break-inside:avoid;
+  break-inside:avoid;
+}
+.entry-title{
+  font-size:10.5pt;
+  font-weight:bold;
+  color:var(--ink);
+}
+.entry-meta{
+  font-size:9.5pt;
+  color:var(--ink-mute);
+  margin-bottom:1mm;
+}
+.entry-meta .dates{color:var(--accent-bright);font-weight:bold;}
+
+ul{list-style:none;margin-top:.8mm;}
+li{
+  font-size:10pt;
+  color:var(--ink-soft);
+  position:relative;
+  padding-left:4mm;
+  margin-bottom:.5mm;
+}
+li::before{
+  content:"\2022";
+  position:absolute;
+  left:0;
+  color:var(--accent-bright);
+  font-weight:bold;
+}
+
+.stack{
+  font-size:9.5pt;
+  color:var(--ink-mute);
+  margin-top:.8mm;
+}
+.stack strong{color:var(--ink);font-weight:bold;}
+
+/* ---------- impressao ---------- */
+/* A margem vive no @page, nao num padding do container: assim TODAS as     */
+/* paginas ganham margem, e nao so a primeira.                              */
+@page{size:A4;margin:12mm 12mm;}
+@media print{
+  body{background:#fff;padding:0;}
+  .page{width:auto;box-shadow:none;margin:0;padding:0;}
+  h2{page-break-after:avoid;break-after:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="band">
+    <h1>Rogélio Claro Fraga</h1>
+    <p class="role">Full Stack Developer | Java, Spring Boot and Angular</p>
+    <div class="contact">
+      <p><strong>WhatsApp:</strong> (34) 98444-2479 &nbsp;|&nbsp; <strong>Phone:</strong> (34) 98414-1504 &nbsp;|&nbsp; <strong>E-mail:</strong> <a href="mailto:rogelio.claro@gmail.com">rogelio.claro@gmail.com</a></p>
+      <p><strong>Location:</strong> Araguari, Brazil (UTC-3) &nbsp;|&nbsp; Available for remote, hybrid or on-site work</p>
+      <p><strong>LinkedIn:</strong> linkedin.com/in/rogelio-fraga-dev &nbsp;|&nbsp; <strong>GitHub:</strong> github.com/rogelio-fraga-dev &nbsp;|&nbsp; <strong>Portfolio:</strong> rogeliofragadev.com.br</p>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p>Full stack developer with a degree in Systems Analysis and Development, working on
+      corporate web systems and REST APIs. I use Java 21 and Spring Boot on the backend and
+      Angular, TypeScript and React on the frontend, applying object-oriented programming, Clean
+      Code, SOLID and design patterns. Experience with JPA/Hibernate, Spring Security, JWT
+      authentication, RBAC, multi-tenancy, data modelling in PostgreSQL, automated testing and
+      integration with external APIs. I also own the infrastructure: Docker, AWS provisioned with
+      Terraform (infrastructure as code) and CI/CD on GitHub Actions. I am the sole developer of a
+      B2B SaaS in a research environment linked to UFU (a Brazilian federal university) and a
+      teacher of Web Programming Techniques at a technical school, where I keep the platform my
+      classes use running in production. Experience with agile methods (Scrum).</p>
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+
+      <div class="skill-row">
+        <span class="skill-label">Languages:</span>
+        <span class="chip">Java 21</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Python</span>
+        <span class="chip">SQL</span>
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Backend:</span>
+        <span class="chip">Spring Boot 3</span>
+        <span class="chip">Spring Security</span>
+        <span class="chip">Spring Data JPA</span>
+        <span class="chip">Spring Cloud</span>
+        <span class="chip">JPA/Hibernate</span>
+        <span class="chip">API REST</span>
+        <span class="chip">Microservices</span>
+        <span class="chip">NestJS</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Thymeleaf</span>
+        <span class="chip">JWT</span>
+        <span class="chip">RBAC</span>
+        <span class="chip">Swagger/OpenAPI</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Frontend:</span>
+        <span class="chip">Angular</span>
+        <span class="chip">RxJS</span>
+        <span class="chip">PrimeNG</span>
+        <span class="chip">React</span>
+        <span class="chip">Next.js</span>
+        <span class="chip">Electron</span>
+        <span class="chip">Tailwind CSS</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Databases:</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">Redis</span>
+        <span class="chip">Flyway</span>
+        <span class="chip">Data Modelling</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Cloud and DevOps:</span>
+        <span class="chip">AWS</span>
+        <span class="chip">EC2</span>
+        <span class="chip">RDS</span>
+        <span class="chip">S3</span>
+        <span class="chip">CloudFront</span>
+        <span class="chip">IAM</span>
+        <span class="chip">CloudWatch</span>
+        <span class="chip">Terraform</span>
+        <span class="chip">Infrastructure as Code</span>
+        <span class="chip">Docker</span>
+        <span class="chip">CI/CD</span>
+        <span class="chip">GitHub Actions</span>
+        <span class="chip">Nginx</span>
+        <span class="chip">Linux</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Testing and Quality:</span>
+        <span class="chip">JUnit</span>
+        <span class="chip">Mockito</span>
+        <span class="chip">Testcontainers</span>
+        <span class="chip">Unit Testing</span>
+        <span class="chip">Integration Testing</span>
+        <span class="chip">Prometheus</span>
+        <span class="chip">Grafana</span>
+        <span class="chip">Observability</span>
+      </div>
+
+      <div class="skill-row">
+        <span class="skill-label">Practices and Architecture:</span>
+        <span class="chip">Clean Code</span>
+        <span class="chip">SOLID</span>
+        <span class="chip">Design Patterns</span>
+        <span class="chip">DDD</span>
+        <span class="chip">Hexagonal Architecture</span>
+        <span class="chip">Multi-tenancy</span>
+        <span class="chip">Scrum</span>
+        <span class="chip">Agile Methods</span>
+        <span class="chip">Git</span>
+        <span class="chip">GitHub</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="entry">
+        <p class="entry-title">Teacher of Web Programming Techniques</p>
+        <p class="entry-meta">Educare Araguari — Trilhas do Futuro program · Araguari, Brazil · On-site &nbsp;|&nbsp; <span class="dates">Aug/2026 – Present</span></p>
+        <ul>
+          <li>Responsible for the 80-hour course in the technical IT program, across two classes with 73 students.</li>
+          <li>Author of the syllabus, the handbook and the material for every lesson, teaching HTML, CSS and JavaScript.</li>
+          <li>Development and operation of the teaching platform used in class, in Spring Boot 3.4, Java 21, Thymeleaf and PostgreSQL, deployed on AWS EC2 behind Nginx.</li>
+          <li>Assessment through quizzes, code submissions and projects, with individual progress tracking.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">Full Stack Software Developer — Technological Innovation (FAPEMIG grant)</p>
+        <p class="entry-meta">UFU — Federal University of Uberlândia · InovaLayer project · Remote &nbsp;|&nbsp; <span class="dates">Mar/2026 – Present</span></p>
+        <ul>
+          <li>Sole developer and technical lead of a B2B SaaS for quoting wire arc additive manufacturing (WAAM), from scratch to production.</li>
+          <li>Cost engine validated against UFU's official spreadsheet: 24 of 24 line items, maximum error of 0.0024%, with every calculation in BigDecimal.</li>
+          <li>REST API in Java 21 and Spring Boot 3.3, with JWT authentication in an httpOnly cookie, Google OAuth2, RBAC, rate limiting and standardised error handling.</li>
+          <li>Angular frontend with SSR, PT/EN internationalisation, lazy loading, RxJS and PrimeNG; Electron desktop app from the same codebase.</li>
+          <li>Data modelling in PostgreSQL 16 on Amazon RDS with versioned Flyway migrations; modular monolith architecture with design patterns (Strategy, Repository and event-driven).</li>
+          <li>Entire AWS infrastructure provisioned in Terraform (VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM and CloudWatch), 65 resources with alarms, backups and a cost ceiling; CI/CD on GitHub Actions, with OIDC for the portal and desktop deploys.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">Full Stack Developer (Freelance)</p>
+        <p class="entry-meta">Own and academic projects · Remote &nbsp;|&nbsp; <span class="dates">Jun/2024 – Mar/2026</span></p>
+        <ul>
+          <li>Development of REST APIs in Java with Spring Boot and in TypeScript with NestJS, including JWT, RBAC and domain modelling.</li>
+          <li>Complete applications in Angular and React consuming my own APIs; PostgreSQL and MySQL database modelling.</li>
+          <li>Microservice architecture with Spring Cloud, API Gateway and service discovery (Eureka).</li>
+          <li>Integration with external services (WhatsApp API and OpenAI) and Docker Compose environments with observability through Prometheus and Grafana.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">Scrum Master and Technical Reference</p>
+        <p class="entry-meta">Abrigo Cristo Rei — University extension project · Hybrid &nbsp;|&nbsp; <span class="dates">Aug/2025 – Dec/2025</span></p>
+        <ul>
+          <li>Led a multidisciplinary team of around 25 people in a digital transformation project.</li>
+          <li>Backlog management, facilitation of Scrum ceremonies and translation of board requirements into feasible technical solutions.</li>
+          <li>Delivered the donations module, including payment through PIX (Brazilian instant payments).</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">Census Supervisor</p>
+        <p class="entry-meta">IBGE — Brazilian Institute of Geography and Statistics · On-site &nbsp;|&nbsp; <span class="dates">Jun/2022 – Jun/2023</span></p>
+        <ul>
+          <li>Supervised census-taker teams and validated the integrity of the collected data.</li>
+          <li>Productivity analysis supported by GIS, with operational adjustments.</li>
+          <li>Conflict resolution and technical support for the team.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+
+      <div class="entry">
+        <p class="entry-title">Classroom System — Teaching Platform in Production</p>
+        <ul>
+          <li>Platform I built for my own classes, used today by 73 students: code editor with live preview, quizzes with a real-time leaderboard and a model panel that follows each student's progress line by line.</li>
+          <li>379 automated tests and 81 Flyway migrations; two-minute deploys through GitHub Actions with OIDC and SSM, with a database backup before every migration.</li>
+        </ul>
+        <p class="stack"><strong>Stack:</strong> Spring Boot 3.4, Java 21, Thymeleaf, PostgreSQL, Flyway, Docker, AWS EC2, Nginx, GitHub Actions</p>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">Razor — Multi-tenant SaaS for Barbershops</p>
+        <ul>
+          <li>B2B2C SaaS where a conversational AI answers, books and charges over WhatsApp, with a web panel for the owner: multi-professional schedule, finance with income statement, commissions, inventory and PIX payments.</li>
+          <li>Shared-schema multi-tenancy with fail-closed tenant resolution: a message from an unknown instance is discarded and never falls back to a default tenant.</li>
+          <li>486 tests, with integration against real PostgreSQL and Redis through Testcontainers; a security audit closed three critical flaws before the pilot.</li>
+        </ul>
+        <p class="stack"><strong>Stack:</strong> Spring Boot 3, Java, React 18, Vite, PostgreSQL, Flyway, OpenAI GPT-4o, Whisper, LangChain4j, Evolution API</p>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">DevFlow Solutions — Financial Management for Projects (B2B multi-tenant)</p>
+        <ul>
+          <li>Platform for the financial viability of IT contracts: executive dashboards, timesheet management, cloud cost control and a real-time income statement.</li>
+          <li>Budget Guard: a project moves itself to warning at 80% and to over budget at 100%. Per-company isolation with JWT and RBAC.</li>
+        </ul>
+        <p class="stack"><strong>Stack:</strong> Angular 21, Spring Boot 4, Java 21, PostgreSQL 16, Docker, Swagger</p>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">ObraCerta — Construction Marketplace</p>
+        <ul>
+          <li>Two-sided marketplace connecting construction professionals to clients, with verified reputation, double-blind reviews and geospatial search.</li>
+          <li>Monorepo with hexagonal architecture and DDD, end-to-end typed contracts and decisions recorded in ADRs and C4 diagrams.</li>
+        </ul>
+        <p class="stack"><strong>Stack:</strong> Turborepo, Next.js 15, NestJS, PostgreSQL with PostGIS, Redis, Zod, TypeScript</p>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">Clinic Management System — Full Stack</p>
+        <p class="stack">Modules for patients, staff, appointments and medical records. NestJS backend with JWT, RBAC and TypeORM, plus a Java version with microservices, Spring Cloud, API Gateway and Eureka; Angular frontend with Signals and PrimeNG. <strong>Stack:</strong> Angular, NestJS, Java, Spring Boot, TypeORM, PostgreSQL, Docker, Prometheus, Grafana</p>
+      </div>
+
+      <div class="entry">
+        <p class="entry-title">WireArc3D — Toolpaths for Additive Manufacturing (contributor)</p>
+        <p class="stack">Desktop application that reads STL models, slices the part into layers, solves a travelling salesman problem to order the path and exports the G-code, with GPU-accelerated 3D visualisation. <strong>Stack:</strong> Python 3.12, PyQt5, PyVista, CUDA/CuPy, FastAPI</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <p class="entry-title">Associate Degree in Systems Analysis and Development</p>
+        <p class="entry-meta">IMEPAC University Center · Araguari, Brazil &nbsp;|&nbsp; <span class="dates">Feb/2024 – Aug/2026</span></p>
+        <ul>
+          <li>Completed, with graduation on 26 August 2026.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <div class="entry">
+        <ul>
+          <li><strong>Portuguese:</strong> native.</li>
+          <li><strong>English:</strong> B1 — intermediate. I read technical documentation and write code and commits in English.</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 390" role="img" width="1000" height="390"
+     aria-label="Arquitetura do Razor: o cliente fala pelo WhatsApp, a Evolution API envia o webhook para a API em Spring Boot, que exige token e resolve a barbearia pela instância; instância desconhecida é descartada. Os serviços de domínio são isolados por barbershop_id e usam PostgreSQL, Redis para o estado da conversa e a OpenAI para a conversa e o áudio. O dono usa o painel web em React sobre a mesma API.">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9c6ad6"/>
+    </marker>
+    <style>
+      .cx { fill: rgba(156,106,214,.12); stroke: rgba(156,106,214,.55); stroke-width: 1.5; rx: 12; }
+      .cx-ext { fill: rgba(255,255,255,.04); stroke: rgba(255,255,255,.22); }
+      .cx-guarda { fill: rgba(16,185,129,.1); stroke: rgba(16,185,129,.5); }
+      .t { font-family: "Segoe UI", Roboto, Arial, sans-serif; fill: #ece9f1; font-size: 16px; font-weight: 700; }
+      .s { font-family: "Segoe UI", Roboto, Arial, sans-serif; fill: rgba(236,233,241,.78); font-size: 13px; }
+      .rot { font-family: "Segoe UI", Roboto, Arial, sans-serif; fill: #b98cf0; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+      .lig { stroke: #9c6ad6; stroke-width: 2; fill: none; marker-end: url(#seta); }
+      .lig-leve { stroke: rgba(156,106,214,.6); stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#seta); }
+    </style>
+  </defs>
+
+  <text class="rot" x="24" y="26">RAZOR · ARQUITETURA MULTI-TENANT</text>
+
+  <!-- entradas -->
+  <rect class="cx cx-ext" x="24" y="60" width="196" height="80"/>
+  <text class="t" x="44" y="90">Cliente</text>
+  <text class="s" x="44" y="112">WhatsApp (texto e áudio)</text>
+
+  <rect class="cx cx-ext" x="24" y="176" width="196" height="80"/>
+  <text class="t" x="44" y="206">Dono e equipe</text>
+  <text class="s" x="44" y="228">painel web React</text>
+
+  <rect class="cx cx-ext" x="24" y="292" width="196" height="74"/>
+  <text class="t" x="44" y="322">Evolution API</text>
+  <text class="s" x="44" y="344">gateway do WhatsApp</text>
+
+  <!-- guarda -->
+  <rect class="cx cx-guarda" x="252" y="60" width="210" height="110"/>
+  <text class="t" x="272" y="90">Webhook fail-closed</text>
+  <text class="s" x="272" y="112">token obrigatório</text>
+  <text class="s" x="272" y="130">instância desconhecida</text>
+  <text class="s" x="272" y="148">é descartada</text>
+
+  <!-- api -->
+  <rect class="cx" x="252" y="200" width="210" height="110"/>
+  <text class="t" x="272" y="230">Razor API</text>
+  <text class="s" x="272" y="252">Spring Boot 3 · JWT</text>
+  <text class="s" x="272" y="270">TenantContext resolve</text>
+  <text class="s" x="272" y="288">a barbearia</text>
+
+  <!-- dominio -->
+  <rect class="cx" x="500" y="120" width="230" height="140"/>
+  <text class="t" x="520" y="150">Serviços de domínio</text>
+  <text class="s" x="520" y="172">isolados por</text>
+  <text class="s" x="520" y="190">barbershop_id</text>
+  <text class="s" x="520" y="214">agenda · caixa · comissões</text>
+  <text class="s" x="520" y="232">estoque · assinatura</text>
+
+  <!-- laterais -->
+  <rect class="cx" x="768" y="60" width="208" height="80"/>
+  <text class="t" x="788" y="90">PostgreSQL</text>
+  <text class="s" x="788" y="112">34 migrações Flyway</text>
+
+  <rect class="cx" x="768" y="160" width="208" height="80"/>
+  <text class="t" x="788" y="190">Redis</text>
+  <text class="s" x="788" y="212">estado da conversa (TTL)</text>
+
+  <rect class="cx cx-ext" x="768" y="260" width="208" height="86"/>
+  <text class="t" x="788" y="290">OpenAI</text>
+  <text class="s" x="788" y="312">GPT-4o e Whisper</text>
+  <text class="s" x="788" y="330">conversa e áudio</text>
+
+  <path class="lig" d="M 224 100 L 246 100"/>
+  <path class="lig" d="M 224 216 L 246 250"/>
+  <path class="lig" d="M 224 322 L 356 322 L 356 316"/>
+  <path class="lig" d="M 357 174 L 357 196"/>
+  <path class="lig" d="M 466 235 L 494 200"/>
+  <path class="lig" d="M 734 170 L 762 110"/>
+  <path class="lig" d="M 734 190 L 762 196"/>
+  <path class="lig-leve" d="M 734 215 L 762 290"/>
+</svg>

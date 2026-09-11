@@ -11,6 +11,8 @@ Sitemap: https://rogeliofragadev.com.br/sitemap.xml
 # alguem busca o nome, ele agora e rastreavel.
 Allow: /curriculo.pdf
 Allow: /curriculo.html
+Allow: /en/
+Allow: /projetos/
 
 # Recursos que precisam ser rastreaveis
 # (imagens/ fica liberado: e de la que sai a og:image dos compartilhamentos)

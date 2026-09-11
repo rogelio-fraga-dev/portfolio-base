@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" role="img" width="1000" height="340"
+     aria-label="Arquitetura do DevFlow: o painel em Angular fala com a API em Spring Boot, que autentica por JWT e separa os dados de cada empresa. A API calcula o DRE e o Budget Guard, que muda o status do projeto em 80 e em 100 por cento do orçamento, grava em PostgreSQL e gera relatórios em PDF. Tudo sobe junto por Docker Compose.">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9c6ad6"/>
+    </marker>
+    <style>
+      .cx { fill: rgba(156,106,214,.12); stroke: rgba(156,106,214,.55); stroke-width: 1.5; rx: 12; }
+      .cx-ext { fill: rgba(255,255,255,.04); stroke: rgba(255,255,255,.22); }
+      .cx-alerta { fill: rgba(234,179,8,.1); stroke: rgba(234,179,8,.5); }
+      .zona { fill: rgba(156,106,214,.05); stroke: rgba(156,106,214,.35); stroke-dasharray: 6 5; stroke-width: 1.5; rx: 14; }
+      .t { font-family: "Segoe UI", Roboto, Arial, sans-serif; fill: #ece9f1; font-size: 16px; font-weight: 700; }
+      .s { font-family: "Segoe UI", Roboto, Arial, sans-serif; fill: rgba(236,233,241,.78); font-size: 13px; }
+      .rot { font-family: "Segoe UI", Roboto, Arial, sans-serif; fill: #b98cf0; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+      .lig { stroke: #9c6ad6; stroke-width: 2; fill: none; marker-end: url(#seta); }
+      .lig-leve { stroke: rgba(156,106,214,.6); stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#seta); }
+    </style>
+  </defs>
+
+  <text class="rot" x="24" y="26">DEVFLOW · ARQUITETURA</text>
+
+  <rect class="zona" x="252" y="48" width="724" height="200"/>
+  <text class="rot" x="268" y="72">DOCKER COMPOSE</text>
+
+  <rect class="cx cx-ext" x="24" y="104" width="200" height="90"/>
+  <text class="t" x="44" y="136">Gestor e time</text>
+  <text class="s" x="44" y="158">painel Angular 21</text>
+  <text class="s" x="44" y="176">timesheet e custos</text>
+
+  <rect class="cx" x="276" y="94" width="212" height="110"/>
+  <text class="t" x="296" y="126">Spring Boot 4 · API</text>
+  <text class="s" x="296" y="148">JWT e RBAC</text>
+  <text class="s" x="296" y="166">isolamento por empresa</text>
+  <text class="s" x="296" y="184">(multi-tenant)</text>
+
+  <rect class="cx cx-alerta" x="524" y="94" width="212" height="110"/>
+  <text class="t" x="544" y="126">Budget Guard</text>
+  <text class="s" x="544" y="148">80% → alerta</text>
+  <text class="s" x="544" y="166">100% → estourado</text>
+  <text class="s" x="544" y="184">DRE em tempo real</text>
+
+  <rect class="cx" x="772" y="94" width="204" height="110"/>
+  <text class="t" x="792" y="126">PostgreSQL 16</text>
+  <text class="s" x="792" y="148">projetos, horas,</text>
+  <text class="s" x="792" y="166">custos de nuvem</text>
+  <text class="s" x="792" y="184">e de APIs</text>
+
+  <rect class="cx cx-ext" x="524" y="266" width="212" height="60"/>
+  <text class="t" x="544" y="296">Relatórios em PDF</text>
+  <text class="s" x="544" y="316">DRE por projeto</text>
+
+  <path class="lig" d="M 228 149 L 270 149"/>
+  <path class="lig" d="M 492 149 L 518 149"/>
+  <path class="lig" d="M 740 149 L 766 149"/>
+  <path class="lig-leve" d="M 630 208 L 630 262"/>
+</svg>

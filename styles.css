@@ -25,6 +25,12 @@ html {
   scroll-behavior: smooth;
   background-color: var(--body-background);
 }
+/* a navbar fica fixa no topo: sem isto o titulo da seção para embaixo dela.
+   Era o que o JS de rolagem suave (jQuery) fazia com um offset de 80px. */
+section[id],
+[id="page-top"] {
+  scroll-margin-top: 90px;
+}
 body {
   font-family: "Lato", sans-serif;
   color: var(--text-light);
@@ -45,13 +51,10 @@ body {
     scroll-behavior: auto !important;
   }
 
-  /* Exceções: O usuário solicitou explicitamente que os ícones do background e brilho funcionassem */
+  /* Exceção: os ícones do fundo continuam, só que mais lentos */
   .animated-background li {
     animation-duration: 40s !important; /* Mais lento, mas não invisível */
     animation-iteration-count: infinite !important;
-  }
-  .mouse-glow {
-    transition-duration: 0.5s !important;
   }
 }
 
@@ -431,7 +434,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -440,17 +443,19 @@ h4 {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .btn-download-cv {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
   padding: 1rem 2.5rem;
+  /* o roxo escuro (--secondary-color) com texto escuro dava contraste 2,9:1,
+     abaixo do minimo AA de 4,5. Este intervalo fica entre 4,6 e 5,5. */
   background: linear-gradient(
     135deg,
     var(--accent-color),
-    var(--secondary-color)
+    var(--divider-light-color)
   );
   color: var(--body-background);
   border: 2px solid var(--accent-color);
@@ -506,11 +511,11 @@ h4 {
   padding: 1rem 2.5rem;
   background: linear-gradient(
     135deg,
-    var(--secondary-color),
+    var(--divider-light-color),
     var(--accent-color)
   );
   color: var(--body-background);
-  border: 2px solid var(--secondary-color);
+  border: 2px solid var(--accent-color);
   border-radius: 50px;
   font-size: 1.1rem;
   font-weight: 700;
@@ -661,7 +666,7 @@ h4 {
 /* Redes Sociais na Masthead */
 .social-icons-masthead {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
@@ -1478,7 +1483,7 @@ h4 {
   background: linear-gradient(
     135deg,
     var(--accent-color),
-    var(--secondary-color)
+    var(--divider-light-color)
   );
   color: var(--body-background);
   border: 2px solid var(--accent-color);
@@ -2319,7 +2324,10 @@ textarea.form-control {
   .masthead-tech {
     justify-content: center;
   }
-  .social-icons-masthead {
+  /* no celular o texto do topo e centralizado; os botoes acompanham */
+  .social-icons-masthead,
+  .masthead-social-container,
+  .masthead-actions {
     justify-content: center;
   }
   .masthead-image {

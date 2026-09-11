@@ -58,7 +58,42 @@ Este documento contém instruções para configurar os serviços que foram imple
   - Skip links
   - prefer-reduced-motion
 
-### 9. ✅ Preload de Fontes
+### 9. ✅ Versão em inglês (11/09/2026)
+
+- **Onde**: `en/index.html` e `en/resume.html` (+ `en/resume.pdf`).
+- **Como é gerada**: a partir das páginas em português, com os textos
+  traduzidos e os caminhos ajustados. O seletor **PT / EN** fica no menu, e as
+  duas páginas declaram `hreflang` uma para a outra.
+- **Ao editar o português, reveja o inglês**: as duas são arquivos separados e
+  nada sincroniza sozinho.
+- O CSS é compartilhado (`styles.css` + `styles-portfolio.css`), então mudança
+  de estilo vale para as duas.
+
+### 10. ✅ Cartão de compartilhamento (og:image)
+
+- **Arquivo**: `imagens/og-card.png`, em **1200×630** (o formato que LinkedIn e
+  WhatsApp esperam). Antes o `og:image` era o avatar, em 1024×1036, que os dois
+  cortavam.
+- **Para refazer**: é uma captura de tela de uma página HTML simples com nome,
+  cargo e os três números, tirada em 1200×630.
+
+### 11. ✅ Bibliotecas com versão fixa
+
+- Font Awesome **6.7.2**, devicon **v2.16.0** e lightbox2 **2.11.4** (o pacote
+  `lightbox-plus-jquery`, que já traz o jQuery).
+- Saíram: o jQuery avulso, o ScrollReveal vindo do unpkg **sem versão** e os
+  domínios correspondentes na CSP.
+- A rolagem suave passou a ser do CSS (`scroll-behavior` + `scroll-margin-top`).
+
+### 12. ✅ Animação de entrada que não esconde conteúdo
+
+- O conteúdo nasce **visível** no CSS. O JavaScript só liga a animação quando há
+  suporte e o visitante não pediu menos movimento, e há uma trava de 3 segundos
+  que mostra tudo mesmo sem rolagem.
+- **Por quê**: o ScrollReveal deixava a seção em branco para robôs de busca,
+  prévias de link e capturas de tela, que não rolam a página.
+
+### 13. ✅ Preload de Fontes
 
 - **Status**: Implementado e **corrigido** em 01/09/2026.
 - **Correção**: havia um `<link rel="preload">` do Google Fonts **sem** o
