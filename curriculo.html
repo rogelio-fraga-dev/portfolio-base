@@ -319,7 +319,7 @@ li::before{
         <p class="entry-title">Professor de Técnicas de Programação para Internet</p>
         <p class="entry-meta">Educare Araguari — Programa Trilhas do Futuro · Araguari, MG · Presencial &nbsp;|&nbsp; <span class="dates">Ago/2026 – Atual</span></p>
         <ul>
-          <li>Responsável pela disciplina de 80h do curso técnico em Informática, em duas turmas com cerca de 75 alunos.</li>
+          <li>Responsável pela disciplina de 80h do curso técnico em Informática, em duas turmas com 73 alunos.</li>
           <li>Autoria do plano de ensino, da apostila e do material de todas as aulas, com ensino de HTML, CSS e JavaScript.</li>
           <li>Desenvolvimento e operação da plataforma de ensino usada em sala, em Spring Boot 3.4, Java 21, Thymeleaf e PostgreSQL, publicada em AWS EC2 com Nginx.</li>
           <li>Avaliação por quizzes, entregas de código e projetos, com acompanhamento individual do progresso.</li>
@@ -331,10 +331,11 @@ li::before{
         <p class="entry-meta">UFU — Universidade Federal de Uberlândia · Projeto InovaLayer · Araguari, MG · Remoto &nbsp;|&nbsp; <span class="dates">Mar/2026 – Atual</span></p>
         <ul>
           <li>Único desenvolvedor e responsável técnico de um SaaS B2B de orçamentação para manufatura aditiva metálica (WAAM), do zero ao deploy em produção.</li>
+          <li>Motor de custo validado contra a planilha oficial da UFU: 24 de 24 rubricas, erro máximo de 0,0024%, com todo o cálculo em BigDecimal.</li>
           <li>API REST em Java 21 e Spring Boot 3.3, com autenticação JWT em cookie httpOnly, Google OAuth2, RBAC, rate limiting e tratamento padronizado de erros.</li>
           <li>Frontend em Angular com SSR, internacionalização PT/EN, lazy loading, RxJS e PrimeNG; app desktop em Electron a partir da mesma base de código.</li>
           <li>Modelagem em PostgreSQL 16 no Amazon RDS com migrações versionadas em Flyway; arquitetura em monolito modular com Design Patterns (Strategy, Repository e Event-Driven).</li>
-          <li>Infraestrutura AWS inteira provisionada em Terraform (VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM e CloudWatch), com CI/CD em GitHub Actions via OIDC, sem chaves de longa duração.</li>
+          <li>Infraestrutura AWS inteira provisionada em Terraform (VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM e CloudWatch), 65 recursos com alarmes, backup e teto de custo; CI/CD em GitHub Actions, com OIDC no deploy do portal e do desktop.</li>
         </ul>
       </div>
 
@@ -376,8 +377,8 @@ li::before{
       <div class="entry">
         <p class="entry-title">Sistema de Aulas — Plataforma de Ensino em Produção</p>
         <ul>
-          <li>Plataforma que construí para as minhas próprias turmas, hoje usada por cerca de 75 alunos: editor de código com prévia ao vivo, quiz com ranking em tempo real e painel-modelo que acompanha o progresso do aluno linha a linha.</li>
-          <li>244 testes automatizados e deploy em dois minutos por GitHub Actions com OIDC e SSM, com backup do banco antes de cada migração.</li>
+          <li>Plataforma que construí para as minhas próprias turmas, hoje usada por 73 alunos: editor de código com prévia ao vivo, quiz com ranking em tempo real e painel-modelo que acompanha o progresso do aluno linha a linha.</li>
+          <li>379 testes automatizados e 81 migrações Flyway; deploy em dois minutos por GitHub Actions com OIDC e SSM, com backup do banco antes de cada migração.</li>
         </ul>
         <p class="stack"><strong>Stack:</strong> Spring Boot 3.4, Java 21, Thymeleaf, PostgreSQL, Flyway, Docker, AWS EC2, Nginx, GitHub Actions</p>
       </div>
@@ -387,7 +388,7 @@ li::before{
         <ul>
           <li>SaaS B2B2C onde uma IA conversacional atende, agenda e cobra pelo WhatsApp, com painel web para o lojista: agenda multiprofissional, financeiro com DRE, comissões, estoque e PIX.</li>
           <li>Multi-tenancy de schema compartilhado com resolução de tenant fail-closed: instância desconhecida tem a mensagem descartada e nunca cai em um tenant padrão.</li>
-          <li>235 testes, com a suíte de integração rodando em PostgreSQL real via Testcontainers.</li>
+          <li>486 testes, com integração em PostgreSQL e Redis reais via Testcontainers; auditoria de segurança fechou três falhas críticas antes do piloto.</li>
         </ul>
         <p class="stack"><strong>Stack:</strong> Spring Boot 3, Java, React 18, Vite, PostgreSQL, Flyway, OpenAI GPT-4o, Whisper, LangChain4j, Evolution API</p>
       </div>
@@ -396,7 +397,7 @@ li::before{
         <p class="entry-title">DevFlow Solutions — Gestão Financeira de Projetos (B2B Multi-tenant)</p>
         <ul>
           <li>Plataforma de viabilidade financeira de contratos de TI: dashboards executivos, gestão de timesheets, controle de custos de nuvem e DRE em tempo real.</li>
-          <li>Budget Guard: travas de orçamento aplicadas no nível do banco de dados, com alerta em 80% e bloqueio em 100% do teto. Isolamento por empresa com JWT e RBAC.</li>
+          <li>Budget Guard: o projeto passa sozinho para alerta em 80% e para estourado em 100% do orçamento. Isolamento por empresa com JWT e RBAC.</li>
         </ul>
         <p class="stack"><strong>Stack:</strong> Angular 21, Spring Boot 4, Java 21, PostgreSQL 16, Docker, Swagger</p>
       </div>

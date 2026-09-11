@@ -779,80 +779,6 @@ h4 {
   color: var(--accent-color);
   border-bottom-color: var(--accent-color);
 }
-.about-philosophy-section {
-  margin: 5rem 0;
-  text-align: center;
-  padding: 3rem 0;
-  position: relative;
-}
-.about-philosophy-section::before,
-.about-philosophy-section::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent-color),
-    transparent
-  );
-}
-.about-philosophy-section::before {
-  top: 0;
-}
-.about-philosophy-section::after {
-  bottom: 0;
-}
-.about-philosophy {
-  font-size: 3rem;
-  font-weight: 900;
-  line-height: 1.3;
-  color: var(--text-light);
-  margin: 0 0 2rem 0;
-  letter-spacing: -1px;
-}
-.philosophy-accent {
-  display: block;
-  font-size: 4rem;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color),
-    var(--divider-light-color),
-    var(--accent-color)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-  margin-top: 0.5rem;
-}
-@keyframes gradient-shift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-.philosophy-text {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--text-light);
-  opacity: 0.85;
-  margin: 0;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.philosophy-text strong {
-  color: var(--accent-color);
-  font-weight: 700;
-}
 .about-approach-section {
   margin: 4rem 0;
   padding: 3rem 0;
@@ -923,41 +849,6 @@ h4 {
   opacity: 0.85;
   margin: 0;
 }
-.about-motto {
-  margin-top: 4rem;
-  padding: 3rem;
-  text-align: center;
-  position: relative;
-}
-.about-motto::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent-color),
-    transparent
-  );
-}
-.motto-text {
-  font-size: 1.4rem;
-  line-height: 1.9;
-  color: var(--text-light);
-  opacity: 0.95;
-  max-width: 900px;
-  margin: 0 auto;
-  font-style: italic;
-}
-.motto-text strong {
-  color: var(--accent-color);
-  font-weight: 700;
-  font-style: normal;
-}
 .lead {
   color: var(--text-light);
   opacity: 0.9;
@@ -984,107 +875,6 @@ h4 {
   color: var(--accent-color);
   font-weight: 700;
 }
-.contact-wrapper-new {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 4rem;
-  margin-top: 3rem;
-  padding: 0 2rem;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  align-items: start;
-}
-.contact-info-new {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  padding: 2.5rem;
-  background: rgba(28, 20, 40, 0.75);
-  border-radius: 20px;
-  border: 1px solid rgba(156, 106, 214, 0.2);
-}
-.contact-info-title-new {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, var(--text-light), var(--accent-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.contact-info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.contact-info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background: rgba(156, 106, 214, 0.08);
-  border-radius: 12px;
-  border-left: 3px solid var(--accent-color);
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-.contact-info-item:hover {
-  background: rgba(156, 106, 214, 0.15);
-  transform: translateX(5px);
-}
-.contact-icon-wrapper {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(156, 106, 214, 0.2);
-  border-radius: 12px;
-  flex-shrink: 0;
-}
-.contact-icon-wrapper i {
-  font-size: 1.5rem;
-  color: var(--accent-color);
-}
-.contact-info-content {
-  flex: 1;
-}
-.contact-info-content h4 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-light);
-  margin: 0 0 0.5rem 0;
-}
-.contact-info-content p,
-.contact-info-content a {
-  color: var(--text-light);
-  opacity: 0.85;
-  text-decoration: none;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-.contact-info-content a:hover {
-  color: var(--accent-color);
-  opacity: 1;
-}
-.contact-socials-new {
-  margin-top: 1rem;
-}
-.socials-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-light);
-  margin-bottom: 1.5rem;
-}
-.social-icons-new {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
 .social-icon-new {
   width: 50px;
   height: 50px;
@@ -1107,170 +897,6 @@ h4 {
   color: var(--body-background);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(156, 106, 214, 0.4);
-}
-.contact-form-wrapper-new {
-  background: rgba(28, 20, 40, 0.8);
-  border-radius: 20px;
-  padding: 2.5rem;
-  border: 1px solid rgba(156, 106, 214, 0.3);
-}
-.contact-form-new {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-.form-group-new {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.form-group-new label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent-color);
-  margin-bottom: 0.5rem;
-}
-.form-input-new,
-.form-textarea-new {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: rgba(156, 106, 214, 0.1);
-  border: 2px solid rgba(156, 106, 214, 0.3);
-  border-radius: 12px;
-  color: var(--text-light);
-  font-size: 1rem;
-  font-family: inherit;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-}
-.form-input-new:focus,
-.form-textarea-new:focus {
-  outline: none;
-  border-color: var(--accent-color);
-  background: rgba(156, 106, 214, 0.15);
-  box-shadow: 0 0 0 3px rgba(156, 106, 214, 0.2);
-}
-.form-input-new::placeholder,
-.form-textarea-new::placeholder {
-  color: var(--text-light);
-  opacity: 0.5;
-}
-.form-textarea-new {
-  resize: vertical;
-  min-height: 120px;
-}
-.btn-submit-new {
-  padding: 1.2rem 2.5rem;
-  background: linear-gradient(
-    135deg,
-    var(--accent-color),
-    var(--secondary-color)
-  );
-  color: var(--body-background);
-  border: 2px solid var(--accent-color);
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
-  box-shadow: 0 8px 25px rgba(156, 106, 214, 0.4);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-.btn-submit-new:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(156, 106, 214, 0.5);
-  background: linear-gradient(
-    135deg,
-    var(--divider-light-color),
-    var(--accent-color)
-  );
-}
-.btn-submit-new i {
-  font-size: 1.1rem;
-}
-.success-message-new {
-  display: none;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: rgba(156, 106, 214, 0.1);
-  border: 2px solid var(--accent-color);
-  border-radius: 20px;
-}
-.success-message-new i {
-  font-size: 3rem;
-  color: var(--accent-color);
-  margin-bottom: 1rem;
-}
-.success-message-new h3 {
-  font-size: 1.8rem;
-  color: var(--accent-color);
-  margin: 1rem 0;
-}
-.success-message-new p {
-  color: var(--text-light);
-  opacity: 0.9;
-  margin: 0;
-}
-.error-message-new {
-  display: none;
-  text-align: center;
-  padding: 3rem 2rem;
-  background: rgba(220, 53, 69, 0.1);
-  border: 2px solid #dc3545;
-  border-radius: 20px;
-}
-.error-message-new i {
-  font-size: 3rem;
-  color: #dc3545;
-  margin-bottom: 1rem;
-}
-.error-message-new h3 {
-  font-size: 1.8rem;
-  color: #dc3545;
-  margin: 1rem 0;
-}
-.error-message-new p {
-  color: var(--text-light);
-  opacity: 0.9;
-  margin: 0;
-}
-.error-message {
-  display: none;
-  color: #dc3545;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-  font-weight: 500;
-}
-.form-input-new.error,
-.form-textarea-new.error {
-  border-color: #dc3545;
-  background: rgba(220, 53, 69, 0.1);
-}
-.form-input-new.error:focus,
-.form-textarea-new.error:focus {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
-}
-.required-asterisk {
-  color: #dc3545;
-  font-weight: 700;
-}
-.btn-submit-new:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none !important;
-}
-.btn-loading {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 /* --- SEÇÃO DE DESTAQUES/COMPETÊNCIAS --- */
@@ -2415,13 +2041,6 @@ textarea.form-control {
   display: flex;
   flex-direction: column;
 }
-.contact-info-title {
-  font-size: 1.8rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--card-border);
-}
 .info-item {
   display: flex;
   align-items: center;
@@ -2476,17 +2095,6 @@ textarea.form-control {
   color: var(--text-light);
   opacity: 0.9;
   margin-bottom: 1rem;
-}
-.contact-form-container {
-  position: relative;
-  display: flex;
-}
-.contact-form-card {
-  padding: 3.5rem;
-  border-radius: 20px;
-  width: 100%;
-  background: rgba(42, 31, 61, 0.75);
-  border: 1px solid rgba(79, 70, 229, 0.3);
 }
 .success-message {
   display: none;
@@ -2740,20 +2348,11 @@ textarea.form-control {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1.5rem;
   }
-  .about-philosophy {
-    font-size: 2.2rem;
-  }
-  .philosophy-accent {
-    font-size: 2.8rem;
-  }
   .section-subtitle {
     font-size: 1.6rem;
   }
   .approach-items {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .motto-text {
-    font-size: 1.2rem;
   }
   .about-intro {
     font-size: 1.2rem;
@@ -2784,13 +2383,6 @@ textarea.form-control {
   }
   .video-wrapper {
     max-width: 100%;
-  }
-  .contact-wrapper-new {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .contact-form-wrapper-new {
-    padding: 2rem;
   }
   .project-description {
     font-size: 1rem;
@@ -2909,12 +2501,6 @@ textarea.form-control {
   .skill-item i {
     font-size: 2.5rem;
   }
-  .about-philosophy {
-    font-size: 1.8rem;
-  }
-  .philosophy-accent {
-    font-size: 2.2rem;
-  }
   .section-subtitle {
     font-size: 1.4rem;
   }
@@ -2923,10 +2509,6 @@ textarea.form-control {
   }
   .approach-label {
     font-size: 1.1rem;
-  }
-  .motto-text {
-    font-size: 1.1rem;
-    padding: 0 1rem;
   }
   .highlight-card {
     padding: 2rem 1.5rem;
@@ -2969,9 +2551,6 @@ textarea.form-control {
   }
   .project-description {
     font-size: 0.95rem;
-  }
-  .contact-form-card {
-    padding: 1.5rem;
   }
   .contact-info {
     padding: 1.5rem;
@@ -3686,28 +3265,6 @@ textarea.form-control {
   .page-section-heading {
     font-size: 1.8rem !important;
     margin-bottom: 1.5rem !important;
-  }
-  .about-philosophy {
-    font-size: 1.6rem !important;
-  }
-  .philosophy-accent {
-    font-size: 1.8rem !important;
-  }
-  .contact-wrapper-new {
-    gap: 2rem !important;
-    padding: 0 !important;
-  }
-  .contact-info-new,
-  .contact-form-wrapper-new {
-    padding: 1.5rem 1rem !important;
-  }
-  .contact-info-title-new {
-    font-size: 1.4rem !important;
-  }
-  .form-input-new,
-  .form-textarea-new {
-    padding: 0.8rem 1rem !important;
-    font-size: 0.95rem !important;
   }
 
   /* 7. Navbar (Menu Superior) para não encavalar as palavras */

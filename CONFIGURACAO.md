@@ -18,25 +18,17 @@ Este documento contém instruções para configurar os serviços que foram imple
   existem dois: `ProfilePage` (com um `Person` em `mainEntity`) e `WebSite`.
 - **Localização**: `<head>` do `index.html`
 
-### 3. ⚠️ Formulário com EmailJS — NÃO ESTÁ ENVIANDO
+### 3. 🗑️ Formulário de contato — REMOVIDO em 11/09/2026
 
-- **Status**: implementado, porém **inoperante**. A chamada `emailjs.init()`
-  usava o texto literal `"SUA_PUBLIC_KEY"`, então nenhuma mensagem enviada pelo
-  site chegou até hoje — e falhava em silêncio, sem erro visível.
-- **Como corrigir**: pegue a chave em
-  <https://dashboard.emailjs.com/admin/account> ("Public Key") e substitua o
-  valor da constante `EMAILJS_PUBLIC_KEY` no `index.html`. Essa chave é pública
-  por design e pode ficar no HTML.
-- **Localização**: `index.html`, constante `EMAILJS_PUBLIC_KEY`
-
-### 4. ✅ Validação de Formulário
-
-- **Status**: Implementado
-- **Recursos**:
-  - Validação em tempo real
-  - Feedback visual de erros
-  - Sanitização de entrada
-  - Estados de loading
+- **Por quê**: o formulário usava EmailJS, mas a chave pública nunca foi
+  configurada (`"SUA_PUBLIC_KEY"`), então nenhuma mensagem chegou. Em vez de
+  consertar, o contato passou a ser só por canais diretos: WhatsApp (principal),
+  e-mail e LinkedIn.
+- **O que saiu junto**: o script do EmailJS, `api.emailjs.com` e
+  `cdn.jsdelivr.net` do `script-src`/`connect-src` da CSP, o JavaScript de
+  validação e o CSS do formulário.
+- **Se um dia voltar**: o código antigo está no histórico do Git (commit
+  `76bacfb` e anteriores).
 
 ### 5. ✅ robots.txt e sitemap.xml
 
@@ -78,62 +70,6 @@ Este documento contém instruções para configurar os serviços que foram imple
 ---
 
 ## 🔧 Configurações Necessárias
-
-### 📧 Configurar EmailJS
-
-O formulário de contato está configurado para usar EmailJS. Siga estes passos:
-
-1. **Criar conta no EmailJS**
-
-   - Acesse: https://www.emailjs.com/
-   - Crie uma conta gratuita
-
-2. **Criar um Serviço de Email**
-
-   - No dashboard, vá em "Email Services"
-   - Adicione um serviço (Gmail, Outlook, etc.)
-   - Anote o **Service ID**
-
-3. **Criar um Template**
-
-   - Vá em "Email Templates"
-   - Crie um novo template
-   - Use estas variáveis:
-     ```
-     {{from_name}}
-     {{from_email}}
-     {{phone}}
-     {{message}}
-     ```
-   - Anote o **Template ID**
-
-4. **Obter Public Key**
-
-   - Vá em "Account" > "General"
-   - Copie sua **Public Key**
-
-5. **Atualizar o código**
-   - Abra `index.html`
-   - Procure por `YOUR_PUBLIC_KEY` (linha ~1593)
-   - Substitua por sua Public Key
-   - Procure por `YOUR_SERVICE_ID` (linha ~1680)
-   - Substitua pelo seu Service ID
-   - Procure por `YOUR_TEMPLATE_ID` (linha ~1681)
-   - Substitua pelo seu Template ID
-
-**Exemplo:**
-
-```javascript
-emailjs.init("abc123xyz"); // Sua Public Key
-
-await emailjs.send(
-  "service_abc123", // Seu Service ID
-  "template_xyz789", // Seu Template ID
-  templateParams
-);
-```
-
----
 
 ### 📊 Configurar Google Analytics
 
@@ -191,24 +127,16 @@ Se seu site estiver em um domínio diferente, atualize:
 
 Após configurar tudo:
 
-- [ ] EmailJS configurado e testado
 - [ ] Google Analytics configurado
 - [ ] URLs atualizadas (se necessário)
-- [ ] Formulário enviando emails corretamente
 - [ ] Google Analytics rastreando eventos
 - [ ] Testar acessibilidade com leitor de tela
-- [ ] Testar validação do formulário
+- [ ] Links de WhatsApp, e-mail e LinkedIn abrindo certo
 - [ ] Verificar CSP não bloqueando recursos
 
 ---
 
 ## 🐛 Troubleshooting
-
-### Formulário não envia
-
-- Verifique se as chaves do EmailJS estão corretas
-- Verifique o console do navegador para erros
-- Confirme que o template do EmailJS está configurado corretamente
 
 ### Google Analytics não funciona
 
@@ -225,10 +153,9 @@ Após configurar tudo:
 
 ## 📝 Notas Importantes
 
-1. **EmailJS**: O plano gratuito permite 200 emails/mês
-2. **Google Analytics**: Configure a privacidade conforme necessário
-3. **CSP**: A política atual é restritiva por segurança
-4. **Acessibilidade**: Teste com leitores de tela (NVDA, JAWS, VoiceOver)
+1. **Google Analytics**: Configure a privacidade conforme necessário
+2. **CSP**: A política atual é restritiva por segurança
+3. **Acessibilidade**: Teste com leitores de tela (NVDA, JAWS, VoiceOver)
 
 ---
 

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://ajax.googleapis.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://www.googletagmanager.com https://cdnjs.cloudflare.com; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self';"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://ajax.googleapis.com https://www.googletagmanager.com https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cdnjs.cloudflare.com; frame-src https://www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self';"
     />
     <meta
       name="description"
-      content="Portfólio de Rogélio Claro Fraga, Desenvolvedor Full Stack (Java, Spring Boot, Angular), graduado em Análise e Desenvolvimento de Sistemas, professor de Técnicas de Programação para Internet e engenheiro principal na InovaLayer."
+      content="Rogélio Claro Fraga, desenvolvedor full stack (Java, Spring Boot, Angular). Engenheiro principal de um SaaS B2B em produção na UFU, com infraestrutura AWS em Terraform, e autor de uma plataforma de ensino usada por 73 alunos."
     />
     <meta
       name="keywords"
@@ -28,11 +28,11 @@
     <meta property="og:url" content="https://rogeliofragadev.com.br/" />
     <meta
       property="og:title"
-      content="Rogélio Claro Fraga | Desenvolvedor Full Stack & Professor"
+      content="Rogélio Claro Fraga | Desenvolvedor Full Stack Java e Angular"
     />
     <meta
       property="og:description"
-      content="Desenvolvedor Full Stack especialista em Java, Spring Boot, Angular e NestJS. Graduado em Análise e Desenvolvimento de Sistemas, professor de Técnicas de Programação para Internet e engenheiro principal na InovaLayer."
+      content="Engenheiro principal de um SaaS B2B em produção na UFU, da API à infraestrutura AWS em Terraform. Java, Spring Boot e Angular, com testes contra banco real e CI/CD."
     />
     <meta
       property="og:image"
@@ -158,7 +158,7 @@
 
     <!-- Havia um preload desta folha sem o <link rel="stylesheet"> correspondente:
          a fonte era baixada e nunca aplicada. Os pesos 800 e 900 sao usados em
-         .masthead-name e .about-philosophy e antes nao eram carregados, entao o
+         .masthead-name e .masthead-stats e antes nao eram carregados, entao o
          navegador sintetizava o negrito. -->
     <link
       rel="preload"
@@ -213,9 +213,6 @@
       #habilidades.page-section {
         padding-top: 2rem !important;
       }
-      .about-motto {
-        margin-bottom: 0 !important;
-      }
       /* --------------------------------------------------------- */
 
       .showcase-container {
@@ -266,7 +263,7 @@
         width: fit-content;
       }
       .showcase-title {
-        font-size: 2.5rem;
+        font-size: 2.1rem;
         font-weight: 800;
         color: var(--text-light);
         line-height: 1.2;
@@ -392,62 +389,6 @@
         }
       }
 
-      /* --- ESTILOS ADICIONAIS PARA PLACEHOLDER EM BREVE --- */
-      .coming-soon-placeholder {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 380px;
-        background: rgba(156, 106, 214, 0.05);
-        border: 2px dashed rgba(156, 106, 214, 0.4);
-        border-radius: 15px;
-        padding: 2rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-      }
-      .coming-soon-placeholder::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(156, 106, 214, 0.1) 0%, transparent 70%);
-        pointer-events: none;
-      }
-      .coming-soon-icon {
-        font-size: 3.5rem;
-        margin-bottom: 1.2rem;
-        color: var(--accent-color);
-        text-shadow: 0 0 20px rgba(156, 106, 214, 0.6);
-        animation: float-soon 3s ease-in-out infinite;
-      }
-      .coming-soon-title {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--text-light);
-        margin-bottom: 0.5rem;
-        font-family: 'Montserrat', sans-serif;
-        letter-spacing: 1px;
-      }
-      .coming-soon-text {
-        font-size: 1rem;
-        color: var(--text-light);
-        opacity: 0.8;
-        max-width: 280px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-      @keyframes float-soon {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
       /* --- MELHORIA DE SEGURANÇA CONTRA TRAVAMENTO DE SCROLL NO CELULAR & PLAY OVERLAY --- */
       .video-wrapper {
         position: relative;
@@ -560,43 +501,6 @@
         }
       }
 
-      /* --- FILTROS DE PROJETOS --- */
-      .projects-filter-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-bottom: 4rem;
-        padding: 0 1rem;
-      }
-      .filter-pill {
-        background: rgba(156, 106, 214, 0.05);
-        border: 1px solid rgba(156, 106, 214, 0.2);
-        color: var(--text-light);
-        padding: 0.6rem 1.5rem;
-        border-radius: 50px;
-        font-size: 0.95rem;
-        font-weight: 700;
-        cursor: pointer;
-        font-family: 'Montserrat', sans-serif;
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-      }
-      .filter-pill:hover {
-        background: rgba(156, 106, 214, 0.15);
-        border-color: var(--accent-color);
-        transform: translateY(-2px);
-      }
-      .filter-pill.active {
-        background: var(--accent-color);
-        border-color: var(--accent-color);
-        color: var(--body-background);
-        box-shadow: 0 5px 20px rgba(156, 106, 214, 0.4);
-      }
-      .showcase-project {
-        transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
-      }
-
       /* --- MOUSE GLOW --- */
       .mouse-glow {
         position: fixed;
@@ -645,43 +549,14 @@
         }
       }
 
-      /* --- GALERIA PLACEHOLDER EM BREVE --- */
-      .gallery-soon-placeholder {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 120px;
-        background: rgba(156, 106, 214, 0.03);
-        border: 2px dashed rgba(156, 106, 214, 0.2);
-        border-radius: 8px;
-        color: var(--text-light);
-        opacity: 0.6;
-        gap: 0.5rem;
-      }
-      .gallery-soon-placeholder i {
-        font-size: 1.5rem;
-        color: var(--accent-color);
-      }
-      .gallery-soon-placeholder span {
-        font-size: 0.8rem;
-        font-weight: 700;
-        font-family: 'Montserrat', sans-serif;
-      }
-      @media (max-width: 768px) {
-        .gallery-soon-placeholder {
-          height: 90px !important;
-        }
-      }
-
-      /* ===== Formacao & Atuacao ===== */
+      /* ===== Experiencia & Formacao ===== */
       .trajetoria {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
         margin-top: 3rem;
       }
-      /* o card da graduacao ocupa a linha inteira: e a manchete da secao */
+      /* o card de destaque ocupa a linha inteira: e a manchete da secao */
       .trajetoria-card.destaque {
         grid-column: 1 / -1;
       }
@@ -822,40 +697,308 @@
       .marca-faixa strong {
         color: var(--text-light);
       }
-      .hero-soon-placeholder {
-        width: 100%;
-        min-height: 260px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.6rem;
-        padding: 2rem 1.5rem;
-        text-align: center;
-        border-radius: 15px;
-        border: 2px dashed rgba(156, 106, 214, 0.4);
-        background: rgba(156, 106, 214, 0.05);
+      .about-intro + .about-intro {
+        margin-top: 1.25rem;
+      }
+
+      /* ===== Topo: numeros que sustentam a frase de apresentacao ===== */
+      .masthead-stats {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 40rem;
+        margin: 1.75rem 0 2rem;
+        padding: 0;
+      }
+      .masthead-stats li {
+        padding: 0.9rem 1rem;
+        border-left: 3px solid var(--accent-color);
+        border-radius: 0 10px 10px 0;
+        background: rgba(156, 106, 214, 0.08);
+      }
+      .masthead-stats strong {
+        display: block;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.9rem;
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--text-light);
+      }
+      .masthead-stats span {
+        display: block;
+        margin-top: 0.3rem;
+        font-size: 0.82rem;
+        line-height: 1.4;
         color: rgba(255, 255, 255, 0.7);
       }
-      .hero-soon-placeholder i {
-        font-size: 2.5rem;
-        color: var(--accent-color);
-        opacity: 0.7;
+
+      /* ===== Projetos ===== */
+      .portfolio-intro {
+        max-width: 46rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--text-light);
+        opacity: 0.85;
       }
-      .hero-soon-placeholder span {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
+      /* a imagem divide o card meio a meio com o texto, em vez de ficar num canto */
+      .showcase-media {
+        flex: 1;
+        min-width: 0;
+      }
+      .media-frame {
+        border-radius: 15px;
+        overflow: hidden;
+        border: 2px solid rgba(156, 106, 214, 0.4);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      }
+      .media-frame img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .media-frame a:hover img,
+      .media-frame a:focus-visible img {
+        transform: scale(1.03);
+      }
+      .showcase-pontos {
+        list-style: none;
+        display: grid;
+        gap: 0.8rem;
+        margin: 0;
+        padding: 0;
+      }
+      .showcase-pontos li {
+        position: relative;
+        padding-left: 1.4rem;
+        font-size: 1.02rem;
+        line-height: 1.65;
+        color: var(--text-light);
+        opacity: 0.9;
+      }
+      .showcase-pontos li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.62em;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 2px;
+        background: var(--accent-color);
+      }
+      .showcase-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.75rem 1.25rem;
+      }
+      .showcase-links .btn-github-new {
+        padding: 1rem 2rem;
         font-size: 1rem;
       }
-      .hero-soon-placeholder small {
-        font-size: 0.82rem;
-        opacity: 0.65;
-        line-height: 1.5;
-        max-width: 24ch;
+      .showcase-links .btn-primario {
+        background: var(--accent-color);
+        color: #fff;
       }
+      .showcase-nota {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* ===== Outros projetos: grade compacta ===== */
+      .outros-projetos {
+        margin-top: 5rem;
+      }
+      .outros-titulo {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.6rem;
+        color: var(--text-light);
+        margin: 0 0 1.5rem;
+      }
+      .outros-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.25rem;
+      }
+      .outro-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 1.5rem;
+        border-radius: 16px;
+        background: rgba(28, 20, 40, 0.7);
+        border: 1px solid rgba(156, 106, 214, 0.25);
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+      .outro-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent-color);
+      }
+      .outro-tag {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--accent-color);
+      }
+      .outro-card h4 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+        color: var(--text-light);
+        margin: 0;
+      }
+      .outro-card p {
+        flex: 1;
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-light);
+        opacity: 0.82;
+      }
+      .outro-stack {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .outro-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid rgba(156, 106, 214, 0.18);
+      }
+      .outro-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+      .outro-links a:hover,
+      .outro-links a:focus-visible {
+        color: var(--text-light);
+      }
+      .outro-links .showcase-nota {
+        font-size: 0.85rem;
+      }
+
+      /* ===== Contato: canais diretos, sem formulario ===== */
+      .contato-card {
+        max-width: 56rem;
+        margin: 3rem auto 0;
+        padding: 2.5rem;
+        border-radius: 24px;
+        background: rgba(28, 20, 40, 0.7);
+        border: 1px solid rgba(156, 106, 214, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      .contato-acoes {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .contato-btn {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.1rem 1.25rem;
+        border-radius: 14px;
+        border: 1px solid rgba(156, 106, 214, 0.35);
+        background: rgba(156, 106, 214, 0.08);
+        color: var(--text-light);
+        text-decoration: none;
+        transition: transform 0.25s ease, border-color 0.25s ease,
+          background 0.25s ease;
+      }
+      .contato-btn:hover,
+      .contato-btn:focus-visible {
+        transform: translateY(-3px);
+        border-color: var(--accent-color);
+        background: rgba(156, 106, 214, 0.16);
+        color: var(--text-light);
+      }
+      .contato-btn i {
+        flex-shrink: 0;
+        font-size: 1.6rem;
+        color: var(--accent-color);
+      }
+      .contato-btn-texto {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+      .contato-btn strong {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.05rem;
+      }
+      .contato-btn small {
+        font-size: 0.82rem;
+        opacity: 0.75;
+        overflow-wrap: anywhere;
+      }
+      .contato-btn.primario {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+        color: #fff;
+        box-shadow: 0 8px 24px rgba(156, 106, 214, 0.35);
+      }
+      .contato-btn.primario i {
+        color: #fff;
+      }
+      .contato-btn.primario:hover,
+      .contato-btn.primario:focus-visible {
+        background: var(--accent-color);
+        color: #fff;
+        box-shadow: 0 12px 30px rgba(156, 106, 214, 0.55);
+      }
+      .contato-rodape {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1.75rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(156, 106, 214, 0.2);
+      }
+      .contato-local {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .contato-extras {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .contato-cv {
+        margin-right: 0.5rem;
+        font-weight: 700;
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+      .contato-cv:hover,
+      .contato-cv:focus-visible {
+        color: var(--text-light);
+      }
+
       @media (max-width: 768px) {
-        .hero-soon-placeholder {
-          min-height: 180px;
+        .contato-acoes {
+          grid-template-columns: 1fr;
+        }
+        .contato-card {
+          padding: 1.5rem;
+        }
+      }
+      @media (max-width: 576px) {
+        .masthead-stats {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -911,8 +1054,8 @@
                 class="nav-link"
                 href="#formacao"
                 role="menuitem"
-                aria-label="Ir para seção Formação e Atuação"
-                >Formação</a
+                aria-label="Ir para seção Experiência e Formação"
+                >Experiência</a
               >
             </li>
             <li class="nav-item" role="none">
@@ -960,7 +1103,7 @@
               <div class="availability-badge-container">
                 <span class="availability-badge">
                   <span class="pulse-dot"></span>
-                  Disponível para Freelancer & Projetos
+                  Aberto a novas oportunidades
                 </span>
               </div>
               <!-- O cargo agora vive DENTRO do h1: antes o h1 continha so o nome,
@@ -975,12 +1118,27 @@
                 </span>
               </h1>
               <p class="masthead-description">
-                <strong>Desenvolvedor de soluções digitais</strong> que
-                transforma conceitos em realidade. Construo sistemas focados em
-                arquitetura escalável e performance excepcional. Desde
-                agosto de 2026, também <strong>ensino</strong> a próxima turma a
-                construir os deles.
+                Engenheiro principal de um <strong>SaaS B2B em produção</strong>
+                na UFU, da API à infraestrutura AWS em Terraform, e autor de uma
+                <strong>plataforma de ensino que 73 alunos usam</strong> toda
+                semana. Trabalho com Java, Spring Boot e Angular, e cuido do
+                caminho até produção: testes contra banco real, CI/CD, alarmes e
+                backup.
               </p>
+              <ul class="masthead-stats" aria-label="Números dos projetos">
+                <li>
+                  <strong>73</strong>
+                  <span>alunos usando em produção a plataforma que eu construí</span>
+                </li>
+                <li>
+                  <strong>65</strong>
+                  <span>recursos AWS versionados em Terraform na InovaLayer</span>
+                </li>
+                <li>
+                  <strong>1.300+</strong>
+                  <span>testes automatizados nos meus projetos</span>
+                </li>
+              </ul>
               <div class="masthead-social-container">
                 <div class="social-icons-masthead">
                   <a
@@ -1025,9 +1183,9 @@
                     <i class="fas fa-file-arrow-down"></i>
                     <span>Baixar Currículo</span>
                   </a>
-                  <a href="#habilidades" class="btn-skills">
-                    <i class="fas fa-code"></i>
-                    <span>Ver Habilidades</span>
+                  <a href="#portfolio" class="btn-skills">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Ver Projetos</span>
                   </a>
                 </div>
               </div>
@@ -1053,113 +1211,92 @@
           </h2>
           <div class="divider-custom">
             <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon">🎓</div>
+            <div class="divider-custom-icon"><i class="fas fa-user"></i></div>
             <div class="divider-custom-line"></div>
           </div>
 
           <div class="about-content">
             <div class="about-intro-section">
               <p class="about-intro">
-                Tenho <strong>25 anos</strong> e sou
-                <strong>graduado em Análise e Desenvolvimento de Sistemas</strong>
-                pelo
-                <a
-                  href="https://imepac.edu.br/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="imepac-link"
-                  >Centro Universitário IMEPAC</a
-                >, com colação de grau em <strong>agosto de 2026</strong>. Atuo
-                como <strong>engenheiro principal</strong> na
-                <strong>InovaLayer</strong>, projeto de pesquisa e inovação
-                tecnológica ligado à <strong>UFU</strong> (Universidade Federal
-                de Uberlândia) e fomentado por bolsa da
-                <strong>FAPEMIG</strong>, onde levo o produto do modelo de
-                domínio ao provisionamento da nuvem em <strong>Terraform</strong>.
-                Em paralelo, sou <strong>professor de Técnicas de Programação
-                para Internet</strong> no curso técnico em Informática, dando
-                aula para duas turmas em uma plataforma de ensino que eu mesmo
-                construí e mantenho no ar.
+                Sou desenvolvedor full stack e trabalho do modelo de domínio ao
+                deploy. Na <strong>InovaLayer</strong>, projeto de inovação
+                ligado à <strong>UFU</strong> e fomentado pela
+                <strong>FAPEMIG</strong>, sou o
+                <strong>engenheiro principal</strong>: respondo pela API em
+                Spring Boot, pelo portal web e pelo app desktop em Angular e
+                Electron, e pela infraestrutura AWS, versionada em
+                <strong>Terraform</strong> e publicada por CI/CD.
               </p>
               <p class="about-intro">
-                Meu portfólio nasce sempre do mesmo lugar: sistemas que precisam
-                funcionar de verdade, com gente usando do outro lado. Um
-                <strong>SaaS multiplataforma</strong> (web + desktop), um
-                <strong>marketplace</strong> com arquitetura hexagonal/DDD, uma
-                <strong>plataforma de gestão financeira</strong> e um
-                <strong>sistema de aulas em produção</strong>. Sempre do banco
-                de dados ao deploy.
-              </p>
-            </div>
-
-            <div class="about-philosophy-section">
-              <h3 class="about-philosophy">
-                Não quero ser apenas útil.<br />
-                <span class="philosophy-accent">Quero ser NECESSÁRIO.</span>
-              </h3>
-              <p class="philosophy-text">
-                Esta não é apenas uma frase, é minha <strong>missão</strong>.
-                Busco criar soluções que façam diferença real, que resolvam
-                problemas complexos e que agreguem valor genuíno aos projetos e
-                pessoas.
+                Também dou aula de <strong>Técnicas de Programação para
+                Internet</strong> num curso técnico, numa plataforma que eu
+                mesmo construí e opero. Ter <strong>73 alunos</strong> usando o
+                sistema na hora da aula muda a régua: migração ensaiada contra
+                dado real, deploy com trava de horário e o mínimo de dado
+                pessoal, porque são menores de idade.
               </p>
             </div>
 
             <div class="about-approach-section">
               <h3 class="section-subtitle">
-                <i class="fas fa-bullseye"></i> Minha Abordagem & O Que Busco
+                <i class="fas fa-screwdriver-wrench"></i> Como eu trabalho
               </h3>
               <div class="approach-items">
                 <div class="approach-item">
-                  <i class="fas fa-fire"></i>
-                  <span class="approach-label">Disposição Total</span>
-                  <p>Pronto para mergulhar de cabeça em qualquer desafio</p>
+                  <i class="fas fa-layer-group"></i>
+                  <span class="approach-label">Infra versionada</span>
+                  <p>
+                    A AWS da InovaLayer (rede, banco, CDN, e-mail, alarmes e
+                    teto de custo) é provisionada em Terraform e revisada no
+                    <code>plan</code> antes de cada <code>apply</code>.
+                  </p>
+                </div>
+                <div class="approach-item">
+                  <i class="fas fa-scale-balanced"></i>
+                  <span class="approach-label">Teste que prova a regra</span>
+                  <p>
+                    O motor de custo da InovaLayer é validado contra a planilha
+                    oficial da UFU: <strong>24 de 24</strong> rubricas, erro
+                    máximo de <strong>0,0024%</strong>.
+                  </p>
                 </div>
                 <div class="approach-item">
                   <i class="fas fa-shield-alt"></i>
-                  <span class="approach-label">Zero Medo</span>
-                  <p>Desafios complexos me motivam, não me intimidam</p>
-                </div>
-                <div class="approach-item">
-                  <i class="fas fa-graduation-cap"></i>
-                  <span class="approach-label">Aprendizado Contínuo</span>
-                  <p>Acredito que a melhor forma de aprender é fazendo</p>
-                </div>
-                <div class="approach-item">
-                  <i class="fas fa-briefcase"></i>
-                  <span class="approach-label">Oportunidades</span>
+                  <span class="approach-label">Segurança por padrão</span>
                   <p>
-                    Projetos <strong>freelancers</strong> e desafios que exijam
-                    soluções sob medida.
+                    No Razor, uma auditoria fechou três falhas críticas antes do
+                    piloto. O webhook é <em>fail-closed</em> e o login tem limite
+                    de tentativas.
+                  </p>
+                </div>
+                <div class="approach-item">
+                  <i class="fas fa-database"></i>
+                  <span class="approach-label">Banco de verdade no teste</span>
+                  <p>
+                    Integração com Testcontainers em PostgreSQL e Redis reais no
+                    CI, e não em mocks. São mais de
+                    <strong>1.300 testes</strong> nos meus projetos.
                   </p>
                 </div>
                 <div class="approach-item">
                   <i class="fas fa-rocket"></i>
-                  <span class="approach-label">Desafios</span>
+                  <span class="approach-label">Deploy sem susto</span>
                   <p>
-                    Projetos que me permitam <strong>crescer</strong>,
-                    <strong>aprender</strong> e <strong>impactar</strong>
-                    positivamente
+                    OIDC no lugar de chave estática da AWS, deploy por SSM com a
+                    porta 22 fechada e <code>pg_dump</code> antes de toda
+                    migração.
                   </p>
                 </div>
                 <div class="approach-item">
-                  <i class="fas fa-users"></i>
-                  <span class="approach-label">Colaboração</span>
+                  <i class="fas fa-file-signature"></i>
+                  <span class="approach-label">Decisão escrita</span>
                   <p>
-                    Trabalhar em equipes que valorizam
-                    <strong>inovação</strong> e <strong>excelência</strong>
+                    ADR, modelo C4 e registro de contexto em cada projeto: o
+                    porquê de cada escolha fica documentado, e não na cabeça de
+                    alguém.
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div class="about-motto">
-              <p class="motto-text">
-                Cada linha de código que escrevo é uma oportunidade de
-                <strong>crescer</strong>, <strong>aprender</strong> e
-                <strong>entregar valor</strong>. Estou pronto para transformar
-                ideias em realidade e fazer parte de algo maior.
-              </p>
             </div>
           </div>
         </div>
@@ -1172,32 +1309,32 @@
       >
         <div class="container">
           <h2 id="formacao-heading" class="page-section-heading text-center">
-            Formação &amp; Atuação
+            Experiência &amp; Formação
           </h2>
           <div class="divider-custom">
             <div class="divider-custom-line"></div>
             <div class="divider-custom-icon">
-              <i class="fas fa-graduation-cap"></i>
+              <i class="fas fa-briefcase"></i>
             </div>
             <div class="divider-custom-line"></div>
           </div>
 
           <div class="trajetoria">
             <article class="trajetoria-card destaque">
-              <div class="trajetoria-icone">
-                <i class="fas fa-user-graduate"></i>
-              </div>
+              <div class="trajetoria-icone"><i class="fas fa-industry"></i></div>
               <div class="trajetoria-corpo">
-                <span class="trajetoria-periodo">Concluído em Ago/2026</span>
+                <span class="trajetoria-periodo">Atual · Pesquisa &amp; Inovação</span>
                 <h3 class="trajetoria-titulo">
-                  Análise e Desenvolvimento de Sistemas
+                  Engenheiro Principal · InovaLayer / MADA
                 </h3>
-                <span class="trajetoria-org">Centro Universitário IMEPAC</span>
+                <span class="trajetoria-org">UFU · Bolsa FAPEMIG</span>
                 <p class="trajetoria-desc">
-                  Colação de grau em <strong>26 de agosto de 2026</strong>. A
-                  formação em desenvolvimento de software, banco de dados e
-                  engenharia de sistemas é a base do que aplico hoje no trabalho
-                  e em sala de aula.
+                  Responsável técnico pela plataforma de orçamentação para
+                  <strong>manufatura aditiva metálica (WAAM)</strong>, em
+                  produção: API em Spring Boot, portal web e app desktop em
+                  Angular e Electron, e infraestrutura AWS em
+                  <strong>Terraform</strong>, com alarmes, backup, teto de custo
+                  e canal de atualização automática do desktop.
                 </p>
               </div>
             </article>
@@ -1222,28 +1359,34 @@
                   · Trilhas do Futuro</span
                 >
                 <p class="trajetoria-desc">
-                  Disciplina de <strong>80h</strong> no curso técnico em
-                  Informática, para <strong>duas turmas</strong> de
-                  adolescentes, a maioria sem nenhum contato prévio com código.
-                  Escrevo o material, a apostila e a plataforma que eles usam em
-                  sala.
+                  Disciplina de <strong>80h</strong> para duas turmas,
+                  <strong>73 alunos</strong>. Planejo o curso, escrevo o
+                  material e construí a plataforma que eles usam em sala.
                 </p>
               </div>
             </article>
 
             <article class="trajetoria-card">
-              <div class="trajetoria-icone"><i class="fas fa-flask"></i></div>
+              <div class="trajetoria-icone">
+                <i class="fas fa-user-graduate"></i>
+              </div>
               <div class="trajetoria-corpo">
-                <span class="trajetoria-periodo">Pesquisa &amp; Inovação</span>
+                <span class="trajetoria-periodo">Ago/2026</span>
                 <h3 class="trajetoria-titulo">
-                  Engenheiro Principal · InovaLayer / MADA
+                  Análise e Desenvolvimento de Sistemas
                 </h3>
-                <span class="trajetoria-org">UFU · Bolsa FAPEMIG</span>
+                <span class="trajetoria-org"
+                  ><a
+                    href="https://imepac.edu.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="imepac-link"
+                    >Centro Universitário IMEPAC</a
+                  ></span
+                >
                 <p class="trajetoria-desc">
-                  Responsável técnico pela plataforma de orçamentação para
-                  <strong>manufatura aditiva metálica (WAAM)</strong>: API,
-                  aplicação web, app desktop e toda a infraestrutura AWS
-                  provisionada em <strong>Terraform</strong>.
+                  Graduação em desenvolvimento de software, banco de dados e
+                  engenharia de sistemas.
                 </p>
               </div>
             </article>
@@ -1257,9 +1400,9 @@
                 <h3 class="trajetoria-titulo">Desenvolvedor · WireArc3D</h3>
                 <span class="trajetoria-org">Software de trajetórias WAAM</span>
                 <p class="trajetoria-desc">
-                  Passo a <strong>contribuir</strong> com o software de geração
-                  de trajetórias para manufatura aditiva por deposição a arco. É uma
-                  aplicação desktop em Python com aceleração por GPU.
+                  Contribuo com o software de geração de trajetórias para
+                  manufatura aditiva por deposição a arco, uma aplicação desktop
+                  em Python com aceleração por GPU.
                 </p>
               </div>
             </article>
@@ -1283,91 +1426,91 @@
           </div>
 
           <div class="skills-grid">
-            <div class="skill-item" data-tooltip="Desenvolvimento robusto com POO, coleções e concorrência.">
+            <div class="skill-item" data-tooltip="Java 21: POO, streams, concorrência e BigDecimal para cálculo financeiro.">
               <i class="devicon-java-plain colored"></i>
               <span>Java</span>
             </div>
-            <div class="skill-item" data-tooltip="Criação de APIs REST, Spring Security (JWT) e JPA/Hibernate.">
+            <div class="skill-item" data-tooltip="APIs REST, Spring Security com JWT, JPA/Hibernate e Flyway.">
               <i class="devicon-spring-original colored"></i>
               <span>Spring Boot</span>
             </div>
-            <div class="skill-item" data-tooltip="SPAs dinâmicas, RxJS, arquitetura modular e PrimeNG.">
+            <div class="skill-item" data-tooltip="Angular 21 com PrimeNG, RxJS, i18n e build web + desktop da mesma base.">
               <i class="devicon-angularjs-plain colored"></i>
               <span>Angular</span>
             </div>
-            <div class="skill-item" data-tooltip="Tipagem estática, interfaces, decorators e código escalável.">
+            <div class="skill-item" data-tooltip="Tipagem ponta a ponta, com contratos Zod compartilhados entre front e back.">
               <i class="devicon-typescript-plain colored"></i>
               <span>TypeScript</span>
             </div>
-            <div class="skill-item" data-tooltip="Backends modulares robustos com padrões arquiteturais modernos.">
-              <i class="devicon-nestjs-plain colored"></i>
-              <span>NestJS</span>
-            </div>
-            <div class="skill-item" data-tooltip="Desenvolvimento assíncrono rápido, APIs com Express e Fastify.">
-              <i class="devicon-nodejs-plain colored"></i>
-              <span>Node.js</span>
-            </div>
-            <div class="skill-item" data-tooltip="Queries complexas, indexação, e modelagem relacional de dados.">
+            <div class="skill-item" data-tooltip="Modelagem, índices, PostGIS e busca textual com pg_trgm.">
               <i class="devicon-postgresql-plain colored"></i>
               <span>PostgreSQL</span>
             </div>
-            <div class="skill-item" data-tooltip="Administração, performance tuning e segurança de bancos relacionais.">
-              <i class="devicon-mysql-plain colored"></i>
-              <span>MySQL</span>
-            </div>
-            <div class="skill-item" data-tooltip="Containerização completa de microsserviços e setups de homologação.">
-              <i class="devicon-docker-plain colored"></i>
-              <span>Docker</span>
-            </div>
-            <div class="skill-item" data-tooltip="Apps web modernas com App Router, RSC e SSR.">
-              <i class="devicon-nextjs-plain"></i>
-              <span>Next.js</span>
-            </div>
-            <div class="skill-item" data-tooltip="Cache e filas em memória para alta performance.">
-              <i class="devicon-redis-plain colored"></i>
-              <span>Redis</span>
-            </div>
-            <div class="skill-item" data-tooltip="Empacotamento de aplicações desktop multiplataforma.">
-              <i class="devicon-electron-original colored"></i>
-              <span>Electron</span>
-            </div>
-            <div class="skill-item" data-tooltip="Infra em produção: EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM e CloudWatch.">
+            <div class="skill-item" data-tooltip="Em produção: EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM e CloudWatch.">
               <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
               <span>AWS</span>
             </div>
-            <div class="skill-item" data-tooltip="Criação de UIs customizadas com design responsivo fluido.">
-              <i class="devicon-tailwindcss-original colored"></i>
-              <span>Tailwind CSS</span>
-            </div>
-            <div class="skill-item" data-tooltip="Infraestrutura como código: VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM e IAM.">
+            <div class="skill-item" data-tooltip="Infraestrutura como código: 65 recursos AWS, revisados no plan antes do apply.">
               <i class="devicon-terraform-plain colored"></i>
               <span>Terraform</span>
             </div>
-            <div class="skill-item" data-tooltip="Automação, scripts de build e geração de material; desktop com PyQt5.">
-              <i class="devicon-python-plain colored"></i>
-              <span>Python</span>
-            </div>
-            <div class="skill-item" data-tooltip="SPAs com hooks, componentes tipados e build com Vite.">
-              <i class="devicon-react-original colored"></i>
-              <span>React</span>
-            </div>
-            <div class="skill-item" data-tooltip="Renderização no servidor integrada ao Spring, sem SPA.">
-              <i class="devicon-thymeleaf-plain colored"></i>
-              <span>Thymeleaf</span>
+            <div class="skill-item" data-tooltip="Imagens multi-stage e ambientes completos em Docker Compose.">
+              <i class="devicon-docker-plain colored"></i>
+              <span>Docker</span>
             </div>
             <div class="skill-item" data-tooltip="CI/CD com testes, OIDC sem chave de acesso e deploy via SSM.">
               <i class="devicon-githubactions-plain colored"></i>
               <span>GitHub Actions</span>
             </div>
-            <div class="skill-item" data-tooltip="Proxy reverso, TLS com certbot e servir estáticos em produção.">
-              <i class="devicon-nginx-original colored"></i>
-              <span>Nginx</span>
-            </div>
             <div class="skill-item" data-tooltip="Testes unitários e de integração com Testcontainers em banco real.">
               <i class="devicon-junit-plain colored"></i>
               <span>JUnit</span>
             </div>
-            <div class="skill-item" data-tooltip="Controle de versão complexo, git flow e colaboração de código.">
+            <div class="skill-item" data-tooltip="Monólito modular hexagonal/DDD com Drizzle e filas BullMQ.">
+              <i class="devicon-nestjs-plain colored"></i>
+              <span>NestJS</span>
+            </div>
+            <div class="skill-item" data-tooltip="App Router, Server Components e BFF com cookies httpOnly.">
+              <i class="devicon-nextjs-plain"></i>
+              <span>Next.js</span>
+            </div>
+            <div class="skill-item" data-tooltip="SPAs com hooks, componentes tipados e build com Vite.">
+              <i class="devicon-react-original colored"></i>
+              <span>React</span>
+            </div>
+            <div class="skill-item" data-tooltip="APIs e workers em TypeScript.">
+              <i class="devicon-nodejs-plain colored"></i>
+              <span>Node.js</span>
+            </div>
+            <div class="skill-item" data-tooltip="Cache, OTP, filas e estado compartilhado entre instâncias.">
+              <i class="devicon-redis-plain colored"></i>
+              <span>Redis</span>
+            </div>
+            <div class="skill-item" data-tooltip="App desktop multiplataforma com canal de atualização automática.">
+              <i class="devicon-electron-original colored"></i>
+              <span>Electron</span>
+            </div>
+            <div class="skill-item" data-tooltip="Proxy reverso, TLS e arquivos estáticos em produção.">
+              <i class="devicon-nginx-original colored"></i>
+              <span>Nginx</span>
+            </div>
+            <div class="skill-item" data-tooltip="Renderização no servidor integrada ao Spring, sem SPA.">
+              <i class="devicon-thymeleaf-plain colored"></i>
+              <span>Thymeleaf</span>
+            </div>
+            <div class="skill-item" data-tooltip="Automação e desktop com PyQt5.">
+              <i class="devicon-python-plain colored"></i>
+              <span>Python</span>
+            </div>
+            <div class="skill-item" data-tooltip="Modelagem relacional e APIs sobre MySQL.">
+              <i class="devicon-mysql-plain colored"></i>
+              <span>MySQL</span>
+            </div>
+            <div class="skill-item" data-tooltip="Interfaces responsivas com design tokens.">
+              <i class="devicon-tailwindcss-original colored"></i>
+              <span>Tailwind CSS</span>
+            </div>
+            <div class="skill-item" data-tooltip="Commits convencionais, PRs e histórico legível.">
               <i class="devicon-git-plain colored"></i>
               <span>Git</span>
             </div>
@@ -1381,7 +1524,7 @@
         aria-labelledby="portfolio-heading"
       >
         <h2 id="portfolio-heading" class="page-section-heading text-center">
-          Portfólio de Projetos
+          Projetos
         </h2>
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
@@ -1390,160 +1533,62 @@
           </div>
           <div class="divider-custom-line"></div>
         </div>
-
-        <!-- Filtro Interativo de Projetos -->
-        <div class="projects-filter-container">
-          <button class="filter-pill active" data-filter="all">Todos</button>
-          <button class="filter-pill" data-filter="fullstack">Full Stack</button>
-          <button class="filter-pill" data-filter="frontend">Frontend & UI/UX</button>
-          <button class="filter-pill" data-filter="backend">Backend & Microserviços</button>
-          <button class="filter-pill" data-filter="ia">Automação & IA</button>
-          <button class="filter-pill" data-filter="pesquisa">Pesquisa & Engenharia</button>
-        </div>
+        <p class="portfolio-intro text-center">
+          Cinco sistemas completos que eu projetei e construí, do modelo de
+          dados ao deploy. Dois deles estão em produção.
+        </p>
 
         <div class="container showcase-container">
-          <!-- DESTAQUE: DevFlow Solutions -->
-          <div class="showcase-project" data-category="fullstack">
+          <!-- InovaLayer / MADA (NDA) -->
+          <article class="showcase-project">
             <div class="showcase-main">
               <div class="showcase-text">
-                <span class="showcase-category">Full Stack</span>
-                <h3 class="showcase-title">DevFlow Solutions: Gestão Financeira de Projetos</h3>
+                <span class="showcase-category">SaaS B2B · Em produção</span>
+                <h3 class="showcase-title">InovaLayer / MADA: orçamentação para manufatura aditiva</h3>
                 <p class="showcase-desc">
-                  Plataforma B2B <strong>multi-tenant</strong> para viabilidade financeira de contratos de TI: dashboards C-level, gestão de timesheets, controle de custos (nuvem, APIs e adicionais) e o <strong>Budget Guard</strong>, com travas de orçamento aplicadas no nível do banco (80% alerta / 100% bloqueio). Gera DRE em tempo real e relatórios em PDF. Arquitetura em camadas, isolamento por empresa, autenticação JWT/RBAC e deploy containerizado testado de ponta a ponta.
+                  Transforma a solicitação de um cliente industrial em proposta
+                  técnica e custeada para <strong>manufatura aditiva metálica
+                  (WAAM)</strong>. Portal web para o cliente, app desktop para a
+                  engenharia e API, todos em produção na AWS.
                 </p>
+                <ul class="showcase-pontos">
+                  <li>
+                    <strong>Motor de custo auditável:</strong> validado contra a
+                    planilha oficial da UFU, com 24 de 24 rubricas batendo e erro
+                    máximo de 0,0024%. Todo o cálculo em <code>BigDecimal</code>.
+                  </li>
+                  <li>
+                    <strong>Infra como código:</strong> 65 recursos AWS em
+                    Terraform (VPC, EC2, RDS, S3, CloudFront, SES), nove alarmes,
+                    teto de custo e health check externo.
+                  </li>
+                  <li>
+                    <strong>Segurança com teste:</strong> casos de IDOR, JWT
+                    forjado e rate limit, integração em PostgreSQL real, e um
+                    teste que reprova a proposta em PDF se ela expuser custo ou
+                    margem.
+                  </li>
+                </ul>
                 <div class="showcase-tech">
-                  <span class="tech-pill">Angular 21</span>
-                  <span class="tech-pill">Spring Boot 4</span>
                   <span class="tech-pill">Java 21</span>
-                  <span class="tech-pill">PostgreSQL 16</span>
-                  <span class="tech-pill">Docker</span>
-                  <span class="tech-pill">JWT / RBAC</span>
-                  <span class="tech-pill">Swagger</span>
-                </div>
-                <div style="margin-top: 1rem">
-                  <a
-                    href="https://github.com/rogelio-fraga-dev/devflow-solutions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem"
-                  >
-                    <i class="fab fa-github"></i> Repositório
-                  </a>
-                </div>
-              </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
-                <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
-                  <a href="imagens/devflow-dashboard.png" data-lightbox="devflow-main">
-                    <img src="imagens/devflow-dashboard.png" alt="DevFlow: Dashboard Executivo" style="width: 100%; height: auto; display: block; object-fit: cover;">
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="showcase-gallery">
-              <a href="imagens/devflow-projetos.png" data-lightbox="devflow"
-                ><img src="imagens/devflow-projetos.png" alt="Lista de Projetos" loading="lazy"
-              /></a>
-              <a href="imagens/devflow-timesheet.png" data-lightbox="devflow"
-                ><img src="imagens/devflow-timesheet.png" alt="Timesheet" loading="lazy"
-              /></a>
-              <a href="imagens/devflow-detalhe.png" data-lightbox="devflow"
-                ><img src="imagens/devflow-detalhe.png" alt="Detalhe do Projeto" loading="lazy"
-              /></a>
-              <a href="imagens/devflow-custos.png" data-lightbox="devflow"
-                ><img src="imagens/devflow-custos.png" alt="Custos de Nuvem" loading="lazy"
-              /></a>
-            </div>
-          </div>
-
-          <!-- DESTAQUE: ObraCerta -->
-          <div class="showcase-project" data-category="fullstack">
-            <div class="showcase-main reverse">
-              <div class="showcase-text">
-                <span class="showcase-category">Full Stack · Marketplace</span>
-                <h3 class="showcase-title">ObraCerta: Marketplace de Construção Civil</h3>
-                <p class="showcase-desc">
-                  Marketplace vertical bilateral que conecta profissionais da construção civil a clientes, com reputação verificada, avaliação dupla-cega e <strong>busca geoespacial</strong>. Construído como <strong>monorepo</strong> com <strong>arquitetura hexagonal / DDD</strong>, contratos tipados ponta a ponta (front ↔ back) e decisões de arquitetura documentadas (ADRs / modelo C4).
-                </p>
-                <div class="showcase-tech">
-                  <span class="tech-pill">Turborepo</span>
-                  <span class="tech-pill">Next.js 15</span>
-                  <span class="tech-pill">NestJS (Hexagonal/DDD)</span>
-                  <span class="tech-pill">PostgreSQL + PostGIS</span>
-                  <span class="tech-pill">Redis</span>
-                  <span class="tech-pill">Zod</span>
-                </div>
-                <div style="margin-top: 1rem">
-                  <a
-                    href="https://github.com/rogelio-fraga-dev/obracerta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem"
-                  >
-                    <i class="fab fa-github"></i> Repositório
-                  </a>
-                </div>
-              </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
-                <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
-                  <a href="imagens/obracerta-landing.png" data-lightbox="obracerta" data-title="Landing page">
-                    <img src="imagens/obracerta-landing.png" alt="ObraCerta: landing page com profissionais avaliados" style="width: 100%; height: auto; display: block; object-fit: cover;">
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="showcase-gallery">
-              <a href="imagens/obracerta-contratante.png" data-lightbox="obracerta" data-title="Painel do contratante"
-                ><img src="imagens/obracerta-contratante.png" alt="ObraCerta: painel do contratante com pedidos e compromissos" loading="lazy"
-              /></a>
-              <a href="imagens/obracerta-obras.png" data-lightbox="obracerta" data-title="Obras publicadas e lances"
-                ><img src="imagens/obracerta-obras.png" alt="ObraCerta: obras publicadas e status dos lances" loading="lazy"
-              /></a>
-              <a href="imagens/obracerta-admin.png" data-lightbox="obracerta" data-title="Painel administrativo"
-                ><img src="imagens/obracerta-admin.png" alt="ObraCerta: painel administrativo com métricas do produto" loading="lazy"
-              /></a>
-              <a href="imagens/obracerta-dores.png" data-lightbox="obracerta" data-title="As dores que o produto resolve"
-                ><img src="imagens/obracerta-dores.png" alt="ObraCerta: seção com as dores de quem contrata" loading="lazy"
-              /></a>
-            </div>
-          </div>
-
-          <!-- DESTAQUE: InovaLayer / MADA (NDA) -->
-          <div class="showcase-project" data-category="pesquisa">
-            <div class="showcase-main">
-              <div class="showcase-text">
-                <span class="showcase-category">Pesquisa & Inovação · Engenheiro Principal</span>
-                <h3 class="showcase-title">InovaLayer / MADA: SaaS de Manufatura Aditiva (WAAM)</h3>
-                <p class="showcase-desc">
-                  SaaS B2B multiplataforma para orçamentação de peças em <strong>manufatura aditiva metálica (WAAM)</strong>, onde atuo como <strong>engenheiro principal</strong>. Transforma uma solicitação do cliente em proposta técnica e custeada por um motor de modelagem de custos industriais. Aplicação web + <strong>app desktop (Electron)</strong> + API, com internacionalização (PT/EN), autenticação JWT (httpOnly) e <strong>infraestrutura AWS inteira provisionada em Terraform</strong> (VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM e alarmes no CloudWatch), com deploy contínuo via OIDC, sem chave de acesso de longa duração. <em>Detalhes de domínio e regras de negócio omitidos por NDA.</em>
-                </p>
-                <div class="showcase-tech">
                   <span class="tech-pill">Spring Boot</span>
-                  <span class="tech-pill">Java 21</span>
                   <span class="tech-pill">Angular 21</span>
                   <span class="tech-pill">Electron</span>
                   <span class="tech-pill">PostgreSQL</span>
                   <span class="tech-pill">Terraform</span>
-                  <span class="tech-pill">AWS (EC2/RDS/S3/CloudFront)</span>
-                  <span class="tech-pill">GitHub Actions (OIDC)</span>
-                  <span class="tech-pill">i18n</span>
+                  <span class="tech-pill">AWS</span>
+                  <span class="tech-pill">GitHub Actions</span>
                 </div>
-                <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+                <div class="showcase-links">
                   <a
                     href="https://inovalayer.com.br"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem; background: var(--accent-color); color: white;"
+                    class="btn-github-new btn-primario"
                   >
-                    <i class="fas fa-external-link-alt"></i> Ver ao Vivo
+                    <i class="fas fa-external-link-alt"></i> Ver ao vivo
                   </a>
-                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
-                    <i class="fas fa-lock"></i> Código sob NDA
-                  </span>
+                  <span class="showcase-nota"><i class="fas fa-lock"></i> Código proprietário (NDA)</span>
                 </div>
               </div>
               <div class="showcase-video com-marca">
@@ -1582,19 +1627,38 @@
                 ><img src="imagens/inovalayer-projetos-en.png" alt="InovaLayer: seção de projetos em inglês no tema escuro" loading="lazy"
               /></a>
             </div>
-          </div>
+          </article>
 
-          <div class="showcase-project" data-category="fullstack">
+          <!-- Sistema de Aulas -->
+          <article class="showcase-project">
             <div class="showcase-main reverse">
               <div class="showcase-text">
-                <span class="showcase-category">Full Stack · Educação · Em Produção</span>
-                <h3 class="showcase-title">Sistema de Aulas: Plataforma de Ensino em Produção</h3>
+                <span class="showcase-category">Full Stack · Em produção · 73 alunos</span>
+                <h3 class="showcase-title">Sistema de Aulas: plataforma de ensino</h3>
                 <p class="showcase-desc">
-                  Plataforma que eu construí para dar aula e que hoje é usada por <strong>~75 alunos</strong> em duas turmas do curso técnico. Nasceu de uma restrição real: as máquinas do laboratório são lentas e não dá para instalar nada nelas. Rodando no navegador, não exige instalação. E abre no celular, o que derruba a desculpa de não ter computador em casa. O aluno tem <strong>editor de código com prévia ao vivo</strong>, salvamento automático, quiz com ranking em tempo real e revisão do que errou. O recurso central é o <strong>painel-modelo</strong>: o código da aula fica ao lado e <em>cada linha digitada corretamente some do painel</em>, então o sistema sabe exatamente onde o aluno parou. O professor abre e fecha quizzes, acompanha o código de cada aluno e confere presença. Os prazos abrem e fecham sozinhos pelo calendário de cada turma.
+                  A plataforma em que eu dou aula: editor de código com prévia ao
+                  vivo, quiz com ranking em tempo real e entrega de atividades.
+                  Roda no navegador e no celular, porque as máquinas do
+                  laboratório não permitem instalar nada.
                 </p>
-                <p class="showcase-desc">
-                  Do lado da operação: <strong>244 testes verdes</strong>, deploy automatizado em dois minutos por <strong>GitHub Actions com OIDC</strong> (nenhuma chave da AWS guardada) e <strong>SSM</strong> (porta 22 pode ficar fechada), com <code>pg_dump</code> antes de toda migração e trava de horário para não reiniciar a aplicação enquanto uma turma está digitando.
-                </p>
+                <ul class="showcase-pontos">
+                  <li>
+                    <strong>Painel-modelo:</strong> o código da aula fica ao lado
+                    do editor e cada linha digitada corretamente some, então o
+                    sistema sabe onde cada aluno parou.
+                  </li>
+                  <li>
+                    <strong>379 testes e 81 migrações Flyway</strong>, com
+                    <code>pg_dump</code> antes de toda migração e trava de horário
+                    para não reiniciar a aplicação durante a aula.
+                  </li>
+                  <li>
+                    <strong>Deploy por GitHub Actions com OIDC e SSM</strong>, sem
+                    chave da AWS guardada e com a porta 22 fechada. Quando uma
+                    migração derrubou a produção, o sistema voltou em 12 minutos,
+                    com o defeito reproduzido antes do conserto.
+                  </li>
+                </ul>
                 <div class="showcase-tech">
                   <span class="tech-pill">Spring Boot 3.4</span>
                   <span class="tech-pill">Java 21</span>
@@ -1602,20 +1666,17 @@
                   <span class="tech-pill">PostgreSQL + Flyway</span>
                   <span class="tech-pill">Docker</span>
                   <span class="tech-pill">AWS EC2</span>
-                  <span class="tech-pill">GitHub Actions (OIDC/SSM)</span>
+                  <span class="tech-pill">GitHub Actions</span>
                   <span class="tech-pill">Nginx</span>
                 </div>
-                <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
-                    <i class="fas fa-lock"></i> Repositório privado
-                  </span>
-                  <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;"><i class="fas fa-user-shield"></i> Sem link público: é uma área de alunos menores de idade</span>
+                <div class="showcase-links">
+                  <span class="showcase-nota"><i class="fas fa-user-shield"></i> Repositório privado e sem link público: é uma área de alunos menores de idade</span>
                 </div>
               </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
-                <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
+              <div class="showcase-media">
+                <div class="media-frame">
                   <a href="imagens/aulas-editor.png" data-lightbox="aulas" data-title="Editor com prévia ao vivo e o painel-modelo da aula">
-                    <img src="imagens/aulas-editor.png" alt="Sistema de Aulas: editor de código com prévia ao vivo e o painel-modelo da aula" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                    <img src="imagens/aulas-editor.png" alt="Sistema de Aulas: editor de código com prévia ao vivo e o painel-modelo da aula">
                   </a>
                 </div>
               </div>
@@ -1637,218 +1698,57 @@
               <a href="imagens/aulas-atividades.png" data-lightbox="aulas" data-title="Atividades por bloco do curso" hidden></a>
               <a href="imagens/aulas-perfil.png" data-lightbox="aulas" data-title="Perfil e notas do aluno" hidden></a>
             </div>
-          </div>
+          </article>
 
-          <div class="showcase-project" data-category="pesquisa">
+          <!-- Razor -->
+          <article class="showcase-project">
             <div class="showcase-main">
               <div class="showcase-text">
-                <span class="showcase-category">Pesquisa & Engenharia · Contribuição</span>
-                <h3 class="showcase-title">WireArc3D: Trajetórias para Manufatura Aditiva (WAAM)</h3>
+                <span class="showcase-category">SaaS multi-tenant · IA</span>
+                <h3 class="showcase-title">Razor: o sistema operacional da barbearia</h3>
                 <p class="showcase-desc">
-                  Aplicação desktop para <strong>geração de trajetórias otimizadas</strong> em manufatura aditiva por deposição a arco. O sistema lê um modelo <strong>STL</strong>, fatia a peça em camadas, agrupa os pontos, resolve um problema de <strong>caixeiro-viajante (TSP)</strong> para ordenar o percurso e exporta o <strong>G-code</strong> de fabricação, com visualização 3D interativa e <strong>aceleração por GPU</strong>. É um projeto <strong>de terceiros</strong>, para o qual passo a <strong>contribuir como desenvolvedor</strong>. A primeira frente é a interface desktop.
+                  Evolução do BarberBot: de um bot de WhatsApp para um SaaS em
+                  que cada barbearia tem uma IA que atende, agenda e cobra pelo
+                  WhatsApp, e um painel web com agenda, caixa, comissões,
+                  estoque e clube de assinatura.
                 </p>
+                <ul class="showcase-pontos">
+                  <li>
+                    <strong>Refatoração de legado:</strong> uma classe central de
+                    ~1.000 linhas virou serviços coesos, os <code>catch</code>
+                    vazios saíram e o estado das conversas deixou 12 mapas em
+                    memória por uma porta <code>StateStore</code> com Redis.
+                  </li>
+                  <li>
+                    <strong>Isolamento de tenant fail-closed:</strong> uma
+                    auditoria de segurança fechou três falhas críticas antes do
+                    piloto, entre elas um webhook forjável e o QR code de
+                    pareamento exposto sem login.
+                  </li>
+                  <li>
+                    <strong>486 testes</strong>, com integração em PostgreSQL e
+                    Redis reais via Testcontainers no CI, e 34 migrações Flyway.
+                  </li>
+                </ul>
                 <div class="showcase-tech">
-                  <span class="tech-pill">Python 3.12</span>
-                  <span class="tech-pill">PyQt5</span>
-                  <span class="tech-pill">PyVista</span>
-                  <span class="tech-pill">CUDA / CuPy</span>
-                  <span class="tech-pill">FastAPI</span>
-                  <span class="tech-pill">TSP (LKH)</span>
-                </div>
-                <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
-                    <i class="fas fa-lock"></i> Repositório privado de terceiros
-                  </span>
-                  <span style="color: rgba(255, 255, 255, 0.6); font-size: 0.95rem;"><i class="fas fa-code-branch"></i> Atuação como colaborador</span>
-                </div>
-              </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; background: transparent;">
-                <div class="hero-soon-placeholder">
-                  <i class="fas fa-cubes"></i>
-                  <span>Prints em breve</span>
-                  <small>Viewport 3D, fatiamento e trajetórias</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="showcase-project" data-category="frontend">
-            <div class="showcase-main">
-              <div class="showcase-text">
-                <span class="showcase-category">Frontend & UI/UX</span>
-                <h3 class="showcase-title">Sistema de Gestão Clínica (Solo)</h3>
-                <p class="showcase-desc">
-                  SPA desenvolvida com Angular 18+ e PrimeNG. Destaca-se pelo
-                  uso de Typed Forms, arquitetura modular e consumo de APIs REST
-                  com RxJS. É a vitrine de capricho visual e domínio de
-                  frameworks modernos de frontend voltados para aplicações
-                  corporativas.
-                </p>
-                <div class="showcase-tech">
-                  <span class="tech-pill">Angular 18+</span>
-                  <span class="tech-pill">TypeScript</span>
-                  <span class="tech-pill">PrimeNG</span>
-                  <span class="tech-pill">RxJS</span>
-                </div>
-                <div style="margin-top: 1rem">
-                  <a
-                    href="https://github.com/rogelio-fraga-dev/angular-clinica-solo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem"
-                  >
-                    <i class="fab fa-github"></i> Repositório
-                  </a>
-                </div>
-              </div>
-              <div class="showcase-video">
-                <div class="video-wrapper">
-                  <iframe
-                    src="https://www.youtube.com/embed/_Rh7Q1d6en0"
-                    title="Apresentação Gestão Clínica"
-                    allowfullscreen
-                  ></iframe>
-                  <div class="play-trigger">
-                    <i class="fas fa-play"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="showcase-gallery">
-              <a href="imagens/projeto1-img1.jpg" data-lightbox="proj1"
-                ><img
-                  src="imagens/projeto1-img1.jpg"
-                  alt="Sistema de Gestão Clínica em Angular: tela de agendamento de consultas"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto1-img2.jpg" data-lightbox="proj1"
-                ><img
-                  src="imagens/projeto1-img2.jpg"
-                  alt="Sistema de Gestão Clínica em Angular: cadastro de pacientes"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto1-img3.jpg" data-lightbox="proj1"
-                ><img
-                  src="imagens/projeto1-img3.jpg"
-                  alt="Sistema de Gestão Clínica em Angular: prontuário eletrônico"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto1-img4.jpg" data-lightbox="proj1"
-                ><img
-                  src="imagens/projeto1-img4.jpg"
-                  alt="Sistema de Gestão Clínica em Angular: painel administrativo com PrimeNG"
-                  loading="lazy"
-              /></a>
-            </div>
-          </div>
-
-          <div class="showcase-project" data-category="backend">
-            <div class="showcase-main reverse">
-              <div class="showcase-text">
-                <span class="showcase-category">Backend & Arquitetura</span>
-                <h3 class="showcase-title">Core API Clínica Médica (Microserviços)</h3>
-                <p class="showcase-desc">
-                  Engine robusta construída com Java 17, Spring Boot 3 e arquitetura de microserviços escaláveis. Implementa Spring Security com JWT para proteção de dados sensíveis e padrões de projeto consolidados que garantem alta disponibilidade, resiliência e manutenção simplificada no ecossistema corporativo.
-                </p>
-                <div class="showcase-tech">
-                  <span class="tech-pill">Java 17</span>
-                  <span class="tech-pill">Spring Boot 3</span>
-                  <span class="tech-pill">Spring Security</span>
-                  <span class="tech-pill">Microserviços</span>
-                  <span class="tech-pill">MySQL</span>
-                </div>
-                <div style="margin-top: 1rem">
-                  <a
-                    href="https://github.com/rogelio-fraga-dev/clinica-medica-back-end1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn-github-new"
-                    style="padding: 1rem 2rem; font-size: 1rem"
-                  >
-                    <i class="fab fa-github"></i> Repositório
-                  </a>
-                </div>
-              </div>
-              <div class="showcase-video">
-                <div class="video-wrapper">
-                  <iframe
-                    src="https://www.youtube.com/embed/Nm-8f4JVR8I"
-                    title="Apresentação API Backend"
-                    allowfullscreen
-                  ></iframe>
-                  <div class="play-trigger">
-                    <i class="fas fa-play"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="showcase-gallery">
-              <a href="imagens/projeto2-img1.jpg" data-lightbox="proj2"
-                ><img
-                  src="imagens/projeto2-img1.jpg"
-                  alt="Core API da Clínica Médica em Spring Boot: documentação dos endpoints REST"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto2-img2.jpg" data-lightbox="proj2"
-                ><img
-                  src="imagens/projeto2-img2.jpg"
-                  alt="Core API da Clínica Médica: autenticação JWT com Spring Security"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto2-img3.jpg" data-lightbox="proj2"
-                ><img
-                  src="imagens/projeto2-img3.jpg"
-                  alt="Core API da Clínica Médica: arquitetura de microserviços com Spring Cloud"
-                  loading="lazy"
-              /></a>
-              <a href="imagens/projeto2-img4.jpg" data-lightbox="proj2"
-                ><img
-                  src="imagens/projeto2-img4.jpg"
-                  alt="Core API da Clínica Médica: modelagem do banco de dados"
-                  loading="lazy"
-              /></a>
-            </div>
-          </div>
-
-          <div class="showcase-project" data-category="ia">
-            <div class="showcase-main">
-              <div class="showcase-text">
-                <span class="showcase-category">Automação & IA · SaaS Multi-tenant</span>
-                <h3 class="showcase-title">
-                  Razor: O Sistema Operacional da Barbearia
-                </h3>
-                <p class="showcase-desc">
-                  <strong>Evolução do BarberBot AI</strong>, reposicionado de bot para produto. SaaS B2B2C <strong>multi-tenant</strong> onde uma IA conversacional atende, agenda e cobra pelo WhatsApp, enquanto o dono administra tudo por um painel web. Arquitetura de schema compartilhado com isolamento por <code>barbershop_id</code> e resolução de tenant <em>fail-closed</em>: instância desconhecida tem a mensagem descartada, nunca cai em um tenant padrão. Inclui agenda multiprofissional, financeiro com DRE, comissões, estoque, clube de assinatura, fila de espera, cartão fidelidade, PIX e transferência para humano. Cobre ainda um <strong>site white-label</strong> com três templates para a barbearia. <strong>235 testes</strong>, com integração rodando em PostgreSQL real via Testcontainers.
-                </p>
-                <div class="showcase-tech">
-                  <span class="tech-pill">Spring Boot 3</span>
                   <span class="tech-pill">Java</span>
+                  <span class="tech-pill">Spring Boot 3</span>
                   <span class="tech-pill">React 18 + Vite</span>
-                  <span class="tech-pill">OpenAI (GPT-4o)</span>
-                  <span class="tech-pill">Whisper API</span>
                   <span class="tech-pill">PostgreSQL + Flyway</span>
-                  <span class="tech-pill">Multi-tenant</span>
-                  <span class="tech-pill">Evolution API</span>
+                  <span class="tech-pill">Redis</span>
+                  <span class="tech-pill">OpenAI (GPT-4o / Whisper)</span>
                   <span class="tech-pill">Testcontainers</span>
                 </div>
-                <div style="margin-top: 1rem">
-                  <span class="btn-github-new" style="padding: 1rem 2rem; font-size: 1rem; opacity: 0.65; cursor: not-allowed;">
-                    <i class="fas fa-lock"></i> Repositório privado (produto proprietário)
-                  </span>
+                <div class="showcase-links">
+                  <span class="showcase-nota"><i class="fas fa-lock"></i> Repositório privado (produto proprietário)</span>
+                  <span class="showcase-nota"><i class="fas fa-clock"></i> Vídeo em breve</span>
                 </div>
               </div>
-              <div class="showcase-video" style="flex: 0.5; display: flex; flex-direction: column; gap: 1rem; align-items: center; border: none; box-shadow: none; overflow: visible; background: transparent;">
-                <div class="video-mockup-wrapper" style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid rgba(156, 106, 214, 0.4); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); position: relative; cursor: pointer;">
+              <div class="showcase-media">
+                <div class="media-frame">
                   <a href="imagens/razor-landing.png" data-lightbox="razor" data-title="Landing page do produto">
-                    <img src="imagens/razor-landing.png" alt="Razor: landing page com a conversa da IA no WhatsApp" style="width: 100%; height: auto; display: block; object-fit: cover;">
+                    <img src="imagens/razor-landing.png" alt="Razor: landing page com a conversa da IA no WhatsApp">
                   </a>
-                </div>
-                <div class="video-soon-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(156, 106, 214, 0.1); border: 1px solid rgba(156, 106, 214, 0.3); color: var(--accent-color); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(156, 106, 214, 0.3);">
-                  <i class="fas fa-clock"></i>
-                  Vídeo em breve
                 </div>
               </div>
             </div>
@@ -1869,92 +1769,225 @@
               <a href="imagens/razor-onboarding.png" data-lightbox="razor" data-title="Onboarding guiado em 8 passos" hidden></a>
               <a href="imagens/razor-problema.png" data-lightbox="razor" data-title="O problema e como funciona" hidden></a>
             </div>
-          </div>
+          </article>
 
-          <div class="showcase-project" data-category="frontend">
+          <!-- ObraCerta -->
+          <article class="showcase-project">
             <div class="showcase-main reverse">
               <div class="showcase-text">
-                <span class="showcase-category"
-                  >Landing Page & Performance</span
-                >
-                <h3 class="showcase-title">Clínica de Psicologia</h3>
+                <span class="showcase-category">Marketplace · Monorepo</span>
+                <h3 class="showcase-title">ObraCerta: marketplace da construção civil</h3>
                 <p class="showcase-desc">
-                  Landing page de altíssima performance desenvolvida em Vanilla
-                  HTML/CSS/JS. Focada em conversão de pacientes, acessibilidade
-                  e SEO. Implementa roteamento leve, design responsivo fluido,
-                  integração segura de formulário e hospedagem de borda (Edge
-                  Network) via Vercel com carregamento sub-segundo.
+                  Conecta profissionais da construção a quem contrata, com agenda,
+                  avaliação dupla-cega, lances sigilosos em obras e assinatura por
+                  plano. MVP navegável de ponta a ponta e instalável como PWA.
                 </p>
+                <ul class="showcase-pontos">
+                  <li>
+                    <strong>Monólito modular hexagonal/DDD</strong> em NestJS, com
+                    23 módulos de domínio e contratos Zod compartilhados: mudar um
+                    contrato quebra front e back em tempo de compilação.
+                  </li>
+                  <li>
+                    <strong>Busca geográfica e textual</strong> com PostGIS,
+                    <code>pg_trgm</code> e <code>unaccent</code>, filas BullMQ,
+                    webhooks de pagamento idempotentes e dinheiro em centavos.
+                  </li>
+                  <li>
+                    <strong>Observabilidade e qualidade:</strong> métricas
+                    Prometheus, logs com correlation id, mais de 240 testes com
+                    integração em Postgres real, E2E com Playwright e
+                    acessibilidade WCAG AA.
+                  </li>
+                </ul>
                 <div class="showcase-tech">
-                  <span class="tech-pill">HTML5</span>
-                  <span class="tech-pill">CSS3</span>
-                  <span class="tech-pill">JavaScript</span>
-                  <span class="tech-pill">Vercel</span>
+                  <span class="tech-pill">Turborepo</span>
+                  <span class="tech-pill">Next.js 15</span>
+                  <span class="tech-pill">NestJS</span>
+                  <span class="tech-pill">PostgreSQL + PostGIS</span>
+                  <span class="tech-pill">Redis / BullMQ</span>
+                  <span class="tech-pill">Drizzle</span>
+                  <span class="tech-pill">Zod</span>
                 </div>
-                <div
-                  style="
-                    margin-top: 1rem;
-                    display: flex;
-                    gap: 1rem;
-                    flex-wrap: wrap;
-                  "
-                >
+                <div class="showcase-links">
                   <a
-                    href="https://psialvesvanessa.com.br"
+                    href="https://github.com/rogelio-fraga-dev/obracerta"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn-github-new"
-                    style="
-                      padding: 1rem 2rem;
-                      font-size: 1rem;
-                      background: var(--accent-color);
-                      color: white;
-                    "
                   >
-                    <i class="fas fa-external-link-alt"></i> Ver ao Vivo
+                    <i class="fab fa-github"></i> Repositório
                   </a>
                 </div>
               </div>
-              <div class="showcase-video">
-                <div class="video-wrapper">
-                  <iframe
-                    src="https://www.youtube.com/embed/hdUYjLQvbVU"
-                    title="Apresentação Clínica de Psicologia"
-                    allowfullscreen
-                  ></iframe>
-                  <div class="play-trigger">
-                    <i class="fas fa-play"></i>
-                  </div>
+              <div class="showcase-media">
+                <div class="media-frame">
+                  <a href="imagens/obracerta-landing.png" data-lightbox="obracerta" data-title="Landing page">
+                    <img src="imagens/obracerta-landing.png" alt="ObraCerta: landing page com profissionais avaliados">
+                  </a>
                 </div>
               </div>
             </div>
 
             <div class="showcase-gallery">
-              <a href="imagens/projeto4-img1.jpg" data-lightbox="proj4"
-                ><img
-                  src="imagens/projeto4-img1.jpg"
-                  alt="Landing page da Clínica de Psicologia: seção principal"
-                  loading="lazy"
+              <a href="imagens/obracerta-contratante.png" data-lightbox="obracerta" data-title="Painel do contratante"
+                ><img src="imagens/obracerta-contratante.png" alt="ObraCerta: painel do contratante com pedidos e compromissos" loading="lazy"
               /></a>
-              <a href="imagens/projeto4-img2.jpg" data-lightbox="proj4"
-                ><img
-                  src="imagens/projeto4-img2.jpg"
-                  alt="Landing page da Clínica de Psicologia: apresentação dos serviços"
-                  loading="lazy"
+              <a href="imagens/obracerta-obras.png" data-lightbox="obracerta" data-title="Obras publicadas e lances"
+                ><img src="imagens/obracerta-obras.png" alt="ObraCerta: obras publicadas e status dos lances" loading="lazy"
               /></a>
-              <a href="imagens/projeto4-img3.jpg" data-lightbox="proj4"
-                ><img
-                  src="imagens/projeto4-img3.jpg"
-                  alt="Landing page da Clínica de Psicologia: layout responsivo no celular"
-                  loading="lazy"
+              <a href="imagens/obracerta-admin.png" data-lightbox="obracerta" data-title="Painel administrativo"
+                ><img src="imagens/obracerta-admin.png" alt="ObraCerta: painel administrativo com métricas do produto" loading="lazy"
               /></a>
-              <a href="imagens/projeto4-img4.jpg" data-lightbox="proj4"
-                ><img
-                  src="imagens/projeto4-img4.jpg"
-                  alt="Landing page da Clínica de Psicologia: formulário de contato"
-                  loading="lazy"
+              <a href="imagens/obracerta-dores.png" data-lightbox="obracerta" data-title="As dores que o produto resolve"
+                ><img src="imagens/obracerta-dores.png" alt="ObraCerta: seção com as dores de quem contrata" loading="lazy"
               /></a>
             </div>
+          </article>
+
+          <!-- DevFlow Solutions -->
+          <article class="showcase-project">
+            <div class="showcase-main">
+              <div class="showcase-text">
+                <span class="showcase-category">B2B · Multi-tenant</span>
+                <h3 class="showcase-title">DevFlow: gestão financeira de projetos de TI</h3>
+                <p class="showcase-desc">
+                  Plataforma para acompanhar a viabilidade financeira de
+                  contratos de TI: timesheets, custos de nuvem e de APIs, DRE em
+                  tempo real e relatórios em PDF.
+                </p>
+                <ul class="showcase-pontos">
+                  <li>
+                    <strong>Budget Guard:</strong> o projeto passa sozinho para
+                    alerta em 80% do orçamento e para estourado em 100%.
+                  </li>
+                  <li>
+                    <strong>Multi-tenant com RBAC:</strong> cada empresa enxerga
+                    só os próprios dados, com perfis de gestor e desenvolvedor
+                    sobre JWT.
+                  </li>
+                  <li>
+                    <strong>Ambiente reproduzível:</strong> Docker Compose com
+                    carga de dados que cobre os cenários de alerta e de estouro.
+                  </li>
+                </ul>
+                <div class="showcase-tech">
+                  <span class="tech-pill">Angular 21</span>
+                  <span class="tech-pill">Spring Boot 4</span>
+                  <span class="tech-pill">Java 21</span>
+                  <span class="tech-pill">PostgreSQL 16</span>
+                  <span class="tech-pill">Docker</span>
+                  <span class="tech-pill">JWT / RBAC</span>
+                  <span class="tech-pill">Swagger</span>
+                </div>
+                <div class="showcase-links">
+                  <a
+                    href="https://github.com/rogelio-fraga-dev/devflow-solutions"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-github-new"
+                  >
+                    <i class="fab fa-github"></i> Repositório
+                  </a>
+                </div>
+              </div>
+              <div class="showcase-media">
+                <div class="media-frame">
+                  <a href="imagens/devflow-dashboard.png" data-lightbox="devflow" data-title="Dashboard executivo">
+                    <img src="imagens/devflow-dashboard.png" alt="DevFlow: dashboard executivo">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-gallery">
+              <a href="imagens/devflow-projetos.png" data-lightbox="devflow" data-title="Lista de projetos"
+                ><img src="imagens/devflow-projetos.png" alt="DevFlow: lista de projetos" loading="lazy"
+              /></a>
+              <a href="imagens/devflow-timesheet.png" data-lightbox="devflow" data-title="Timesheet"
+                ><img src="imagens/devflow-timesheet.png" alt="DevFlow: timesheet" loading="lazy"
+              /></a>
+              <a href="imagens/devflow-detalhe.png" data-lightbox="devflow" data-title="Detalhe do projeto"
+                ><img src="imagens/devflow-detalhe.png" alt="DevFlow: detalhe do projeto" loading="lazy"
+              /></a>
+              <a href="imagens/devflow-custos.png" data-lightbox="devflow" data-title="Custos de nuvem"
+                ><img src="imagens/devflow-custos.png" alt="DevFlow: custos de nuvem" loading="lazy"
+              /></a>
+            </div>
+          </article>
+        </div>
+
+        <div class="container outros-projetos">
+          <h3 class="outros-titulo">Outros projetos</h3>
+          <div class="outros-grid">
+            <article class="outro-card">
+              <span class="outro-tag">Colaboração · Pesquisa</span>
+              <h4>WireArc3D</h4>
+              <p>
+                App desktop que fatia modelos STL, ordena a trajetória
+                resolvendo um problema de caixeiro-viajante (TSP) e gera o
+                G-code para WAAM, com visualização 3D e aceleração por GPU.
+              </p>
+              <div class="outro-stack">Python · PyQt5 · PyVista · CUDA</div>
+              <div class="outro-links">
+                <span class="showcase-nota"><i class="fas fa-lock"></i> Repositório de terceiros</span>
+              </div>
+            </article>
+
+            <article class="outro-card">
+              <span class="outro-tag">Frontend</span>
+              <h4>Gestão Clínica em Angular</h4>
+              <p>
+                SPA em Angular 18 e PrimeNG com Typed Forms e RxJS: agenda,
+                cadastro de pacientes e prontuário.
+              </p>
+              <div class="outro-stack">Angular · TypeScript · PrimeNG · RxJS</div>
+              <div class="outro-links">
+                <a href="https://github.com/rogelio-fraga-dev/angular-clinica-solo" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repositório</a>
+                <a href="https://www.youtube.com/watch?v=_Rh7Q1d6en0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
+                <a href="imagens/projeto1-img1.jpg" data-lightbox="proj1" data-title="Agendamento de consultas"><i class="fas fa-images"></i> Telas</a>
+                <a href="imagens/projeto1-img2.jpg" data-lightbox="proj1" data-title="Cadastro de pacientes" hidden></a>
+                <a href="imagens/projeto1-img3.jpg" data-lightbox="proj1" data-title="Prontuário eletrônico" hidden></a>
+                <a href="imagens/projeto1-img4.jpg" data-lightbox="proj1" data-title="Painel administrativo" hidden></a>
+              </div>
+            </article>
+
+            <article class="outro-card">
+              <span class="outro-tag">Backend</span>
+              <h4>Core API da Clínica</h4>
+              <p>
+                API REST em Java 17 e Spring Boot 3, com Spring Security e JWT
+                protegendo os dados dos pacientes, e persistência em MySQL.
+              </p>
+              <div class="outro-stack">Java 17 · Spring Boot 3 · Spring Security · MySQL</div>
+              <div class="outro-links">
+                <a href="https://github.com/rogelio-fraga-dev/clinica-medica-back-end1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repositório</a>
+                <a href="https://www.youtube.com/watch?v=Nm-8f4JVR8I" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
+                <a href="imagens/projeto2-img1.jpg" data-lightbox="proj2" data-title="Documentação dos endpoints"><i class="fas fa-images"></i> Telas</a>
+                <a href="imagens/projeto2-img2.jpg" data-lightbox="proj2" data-title="Autenticação JWT" hidden></a>
+                <a href="imagens/projeto2-img3.jpg" data-lightbox="proj2" data-title="Arquitetura" hidden></a>
+                <a href="imagens/projeto2-img4.jpg" data-lightbox="proj2" data-title="Modelagem do banco" hidden></a>
+              </div>
+            </article>
+
+            <article class="outro-card">
+              <span class="outro-tag">Cliente real · No ar</span>
+              <h4>Clínica de Psicologia</h4>
+              <p>
+                Site de uma clínica em atividade, em HTML, CSS e JavaScript
+                puros na Vercel, com foco em SEO e em converter visita em
+                agendamento.
+              </p>
+              <div class="outro-stack">HTML · CSS · JavaScript · Vercel</div>
+              <div class="outro-links">
+                <a href="https://psialvesvanessa.com.br" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a>
+                <a href="https://www.youtube.com/watch?v=hdUYjLQvbVU" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
+                <a href="imagens/projeto4-img1.jpg" data-lightbox="proj4" data-title="Seção principal"><i class="fas fa-images"></i> Telas</a>
+                <a href="imagens/projeto4-img2.jpg" data-lightbox="proj4" data-title="Serviços" hidden></a>
+                <a href="imagens/projeto4-img3.jpg" data-lightbox="proj4" data-title="Layout no celular" hidden></a>
+                <a href="imagens/projeto4-img4.jpg" data-lightbox="proj4" data-title="Formulário de contato" hidden></a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1964,61 +1997,59 @@
         class="page-section"
         aria-labelledby="contato-heading"
       >
-        <h2 id="contato-heading" class="page-section-heading text-center">
-          Vamos Conversar?
-        </h2>
-        <p class="contact-intro text-center">
-          Estou sempre aberto a <strong>novas oportunidades</strong>,
-          <strong>projetos desafiadores</strong> e <strong>colaborações</strong>
-          que agreguem valor. Vamos construir algo incrível juntos!
-        </p>
+        <div class="container">
+          <h2 id="contato-heading" class="page-section-heading text-center">
+            Vamos conversar?
+          </h2>
+          <p class="contact-intro text-center">
+            Estou aberto a vagas de <strong>desenvolvedor full stack</strong> e a
+            <strong>projetos sob medida</strong>. O caminho mais rápido é o
+            WhatsApp.
+          </p>
 
-        <div class="contact-wrapper-new">
-          <div class="contact-info-new">
-            <h3 class="contact-info-title-new">Informações de Contato</h3>
-
-            <div class="contact-info-grid">
-              <div class="contact-info-item">
-                <div class="contact-icon-wrapper">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div class="contact-info-content">
-                  <h4>Email</h4>
-                  <a href="mailto:rogelio.claro@gmail.com"
-                    >rogelio.claro@gmail.com</a
-                  >
-                </div>
-              </div>
-
-              <div class="contact-info-item">
-                <div class="contact-icon-wrapper">
-                  <i class="fab fa-whatsapp"></i>
-                </div>
-                <div class="contact-info-content">
-                  <h4>WhatsApp</h4>
-                  <a
-                    href="https://wa.me/5534984442479?text=Ol%C3%A1%2C%20Rog%C3%A9lio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >+55 (34) 98444-2479</a
-                  >
-                </div>
-              </div>
-
-              <div class="contact-info-item">
-                <div class="contact-icon-wrapper">
-                  <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div class="contact-info-content">
-                  <h4>Localização</h4>
-                  <p>Araguari, MG - Brasil</p>
-                </div>
-              </div>
+          <div class="contato-card">
+            <div class="contato-acoes">
+              <a
+                class="contato-btn primario"
+                href="https://wa.me/5534984442479?text=Ol%C3%A1%2C%20Rog%C3%A9lio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-whatsapp"></i>
+                <span class="contato-btn-texto">
+                  <strong>WhatsApp</strong>
+                  <small>+55 (34) 98444-2479</small>
+                </span>
+              </a>
+              <a class="contato-btn" href="mailto:rogelio.claro@gmail.com">
+                <i class="fas fa-envelope"></i>
+                <span class="contato-btn-texto">
+                  <strong>E-mail</strong>
+                  <small>rogelio.claro@gmail.com</small>
+                </span>
+              </a>
+              <a
+                class="contato-btn"
+                href="https://www.linkedin.com/in/rogelio-fraga-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-linkedin-in"></i>
+                <span class="contato-btn-texto">
+                  <strong>LinkedIn</strong>
+                  <small>/in/rogelio-fraga-dev</small>
+                </span>
+              </a>
             </div>
 
-            <div class="contact-socials-new">
-              <h4 class="socials-title">Redes Sociais</h4>
-              <div class="social-icons-new">
+            <div class="contato-rodape">
+              <span class="contato-local">
+                <i class="fas fa-map-marker-alt"></i> Araguari, MG · Brasil
+              </span>
+              <div class="contato-extras">
+                <a href="curriculo.pdf" class="contato-cv" download>
+                  <i class="fas fa-file-arrow-down"></i> Currículo em PDF
+                </a>
                 <a
                   class="social-icon-new"
                   href="https://github.com/rogelio-fraga-dev"
@@ -2037,156 +2068,7 @@
                 >
                   <i class="fab fa-instagram"></i>
                 </a>
-                <a
-                  class="social-icon-new"
-                  href="https://wa.me/5534984442479?text=Ol%C3%A1%2C%20Rog%C3%A9lio!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="WhatsApp"
-                >
-                  <i class="fab fa-whatsapp"></i>
-                </a>
-                <a
-                  class="social-icon-new"
-                  href="https://www.linkedin.com/in/rogelio-fraga-dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
               </div>
-            </div>
-          </div>
-
-          <div class="contact-form-wrapper-new">
-            <form id="contactForm" class="contact-form-new" novalidate>
-              <div class="form-group-new">
-                <label for="name"
-                  >Nome Completo <span class="required-asterisk">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-input-new"
-                  id="name"
-                  name="name"
-                  placeholder="Seu nome completo"
-                  required
-                  aria-required="true"
-                  aria-describedby="name-error"
-                  autocomplete="name"
-                />
-                <span
-                  id="name-error"
-                  class="error-message"
-                  role="alert"
-                  aria-live="polite"
-                ></span>
-              </div>
-              <div class="form-group-new">
-                <label for="email"
-                  >Endereço de Email
-                  <span class="required-asterisk">*</span></label
-                >
-                <input
-                  type="email"
-                  class="form-input-new"
-                  id="email"
-                  name="email"
-                  placeholder="seu.email@exemplo.com"
-                  required
-                  aria-required="true"
-                  aria-describedby="email-error"
-                  autocomplete="email"
-                />
-                <span
-                  id="email-error"
-                  class="error-message"
-                  role="alert"
-                  aria-live="polite"
-                ></span>
-              </div>
-              <div class="form-group-new">
-                <label for="phone"
-                  >Número de Telefone
-                  <span class="required-asterisk">*</span></label
-                >
-                <input
-                  type="tel"
-                  class="form-input-new"
-                  id="phone"
-                  name="phone"
-                  placeholder="(00) 00000-0000"
-                  required
-                  aria-required="true"
-                  aria-describedby="phone-error"
-                  autocomplete="tel"
-                />
-                <span
-                  id="phone-error"
-                  class="error-message"
-                  role="alert"
-                  aria-live="polite"
-                ></span>
-              </div>
-              <div class="form-group-new">
-                <label for="message"
-                  >Sua Mensagem <span class="required-asterisk">*</span></label
-                >
-                <textarea
-                  class="form-textarea-new"
-                  id="message"
-                  name="message"
-                  placeholder="Conte-me sobre seu projeto ou oportunidade..."
-                  rows="6"
-                  required
-                  aria-required="true"
-                  aria-describedby="message-error"
-                ></textarea>
-                <span
-                  id="message-error"
-                  class="error-message"
-                  role="alert"
-                  aria-live="polite"
-                ></span>
-              </div>
-              <button
-                type="submit"
-                class="btn-submit-new"
-                id="submitBtn"
-                aria-label="Enviar mensagem do formulário de contato"
-              >
-                <i class="fas fa-paper-plane"></i>
-                <span class="btn-text">Enviar Mensagem</span>
-                <span class="btn-loading" style="display: none">
-                  <i class="fas fa-spinner fa-spin"></i> Enviando...
-                </span>
-              </button>
-            </form>
-            <div
-              id="successMessage"
-              class="success-message-new"
-              role="alert"
-              aria-live="polite"
-              style="display: none"
-            >
-              <i class="fas fa-check-circle"></i>
-              <h3>Mensagem Enviada!</h3>
-              <p>Obrigado pelo contato. Responderei assim que possível.</p>
-            </div>
-            <div
-              id="errorMessage"
-              class="error-message-new"
-              role="alert"
-              aria-live="polite"
-              style="display: none"
-            >
-              <i class="fas fa-exclamation-circle"></i>
-              <h3>Erro ao Enviar</h3>
-              <p>
-                Ocorreu um erro ao enviar sua mensagem. Por favor, tente
-                novamente ou entre em contato diretamente pelo email.
-              </p>
             </div>
           </div>
         </div>
@@ -2202,10 +2084,9 @@
           </p>
         </div>
         <div class="footer-section">
-          <h4 class="text-uppercase mb-4">Sobre este Portfólio</h4>
+          <h4 class="text-uppercase mb-4">Sobre este site</h4>
           <p class="lead mb-0">
-            Um portfólio dinâmico construído para demonstrar minhas habilidades
-            em arquiteturas front-end e integrações robustas de back-end.
+            HTML, CSS e JavaScript puros, sem framework, publicado na Vercel.
           </p>
         </div>
         <div class="footer-section">
@@ -2272,9 +2153,9 @@
           <i class="fas fa-code"></i>
           <span class="btt-label">Habilidades</span>
         </a>
-        <a href="#formacao" class="btt-link" aria-label="Ir para Formação">
-          <i class="fas fa-graduation-cap"></i>
-          <span class="btt-label">Formação</span>
+        <a href="#formacao" class="btt-link" aria-label="Ir para Experiência">
+          <i class="fas fa-briefcase"></i>
+          <span class="btt-label">Experiência</span>
         </a>
         <a href="#sobre" class="btt-link" aria-label="Ir para Sobre">
           <i class="fas fa-user"></i>
@@ -2291,203 +2172,12 @@
       </a>
     </div>
 
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Inicializar EmailJS
-        // ATENCAO: enquanto esta constante for o texto abaixo, o formulario de
-        // contato NAO envia nada. A chave publica do EmailJS fica em
-        // https://dashboard.emailjs.com/admin/account -> "Public Key".
-        // Ela e publica por design (fica exposta no HTML), nao e segredo.
-        const EMAILJS_PUBLIC_KEY = "SUA_PUBLIC_KEY";
-        (function () {
-          if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY === "SUA_PUBLIC_KEY") {
-            // Antes isto falhava em silencio: o visitante via "Enviando..." e a
-            // mensagem simplesmente sumia. Agora o erro fica visivel no console.
-            console.error(
-              "[contato] EmailJS sem chave publica configurada — o formulario " +
-                "de contato NAO vai enviar. Defina EMAILJS_PUBLIC_KEY."
-            );
-            return;
-          }
-          emailjs.init(EMAILJS_PUBLIC_KEY);
-        })();
-
-        // Feedback do Formulário de Contato com EmailJS
-        const contactForm = document.getElementById("contactForm");
-        const successMessage = document.getElementById("successMessage");
-        const errorMessage = document.getElementById("errorMessage");
-        const submitBtn = document.getElementById("submitBtn");
-        const btnText = submitBtn.querySelector(".btn-text");
-        const btnLoading = submitBtn.querySelector(".btn-loading");
-
-        function sanitizeInput(input) {
-          const div = document.createElement("div");
-          div.textContent = input;
-          return div.innerHTML;
-        }
-
-        function validateEmail(email) {
-          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return re.test(email);
-        }
-
-        function validatePhone(phone) {
-          const cleaned = phone.replace(/\D/g, "");
-          return cleaned.length >= 10 && cleaned.length <= 11;
-        }
-
-        function showError(fieldId, message) {
-          const field = document.getElementById(fieldId);
-          const errorSpan = document.getElementById(fieldId + "-error");
-          if (field && errorSpan) {
-            field.classList.add("error");
-            errorSpan.textContent = message;
-            errorSpan.style.display = "block";
-          }
-        }
-
-        function clearError(fieldId) {
-          const field = document.getElementById(fieldId);
-          const errorSpan = document.getElementById(fieldId + "-error");
-          if (field && errorSpan) {
-            field.classList.remove("error");
-            errorSpan.textContent = "";
-            errorSpan.style.display = "none";
-          }
-        }
-
-        if (contactForm) {
-          const nameField = document.getElementById("name");
-          const emailField = document.getElementById("email");
-          const phoneField = document.getElementById("phone");
-          const messageField = document.getElementById("message");
-
-          nameField.addEventListener("blur", function () {
-            const value = this.value.trim();
-            if (value.length < 2) {
-              showError("name", "Nome deve ter pelo menos 2 caracteres");
-            } else {
-              clearError("name");
-            }
-          });
-
-          emailField.addEventListener("blur", function () {
-            const value = this.value.trim();
-            if (!validateEmail(value)) {
-              showError("email", "Por favor, insira um email válido");
-            } else {
-              clearError("email");
-            }
-          });
-
-          phoneField.addEventListener("blur", function () {
-            const value = this.value.trim();
-            if (!validatePhone(value)) {
-              showError("phone", "Por favor, insira um telefone válido");
-            } else {
-              clearError("phone");
-            }
-          });
-
-          messageField.addEventListener("blur", function () {
-            const value = this.value.trim();
-            if (value.length < 10) {
-              showError(
-                "message",
-                "Mensagem deve ter pelo menos 10 caracteres",
-              );
-            } else {
-              clearError("message");
-            }
-          });
-
-          [nameField, emailField, phoneField, messageField].forEach((field) => {
-            field.addEventListener("input", function () {
-              clearError(this.id);
-            });
-          });
-
-          contactForm.addEventListener("submit", async function (event) {
-            event.preventDefault();
-
-            successMessage.style.display = "none";
-            errorMessage.style.display = "none";
-            ["name", "email", "phone", "message"].forEach(clearError);
-
-            const name = nameField.value.trim();
-            const email = emailField.value.trim();
-            const phone = phoneField.value.trim();
-            const message = messageField.value.trim();
-            let isValid = true;
-
-            if (name.length < 2) {
-              showError("name", "Nome deve ter pelo menos 2 caracteres");
-              isValid = false;
-            }
-            if (!validateEmail(email)) {
-              showError("email", "Por favor, insira um email válido");
-              isValid = false;
-            }
-            if (!validatePhone(phone)) {
-              showError("phone", "Por favor, insira um telefone válido");
-              isValid = false;
-            }
-            if (message.length < 10) {
-              showError(
-                "message",
-                "Mensagem deve ter pelo menos 10 caracteres",
-              );
-              isValid = false;
-            }
-
-            if (!isValid) {
-              const firstError = contactForm.querySelector(".error");
-              if (firstError) firstError.focus();
-              return;
-            }
-
-            submitBtn.disabled = true;
-            btnText.style.display = "none";
-            btnLoading.style.display = "inline-flex";
-
-            try {
-              const templateParams = {
-                from_name: sanitizeInput(name),
-                from_email: sanitizeInput(email),
-                phone: sanitizeInput(phone),
-                message: sanitizeInput(message),
-                to_email: "rogelio.claro@gmail.com",
-              };
-
-              await emailjs.send(
-                "service_fggxt5i",
-                "template_u8z2w9a",
-                templateParams,
-              );
-
-              contactForm.style.display = "none";
-              successMessage.style.display = "block";
-              contactForm.reset();
-            } catch (error) {
-              console.error("Erro ao enviar formulário:", error);
-              errorMessage.style.display = "block";
-            } finally {
-              submitBtn.disabled = false;
-              btnText.style.display = "inline";
-              btnLoading.style.display = "none";
-            }
-          });
-        }
-
         // Rolagem Suave Universal para Âncoras (jQuery)
         $('a[href^="#"]').on('click', function (e) {
           const targetId = this.getAttribute('href');
@@ -2537,37 +2227,6 @@
           });
         });
 
-        // Filtro Interativo de Projetos
-        const filterButtons = document.querySelectorAll('.filter-pill');
-        const projectCards = document.querySelectorAll('.showcase-project');
-
-        filterButtons.forEach(btn => {
-          btn.addEventListener('click', () => {
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filterValue = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-              card.style.opacity = '0';
-              card.style.transform = 'scale(0.95)';
-              
-              setTimeout(() => {
-                const category = card.getAttribute('data-category');
-                if (filterValue === 'all' || category === filterValue) {
-                  card.style.display = 'block';
-                  setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                  }, 50);
-                } else {
-                  card.style.display = 'none';
-                }
-              }, 300);
-            });
-          });
-        });
-
         // Efeito de Mouse Glow (Desktop)
         const mouseGlow = document.getElementById('mouseGlow');
         if (mouseGlow && window.innerWidth > 992) {
@@ -2589,6 +2248,7 @@
         sr.reveal(".masthead-avatar", { delay: 200 });
         sr.reveal(".masthead-heading", { delay: 300, origin: "top" });
         sr.reveal(".masthead-description", { delay: 400, origin: "bottom" });
+        sr.reveal(".masthead-stats", { delay: 500, origin: "bottom" });
         sr.reveal(".trajetoria-card", { interval: 150, origin: "bottom" });
         sr.reveal(".skill-item", { interval: 100 });
         sr.reveal(".showcase-project", {
@@ -2596,8 +2256,7 @@
           origin: "bottom",
           distance: "30px",
         });
-        sr.reveal(".contact-info-new", { origin: "left", delay: 200 });
-        sr.reveal(".contact-form-wrapper-new", { origin: "right", delay: 200 });
+        sr.reveal(".contato-card", { origin: "bottom", delay: 200 });
       });
     </script>
   </body>
