@@ -517,6 +517,25 @@ section,
   margin-top: 1.25rem;
 }
 
+/* troca de idioma: fica no menu, com contorno para nao se confundir
+   com os links de seção */
+.nav-idioma {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(156, 106, 214, 0.45);
+  border-radius: 50px;
+}
+.nav-idioma:hover,
+.nav-idioma:focus-visible {
+  background: rgba(156, 106, 214, 0.18);
+  border-color: var(--accent-color);
+}
+.nav-idioma i {
+  font-size: 0.85em;
+}
+
 /* ===== Topo: numeros que sustentam a frase de apresentacao ===== */
 .masthead-stats {
   list-style: none;
