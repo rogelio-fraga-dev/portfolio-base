@@ -201,6 +201,11 @@
     />
 
     <link rel="stylesheet" href="styles-portfolio.css" />
+    <!-- troca PT/EN: abre no mesmo trecho e esmaece entre as paginas.
+         O "expect" segura a primeira pintura (com transicao nativa) ate o
+         conteudo existir, para a rolagem ser restaurada antes de aparecer. -->
+    <link rel="expect" href="#contato" blocking="render" />
+    <script src="troca-idioma.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body id="page-top">
@@ -745,6 +750,7 @@
         <p class="portfolio-intro text-center">
           Cinco sistemas completos que eu projetei e construí, do modelo de
           dados ao deploy. Dois deles estão em produção.
+          <a href="#outros-projetos" class="portfolio-intro-link">Mais quatro projetos no fim da seção <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
         </p>
 
         <div class="container showcase-container">
@@ -1155,75 +1161,84 @@
           </article>
         </div>
 
-        <div class="container outros-projetos">
+        <div class="container outros-projetos" id="outros-projetos">
           <h3 class="outros-titulo">Outros projetos</h3>
+          <p class="outros-sub">Pesquisa, estudos de arquitetura e um site de cliente no ar. Clique na imagem para ver as telas.</p>
           <div class="outros-grid">
             <article class="outro-card">
-              <span class="outro-tag">Colaboração · Pesquisa</span>
-              <h4>WireArc IL</h4>
-              <p>
-                App desktop que fatia modelos STL, ordena a trajetória
-                resolvendo um problema de caixeiro-viajante (TSP) e gera o
-                G-code para WAAM, com visualização 3D e aceleração por GPU.
-              </p>
-              <div class="outro-stack">Python · PyQt5 · PyVista · CUDA</div>
-              <div class="outro-links">
-                <span class="showcase-nota"><i class="fas fa-lock"></i> Repositório de terceiros</span>
+              <a class="outro-capa" href="imagens/outros/wirearc-il.jpg" data-lightbox="wirearc" data-title="WireArc IL: visualização 3D da trajetória camada a camada, com a GPU ativa">
+                <img src="imagens/outros/wirearc-il.jpg" alt="WireArc IL: visualização 3D da trajetória de deposição sobre a peça, camada a camada" width="960" height="600" loading="lazy" />
+                <span class="outro-capa-acao"><i class="fas fa-expand" aria-hidden="true"></i> Ver a tela</span>
+              </a>
+              <div class="outro-corpo">
+                <span class="outro-tag">Colaboração · Pesquisa</span>
+                <h4>WireArc IL</h4>
+                <p>App desktop que fatia modelos STL, ordena a trajetória resolvendo um problema de caixeiro-viajante (TSP) e gera o G-code para WAAM, com visualização 3D e aceleração por GPU.</p>
+                <div class="outro-stack">Python · PyQt5 · PyVista · CUDA</div>
+                <div class="outro-links">
+                  <span class="showcase-nota"><i class="fas fa-lock"></i> Repositório de terceiros</span>
+                </div>
               </div>
             </article>
 
             <article class="outro-card">
-              <span class="outro-tag">Frontend</span>
-              <h4>Gestão Clínica em Angular</h4>
-              <p>
-                SPA em Angular 18 e PrimeNG com Typed Forms e RxJS: agenda,
-                cadastro de pacientes e prontuário.
-              </p>
-              <div class="outro-stack">Angular · TypeScript · PrimeNG · RxJS</div>
-              <div class="outro-links">
-                <a href="https://github.com/rogelio-fraga-dev/angular-clinica-solo" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repositório</a>
-                <a href="https://www.youtube.com/watch?v=_Rh7Q1d6en0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
-                <a href="imagens/projeto1-img1.jpg" data-lightbox="proj1" data-title="Agendamento de consultas"><i class="fas fa-images"></i> Telas</a>
-                <a href="imagens/projeto1-img2.jpg" data-lightbox="proj1" data-title="Cadastro de pacientes" hidden></a>
-                <a href="imagens/projeto1-img3.jpg" data-lightbox="proj1" data-title="Prontuário eletrônico" hidden></a>
-                <a href="imagens/projeto1-img4.jpg" data-lightbox="proj1" data-title="Painel administrativo" hidden></a>
+              <a class="outro-capa" href="imagens/projeto1-img2.jpg" data-lightbox="proj1" data-title="Dashboard com os indicadores da clínica">
+                <img src="imagens/outros/clinica-angular-capa.jpg" alt="Gestão Clínica em Angular: dashboard com os indicadores da clínica" width="960" height="600" loading="lazy" />
+                <span class="outro-capa-acao"><i class="fas fa-expand" aria-hidden="true"></i> Ver 4 telas</span>
+              </a>
+              <a href="imagens/projeto1-img4.jpg" data-lightbox="proj1" data-title="Agenda de consultas" hidden></a>
+              <a href="imagens/projeto1-img3.jpg" data-lightbox="proj1" data-title="Relatórios, com as métricas do Prometheus e do Grafana" hidden></a>
+              <a href="imagens/projeto1-img1.jpg" data-lightbox="proj1" data-title="Tela de login" hidden></a>
+              <div class="outro-corpo">
+                <span class="outro-tag">Frontend</span>
+                <h4>Gestão Clínica em Angular</h4>
+                <p>SPA em Angular 18 e PrimeNG com Typed Forms e RxJS: agenda, cadastro de pacientes e prontuário.</p>
+                <div class="outro-stack">Angular · TypeScript · PrimeNG · RxJS</div>
+                <div class="outro-links">
+                  <a href="https://github.com/rogelio-fraga-dev/angular-clinica-solo" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repositório</a>
+                  <a href="https://www.youtube.com/watch?v=_Rh7Q1d6en0" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
+                </div>
               </div>
             </article>
 
             <article class="outro-card">
-              <span class="outro-tag">Backend</span>
-              <h4>Core API da Clínica</h4>
-              <p>
-                API REST em Java 17 e Spring Boot 3, com Spring Security e JWT
-                protegendo os dados dos pacientes, e persistência em MySQL.
-              </p>
-              <div class="outro-stack">Java 17 · Spring Boot 3 · Spring Security · MySQL</div>
-              <div class="outro-links">
-                <a href="https://github.com/rogelio-fraga-dev/clinica-medica-back-end1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repositório</a>
-                <a href="https://www.youtube.com/watch?v=Nm-8f4JVR8I" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
-                <a href="imagens/projeto2-img1.jpg" data-lightbox="proj2" data-title="Documentação dos endpoints"><i class="fas fa-images"></i> Telas</a>
-                <a href="imagens/projeto2-img2.jpg" data-lightbox="proj2" data-title="Autenticação JWT" hidden></a>
-                <a href="imagens/projeto2-img3.jpg" data-lightbox="proj2" data-title="Arquitetura" hidden></a>
-                <a href="imagens/projeto2-img4.jpg" data-lightbox="proj2" data-title="Modelagem do banco" hidden></a>
+              <a class="outro-capa" href="imagens/outros/clinica-api-arquitetura.jpg" data-lightbox="proj2" data-title="Arquitetura: gateway, Eureka e um serviço por domínio">
+                <img src="imagens/outros/clinica-api-arquitetura.jpg" alt="Core API da Clínica: diagrama com o gateway, o Eureka e os serviços administrativo, agendamento e atendimento sobre MySQL" width="960" height="600" loading="lazy" />
+                <span class="outro-capa-acao"><i class="fas fa-expand" aria-hidden="true"></i> Ver arquitetura e telas</span>
+              </a>
+              <a href="imagens/projeto2-img1.jpg" data-lightbox="proj2" data-title="Os módulos do repositório" hidden></a>
+              <a href="imagens/projeto2-img2.jpg" data-lightbox="proj2" data-title="Serviços administrativo e de agendamento" hidden></a>
+              <a href="imagens/projeto2-img3.jpg" data-lightbox="proj2" data-title="Atendimento e o módulo comum" hidden></a>
+              <a href="imagens/projeto2-img4.jpg" data-lightbox="proj2" data-title="Os testes" hidden></a>
+              <div class="outro-corpo">
+                <span class="outro-tag">Backend</span>
+                <h4>Core API da Clínica</h4>
+                <p>API REST em Java 17 e Spring Boot 3, em microserviços com Spring Cloud, Spring Security e JWT protegendo os dados dos pacientes, e persistência em MySQL.</p>
+                <div class="outro-stack">Java 17 · Spring Boot 3 · Spring Cloud · MySQL</div>
+                <div class="outro-links">
+                  <a href="https://github.com/rogelio-fraga-dev/clinica-medica-back-end1" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Repositório</a>
+                  <a href="https://www.youtube.com/watch?v=Nm-8f4JVR8I" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
+                </div>
               </div>
             </article>
 
             <article class="outro-card">
-              <span class="outro-tag">Cliente real · No ar</span>
-              <h4>Clínica de Psicologia</h4>
-              <p>
-                Site de uma clínica em atividade, em HTML, CSS e JavaScript
-                puros na Vercel, com foco em SEO e em converter visita em
-                agendamento.
-              </p>
-              <div class="outro-stack">HTML · CSS · JavaScript · Vercel</div>
-              <div class="outro-links">
-                <a href="https://psialvesvanessa.com.br" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a>
-                <a href="https://www.youtube.com/watch?v=hdUYjLQvbVU" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
-                <a href="imagens/projeto4-img1.jpg" data-lightbox="proj4" data-title="Seção principal"><i class="fas fa-images"></i> Telas</a>
-                <a href="imagens/projeto4-img2.jpg" data-lightbox="proj4" data-title="Serviços" hidden></a>
-                <a href="imagens/projeto4-img3.jpg" data-lightbox="proj4" data-title="Layout no celular" hidden></a>
-                <a href="imagens/projeto4-img4.jpg" data-lightbox="proj4" data-title="Formulário de contato" hidden></a>
+              <a class="outro-capa" href="imagens/projeto4-img1.jpg" data-lightbox="proj4" data-title="Seção principal">
+                <img src="imagens/outros/psicologia-capa.jpg" alt="Clínica de Psicologia: página inicial do site" width="960" height="600" loading="lazy" />
+                <span class="outro-capa-acao"><i class="fas fa-expand" aria-hidden="true"></i> Ver 4 telas</span>
+              </a>
+              <a href="imagens/projeto4-img2.jpg" data-lightbox="proj4" data-title="Serviços" hidden></a>
+              <a href="imagens/projeto4-img3.jpg" data-lightbox="proj4" data-title="Layout no celular" hidden></a>
+              <a href="imagens/projeto4-img4.jpg" data-lightbox="proj4" data-title="Formulário de contato" hidden></a>
+              <div class="outro-corpo">
+                <span class="outro-tag">Cliente real · No ar</span>
+                <h4>Clínica de Psicologia</h4>
+                <p>Site de uma clínica em atividade, em HTML, CSS e JavaScript puros na Vercel, com foco em SEO e em converter visita em agendamento.</p>
+                <div class="outro-stack">HTML · CSS · JavaScript · Vercel</div>
+                <div class="outro-links">
+                  <a href="https://psialvesvanessa.com.br" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Ver ao vivo</a>
+                  <a href="https://www.youtube.com/watch?v=hdUYjLQvbVU" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i> Vídeo</a>
+                </div>
               </div>
             </article>
           </div>
@@ -1456,7 +1471,12 @@
           ".masthead-avatar, .masthead-heading, .masthead-description, .masthead-stats, .trajetoria-card, .skill-item, .showcase-project, .outro-card, .contato-card"
         );
 
-        if (!querMenosMovimento && "IntersectionObserver" in window) {
+        // quem chega pela troca de idioma ja estava lendo: nada de esconder
+        // o conteudo de novo para anima-lo (ver troca-idioma.js)
+        const veioDaTroca =
+          document.documentElement.classList.contains("veio-da-troca");
+
+        if (!querMenosMovimento && !veioDaTroca && "IntersectionObserver" in window) {
           document.documentElement.classList.add("anima-entrada");
           alvos.forEach((el) => el.classList.add("entra"));
 

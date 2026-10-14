@@ -670,34 +670,120 @@ section,
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* ===== Outros projetos: grade compacta ===== */
+/* ===== Outros projetos: grade com capa ===== */
+/* Antes eram so texto e botoes no fim da secao, e quase ninguem chegava a
+   clicar. Agora cada card abre com uma capa grande, que e o proprio link
+   para as telas, e o selo "Ver telas" fica sempre visivel (no celular nao
+   existe hover para revelar). */
 .outros-projetos {
   margin-top: 5rem;
+  scroll-margin-top: 6rem;
 }
 .outros-titulo {
   font-family: "Montserrat", sans-serif;
   font-size: 1.6rem;
   color: var(--text-light);
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.4rem;
 }
+.outros-sub {
+  margin: 0 0 1.75rem;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+/* quatro cards: 2 x 2 em vez de auto-fit, que quebrava em 3 + 1 e deixava o
+   ultimo sozinho na linha; de quebra, as capas ficam maiores */
 .outros-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+@media (max-width: 720px) {
+  .outros-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .outro-card {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.5rem;
   border-radius: 16px;
+  overflow: hidden;
   background: rgba(28, 20, 40, 0.7);
   border: 1px solid rgba(156, 106, 214, 0.25);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
-.outro-card:hover {
-  transform: translateY(-4px);
+.outro-card:hover,
+.outro-card:focus-within {
+  transform: translateY(-6px);
   border-color: var(--accent-color);
+  box-shadow: 0 18px 40px rgba(156, 106, 214, 0.22);
+}
+.outro-capa {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #120c1c;
+  border-bottom: 1px solid rgba(156, 106, 214, 0.25);
+}
+.outro-capa img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: left top;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+/* escurece o pe da imagem para o selo ficar legivel sobre qualquer print */
+.outro-capa::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(18, 12, 28, 0.85) 0%,
+    rgba(18, 12, 28, 0) 45%
+  );
+  transition: opacity 0.3s ease;
+}
+.outro-capa-acao {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.8rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(156, 106, 214, 0.9);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.outro-capa:hover img,
+.outro-capa:focus-visible img {
+  transform: scale(1.06);
+}
+.outro-capa:hover .outro-capa-acao,
+.outro-capa:focus-visible .outro-capa-acao {
+  transform: translateY(-2px);
+  background: var(--accent-color);
+}
+.outro-capa:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: -3px;
+}
+.outro-corpo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem 1.4rem 1.4rem;
 }
 .outro-tag {
   font-family: "Montserrat", sans-serif;
@@ -747,6 +833,40 @@ section,
 }
 .outro-links .showcase-nota {
   font-size: 0.85rem;
+}
+/* atalho na abertura da secao: avisa que ha mais projetos la embaixo */
+.portfolio-intro-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.portfolio-intro-link:hover,
+.portfolio-intro-link:focus-visible {
+  color: var(--text-light);
+  border-bottom-color: currentColor;
+}
+.portfolio-intro-link i {
+  font-size: 0.8em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .outro-card,
+  .outro-capa img,
+  .outro-capa-acao {
+    transition: none;
+  }
+  .outro-card:hover,
+  .outro-card:focus-within,
+  .outro-capa:hover img,
+  .outro-capa:focus-visible img {
+    transform: none;
+  }
 }
 
 /* ===== Contato: canais diretos, sem formulario ===== */
@@ -864,5 +984,40 @@ section,
 @media (max-width: 576px) {
   .masthead-stats {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Troca de idioma (PT <-> EN) ===== */
+/* As duas versoes sao paginas separadas. Chrome, Edge e Safari esmaecem uma
+   na outra sozinhos com a regra abaixo; nos outros navegadores o
+   troca-idioma.js faz o mesmo efeito com as classes .troca-saindo e
+   .troca-entrando. Em qualquer caso a pagina nova abre no trecho em que o
+   visitante estava. */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+  animation-timing-function: ease;
+}
+html.troca-saindo body {
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+html.troca-entrando body {
+  animation: troca-aparece 0.3s ease-out both;
+}
+@keyframes troca-aparece {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
   }
 }
