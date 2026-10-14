@@ -42,7 +42,7 @@
     />
     <meta
       property="og:image:alt"
-      content="Rogélio Claro Fraga, desenvolvedor full stack: 73 alunos em produção, 65 recursos em Terraform e mais de 1.300 testes."
+      content="Rogélio Claro Fraga, desenvolvedor full stack: 73 alunos em produção, 66 recursos em Terraform e mais de 1.500 testes."
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -340,11 +340,11 @@
                   <span>alunos usando em produção a plataforma que eu construí</span>
                 </li>
                 <li>
-                  <strong>65</strong>
+                  <strong>66</strong>
                   <span>recursos AWS versionados em Terraform na InovaLayer</span>
                 </li>
                 <li>
-                  <strong>1.300+</strong>
+                  <strong>1.500+</strong>
                   <span>testes automatizados nos meus projetos</span>
                 </li>
               </ul>
@@ -484,7 +484,7 @@
                   <p>
                     Integração com Testcontainers em PostgreSQL e Redis reais no
                     CI, e não em mocks. São mais de
-                    <strong>1.300 testes</strong> nos meus projetos.
+                    <strong>1.500 testes</strong> nos meus projetos.
                   </p>
                 </div>
                 <div class="approach-item">
@@ -534,11 +534,11 @@
               <div class="trajetoria-corpo">
                 <span class="trajetoria-periodo">Atual · Pesquisa &amp; Inovação</span>
                 <h3 class="trajetoria-titulo">
-                  Engenheiro Principal · InovaLayer / MADA
+                  Engenheiro Principal · InovaLayer
                 </h3>
                 <span class="trajetoria-org">UFU · Bolsa FAPEMIG</span>
                 <p class="trajetoria-desc">
-                  Responsável técnico pela plataforma de orçamentação para
+                  Responsável técnico pelo <strong>CostPro IL</strong>, a plataforma de orçamentação para
                   <strong>manufatura aditiva metálica (WAAM)</strong>, em
                   produção: API em Spring Boot, portal web e app desktop em
                   Angular e Electron, e infraestrutura AWS em
@@ -606,7 +606,7 @@
               </div>
               <div class="trajetoria-corpo">
                 <span class="trajetoria-periodo">Colaboração</span>
-                <h3 class="trajetoria-titulo">Desenvolvedor · WireArc3D</h3>
+                <h3 class="trajetoria-titulo">Desenvolvedor · WireArc IL</h3>
                 <span class="trajetoria-org">Software de trajetórias WAAM</span>
                 <p class="trajetoria-desc">
                   Contribuo com o software de geração de trajetórias para
@@ -659,7 +659,7 @@
               <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
               <span>AWS</span>
             </div>
-            <div class="skill-item" data-tooltip="Infraestrutura como código: 65 recursos AWS, revisados no plan antes do apply.">
+            <div class="skill-item" data-tooltip="Infraestrutura como código: 66 recursos AWS, revisados no plan antes do apply.">
               <i class="devicon-terraform-plain colored"></i>
               <span>Terraform</span>
             </div>
@@ -748,12 +748,12 @@
         </p>
 
         <div class="container showcase-container">
-          <!-- InovaLayer / MADA (NDA) -->
+          <!-- CostPro IL / InovaLayer (NDA) -->
           <article class="showcase-project">
             <div class="showcase-main">
               <div class="showcase-text">
                 <span class="showcase-category">SaaS B2B · Em produção</span>
-                <h3 class="showcase-title">InovaLayer / MADA: orçamentação para manufatura aditiva</h3>
+                <h3 class="showcase-title">CostPro IL · InovaLayer: orçamentação para manufatura aditiva</h3>
                 <p class="showcase-desc">
                   Transforma a solicitação de um cliente industrial em proposta
                   técnica e custeada para <strong>manufatura aditiva metálica
@@ -767,8 +767,8 @@
                     máximo de 0,0024%. Todo o cálculo em <code>BigDecimal</code>.
                   </li>
                   <li>
-                    <strong>Infra como código:</strong> 65 recursos AWS em
-                    Terraform (VPC, EC2, RDS, S3, CloudFront, SES), nove alarmes,
+                    <strong>Infra como código:</strong> 66 recursos AWS em
+                    Terraform (VPC, EC2, RDS, S3, CloudFront, SES), dez alarmes,
                     teto de custo e health check externo.
                   </li>
                   <li>
@@ -857,7 +857,7 @@
                     sistema sabe onde cada aluno parou.
                   </li>
                   <li>
-                    <strong>379 testes e 81 migrações Flyway</strong>, com
+                    <strong>487 testes e 95 migrações Flyway</strong>, com
                     <code>pg_dump</code> antes de toda migração e trava de horário
                     para não reiniciar a aplicação durante a aula.
                   </li>
@@ -885,11 +885,16 @@
                   <span class="showcase-nota"><i class="fas fa-user-shield"></i> Repositório privado e sem link público: é uma área de alunos menores de idade</span>
                 </div>
               </div>
-              <div class="showcase-media">
-                <div class="media-frame">
-                  <a href="imagens/aulas-editor.png" data-lightbox="aulas" data-title="Editor com prévia ao vivo e o painel-modelo da aula">
-                    <img src="imagens/aulas-editor.png" alt="Sistema de Aulas: editor de código com prévia ao vivo e o painel-modelo da aula">
-                  </a>
+              <div class="showcase-video">
+                <div class="video-wrapper">
+                  <iframe
+                    src="https://www.youtube.com/embed/onU8KRoZPgo"
+                    title="Vídeo de apresentação do Sistema de Aulas"
+                    allowfullscreen
+                  ></iframe>
+                  <div class="play-trigger">
+                    <i class="fas fa-play"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -900,6 +905,9 @@
             </figure>
 
             <div class="showcase-gallery">
+              <a href="imagens/aulas-editor.png" data-lightbox="aulas" data-title="Editor com prévia ao vivo e o painel-modelo da aula"
+                ><img src="imagens/aulas-editor.png" alt="Sistema de Aulas: editor de código com prévia ao vivo e o painel-modelo da aula" loading="lazy"
+              /></a>
               <a href="imagens/aulas-inicio.png" data-lightbox="aulas" data-title="Início do aluno: o que falta fazer"
                 ><img src="imagens/aulas-inicio.png" alt="Sistema de Aulas: tela inicial do aluno com as atividades pendentes" loading="lazy"
               /></a>
@@ -909,9 +917,7 @@
               <a href="imagens/aulas-ranking.png" data-lightbox="aulas" data-title="Ranking da turma e revisão dos erros"
                 ><img src="imagens/aulas-ranking.png" alt="Sistema de Aulas: ranking da turma e revisão do que o aluno errou" loading="lazy"
               /></a>
-              <a href="imagens/aulas-referencia.png" data-lightbox="aulas" data-title="Referência: o que cada linha faz"
-                ><img src="imagens/aulas-referencia.png" alt="Sistema de Aulas: referência explicando cada tag HTML da aula" loading="lazy"
-              /></a>
+              <a href="imagens/aulas-referencia.png" data-lightbox="aulas" data-title="Referência: o que cada linha faz" hidden></a>
               <a href="imagens/aulas-atividades.png" data-lightbox="aulas" data-title="Atividades por bloco do curso" hidden></a>
               <a href="imagens/aulas-perfil.png" data-lightbox="aulas" data-title="Perfil e notas do aluno" hidden></a>
             </div>
@@ -1154,7 +1160,7 @@
           <div class="outros-grid">
             <article class="outro-card">
               <span class="outro-tag">Colaboração · Pesquisa</span>
-              <h4>WireArc3D</h4>
+              <h4>WireArc IL</h4>
               <p>
                 App desktop que fatia modelos STL, ordena a trajetória
                 resolvendo um problema de caixeiro-viajante (TSP) e gera o

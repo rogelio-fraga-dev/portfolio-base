@@ -10,7 +10,7 @@
     <title>Estudo de caso: Sistema de Aulas | Rogélio Claro Fraga</title>
     <meta
       name="description"
-      content="Como construí e opero a plataforma de ensino usada por 73 alunos: a restrição do laboratório, as decisões de arquitetura, os 379 testes e o deploy que derrubou a produção e voltou em 12 minutos."
+      content="Como construí e opero a plataforma de ensino usada por 73 alunos: a restrição do laboratório, as decisões de arquitetura, os 487 testes e o deploy que derrubou a produção e voltou em 12 minutos."
     />
     <link rel="canonical" href="https://rogeliofragadev.com.br/projetos/sistema-de-aulas.html" />
     <meta name="robots" content="index, follow" />
@@ -20,7 +20,7 @@
     <meta property="og:title" content="Estudo de caso: Sistema de Aulas — 73 alunos em produção" />
     <meta
       property="og:description"
-      content="A restrição do laboratório, as decisões de arquitetura, os 379 testes e o deploy que derrubou a produção e voltou em 12 minutos."
+      content="A restrição do laboratório, as decisões de arquitetura, os 487 testes e o deploy que derrubou a produção e voltou em 12 minutos."
     />
     <meta property="og:image" content="https://rogeliofragadev.com.br/imagens/aulas-editor.png" />
     <meta property="og:locale" content="pt_BR" />
@@ -233,10 +233,22 @@
 
         <ul class="caso-numeros">
           <li><strong>73</strong><span>alunos em duas turmas</span></li>
-          <li><strong>379</strong><span>testes automatizados</span></li>
-          <li><strong>81</strong><span>migrações Flyway</span></li>
+          <li><strong>487</strong><span>testes automatizados</span></li>
+          <li><strong>95</strong><span>migrações Flyway</span></li>
           <li><strong>12 min</strong><span>do incidente ao retorno</span></li>
         </ul>
+
+        <figure>
+          <div class="video-container-large">
+            <iframe
+              src="https://www.youtube.com/embed/onU8KRoZPgo"
+              title="Vídeo de apresentação do Sistema de Aulas"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <figcaption>Dois minutos pelo sistema, com os dados de uma turma de demonstração.</figcaption>
+        </figure>
 
         <h2>A restrição veio antes do projeto</h2>
         <p>
@@ -310,7 +322,7 @@
 
         <h2>Operação: o que impede uma aula de virar um incidente</h2>
         <ul>
-          <li><strong>379 testes automatizados</strong>, rodando no CI a cada push.</li>
+          <li><strong>487 testes automatizados</strong>, rodando no CI a cada push.</li>
           <li><strong><code>pg_dump</code> antes de toda migração</strong>, automático no deploy.</li>
           <li>
             <strong>Trava de horário:</strong> o deploy não reinicia a aplicação
