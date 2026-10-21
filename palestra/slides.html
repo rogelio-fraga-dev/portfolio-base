@@ -1,0 +1,1054 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>De estudante a palestrante</title>
+<style>
+  :root {
+    --bg: #0c0913;
+    --card: rgba(34, 26, 48, .8);
+    --card-solid: #221a30;
+    --line: #3a2d50;
+    --text: #f6f2fb;
+    --muted: #b8aecb;
+    --accent: #a77ae0;
+    --accent-2: #f2b84b;
+    --cyan: #3fd0e0;
+    --danger: #ff7a7a;
+    --ok: #6fd6a0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: var(--bg); overflow: hidden; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; color: var(--text); }
+
+  /* ---------- Palco ----------
+     O palco tem 1280px de largura (720px no celular em pé) e a altura acompanha
+     a proporção da tela: ocupa a tela toda, sem faixas pretas, e é escalado. */
+  #stage { position: fixed; left: 0; top: 0; overflow: hidden; background: var(--bg); transform-origin: 0 0; }
+  #stage .bg { position: absolute; inset: -20%; pointer-events: none; filter: blur(80px); opacity: .5; }
+  #stage .bg i { position: absolute; border-radius: 50%; }
+  #stage .bg i:nth-child(1) { width: 40%; aspect-ratio: 1; background: #5b2fa8; left: 55%; top: 0; animation: drift1 22s ease-in-out infinite alternate; }
+  #stage .bg i:nth-child(2) { width: 32%; aspect-ratio: 1; background: #1b6f86; left: 5%; top: 55%; animation: drift2 26s ease-in-out infinite alternate; }
+  #stage .bg i:nth-child(3) { width: 24%; aspect-ratio: 1; background: #8a5a12; left: 70%; top: 70%; animation: drift1 30s ease-in-out infinite alternate-reverse; }
+  @keyframes drift1 { to { transform: translate(-180px, 120px) scale(1.2); } }
+  @keyframes drift2 { to { transform: translate(200px, -140px) scale(.85); } }
+  #stage .grid {
+    position: absolute; inset: 0; pointer-events: none; opacity: .06;
+    background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  }
+
+  .slide {
+    position: absolute; inset: 0; padding: 56px 80px 64px; z-index: 1;
+    display: none; flex-direction: column; justify-content: center; gap: 0;
+  }
+  .slide.active { display: flex; }
+
+  /* ---------- Animações de entrada (--d = ordem) ---------- */
+  .slide.active .a     { animation: up .7s cubic-bezier(.2, .7, .2, 1) both;    animation-delay: calc(var(--d, 0) * 120ms + 80ms); }
+  .slide.active .pop   { animation: pop .55s cubic-bezier(.3, 1.5, .5, 1) both; animation-delay: calc(var(--d, 0) * 150ms + 100ms); }
+  .slide.active .left  { animation: left .7s cubic-bezier(.2, .7, .2, 1) both;  animation-delay: calc(var(--d, 0) * 120ms + 80ms); }
+  .slide.active .right { animation: right .7s cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--d, 0) * 120ms + 80ms); }
+  @keyframes up    { from { opacity: 0; transform: translateY(26px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+  @keyframes pop   { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+  @keyframes left  { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: none; } }
+  @keyframes right { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: none; } }
+  .words .w { display: inline-block; opacity: 0; }
+  .slide.active .words .w { animation: up .6s cubic-bezier(.2, .7, .2, 1) both; }
+
+  /* ---------- Tipografia ---------- */
+  .kicker { font-size: 16px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  h1 { font-size: 84px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  h2 { font-size: 52px; line-height: 1.08; font-weight: 800; letter-spacing: -1px; margin-bottom: 30px; }
+  h3 { font-size: 25px; font-weight: 700; margin-bottom: 8px; }
+  p, li { font-size: 25px; line-height: 1.45; }
+  .muted { color: var(--muted); }
+  .hl { color: var(--accent-2); }
+  .ac { color: var(--accent); }
+  .grad {
+    background: linear-gradient(90deg, var(--accent), var(--cyan), var(--accent-2), var(--accent));
+    background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shine 8s linear infinite;
+  }
+  @keyframes shine { to { background-position: 300% 0; } }
+  .quote { font-size: 58px; line-height: 1.18; font-weight: 800; letter-spacing: -1px; border-left: 7px solid var(--accent); padding-left: 36px; }
+  .lead { font-size: 30px; margin-top: 34px; }
+  code { font-family: Consolas, "Cascadia Code", monospace; font-size: .9em; background: rgba(255,255,255,.08); padding: 1px 6px; border-radius: 5px; }
+
+  /* ---------- Blocos ---------- */
+  .row { display: flex; gap: 36px; align-items: center; }
+  .row > .f1 { flex: 1; min-width: 0; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px 30px; backdrop-filter: blur(6px); }
+  .card p, .card li { font-size: 21px; }
+  .card.glow { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 18px 50px -20px rgba(167,122,224,.6); }
+  .card.top { border-top: 4px solid var(--accent); }
+  .card.top.gold { border-top-color: var(--accent-2); }
+  .card.top.cyan { border-top-color: var(--cyan); }
+  .tag { display: inline-block; font-size: 15px; font-weight: 700; padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,.04); color: var(--muted); margin: 0 6px 8px 0; }
+  .big-num { font-size: 92px; font-weight: 800; color: var(--accent-2); line-height: 1; font-variant-numeric: tabular-nums; }
+  ul.clean { list-style: none; display: grid; gap: 14px; }
+  ul.clean li { padding-left: 32px; position: relative; }
+  ul.clean li::before { content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); }
+  .bugs { list-style: none; }
+  .bugs li { font-size: 21px; line-height: 1.4; padding-left: 30px; position: relative; margin-bottom: 12px; }
+  .bugs li:last-child { margin-bottom: 0; }
+  .bugs li::before { content: "✗"; position: absolute; left: 0; color: var(--danger); font-weight: 800; }
+  .fix { color: var(--ok); font-weight: 700; }
+
+  /* ---------- Ícones (SVG em traço) ---------- */
+  .ico { width: 40px; height: 40px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ---------- Mockups ---------- */
+  .browser { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #15101f; box-shadow: 0 30px 70px -25px rgba(0,0,0,.9); }
+  .browser .bar { height: 32px; display: flex; align-items: center; gap: 7px; padding: 0 12px; background: #1f1830; border-bottom: 1px solid var(--line); }
+  .browser .bar i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+  .browser .bar i:nth-child(2) { background: #febc2e; }
+  .browser .bar i:nth-child(3) { background: #28c840; }
+  .browser .bar span { margin-left: 12px; font-size: 13px; color: var(--muted); background: rgba(255,255,255,.06); padding: 3px 14px; border-radius: 6px; }
+  .browser img { display: block; width: 100%; }
+  .phone { width: 230px; flex-shrink: 0; border-radius: 32px; padding: 9px; background: #07050b; border: 2px solid #3a2d50; box-shadow: 0 30px 60px -20px rgba(0,0,0,.9); }
+  .phone img { display: block; width: 100%; border-radius: 24px; }
+  .float { animation: float 6s ease-in-out infinite; }
+  @keyframes float { 50% { transform: translateY(-10px); } }
+
+  /* ---------- Diagramas "como funciona" ---------- */
+  .flow { display: flex; align-items: stretch; }
+  .node {
+    background: var(--card-solid); border: 1px solid var(--line); border-radius: 18px; padding: 20px 16px;
+    text-align: center; flex: 1 1 0; min-width: 0; position: relative; z-index: 1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .node .ico { color: var(--accent); margin-bottom: 10px; }
+  .node.hot { border-color: var(--accent-2); box-shadow: 0 0 34px -8px rgba(242,184,75,.55); }
+  .node.hot .ico { color: var(--accent-2); }
+  .node b { display: block; font-size: 20px; }
+  .node small { display: block; font-size: 15.5px; color: var(--muted); margin-top: 5px; line-height: 1.3; }
+  .link { flex: 0 0 64px; align-self: center; height: 3px; position: relative;
+    background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px); }
+  .slide.active .link::after {
+    content: ""; position: absolute; top: -5px; left: 0; width: 13px; height: 13px; border-radius: 50%;
+    background: var(--accent-2); box-shadow: 0 0 14px var(--accent-2); opacity: 0;
+    animation: packet 2.2s linear infinite; animation-delay: calc(var(--d, 0) * 150ms + 600ms);
+  }
+  @keyframes packet { 0% { left: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: calc(100% - 13px); opacity: 0; } }
+  .lane { font-size: 14px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; font-weight: 700; }
+
+  /* etapas do custo: acendem uma a uma e ficam acesas */
+  .stages { display: flex; align-items: center; gap: 8px; }
+  .stages span { white-space: nowrap; font-weight: 700; font-size: 18px; padding: 11px 15px; border-radius: 12px; border: 1px solid var(--line); background: var(--card-solid); color: var(--muted); }
+  .stages em { font-style: normal; color: var(--line); font-size: 22px; }
+  .slide.active .stages span { animation: lit .5s ease forwards; animation-delay: calc(var(--i) * 450ms + 900ms); }
+  .slide.active .stages span.end { animation-name: litEnd; }
+  @keyframes lit { to { color: var(--text); border-color: var(--accent); background: rgba(167,122,224,.18); } }
+  @keyframes litEnd { to { color: #1a1206; border-color: var(--accent-2); background: var(--accent-2); } }
+
+  /* ---------- Linha do tempo ---------- */
+  .timeline { display: flex; }
+  .step { flex: 1; position: relative; padding: 36px 18px 0 0; }
+  .step::before { content: ""; position: absolute; top: 9px; left: 0; right: 0; height: 3px; background: var(--line); transform-origin: left; }
+  .slide.active .step::before { animation: draw .5s ease both; animation-delay: calc(var(--d, 0) * 220ms); }
+  @keyframes draw { from { transform: scaleX(0); } }
+  .step::after { content: ""; position: absolute; top: 0; left: 0; width: 21px; height: 21px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+  .step.lost::after { border-color: var(--muted); }
+  .step.win::after { background: var(--accent-2); border-color: var(--accent-2); box-shadow: 0 0 18px var(--accent-2); }
+  .step p { font-size: 22px; }
+  .step .when { font-size: 14px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  /* risco que se desenha por cima do texto, mesmo quebrando linha */
+  .step.lost p { color: var(--muted); }
+  .step.lost p span { background: linear-gradient(var(--danger), var(--danger)) no-repeat 0 58% / 0% 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .slide.active .step.lost p span { animation: strike .5s ease forwards; animation-delay: calc(var(--d, 0) * 220ms + 500ms); }
+  @keyframes strike { to { background-size: 100% 3px; } }
+
+  /* ---------- Fotos ---------- */
+  .photo { width: 320px; height: 320px; flex-shrink: 0; border-radius: 50%; object-fit: cover; border: 6px solid var(--accent); box-shadow: 0 0 0 12px rgba(167,122,224,.14), 0 0 80px rgba(167,122,224,.35); }
+  .bleed { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+  .bleed img { width: 100%; height: 100%; object-fit: cover; }
+  .slide.active .bleed img { animation: kenburns 18s ease-out both; }
+  @keyframes kenburns { from { transform: scale(1.15) translate(2%, 2%); } to { transform: scale(1); } }
+  .bleed::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(12,9,19,.97) 0%, rgba(12,9,19,.85) 45%, rgba(12,9,19,.1) 80%); }
+  .on-top { position: relative; z-index: 1; }
+  .inset-photo { position: absolute; right: 80px; bottom: 80px; width: 230px; border-radius: 16px; border: 3px solid var(--accent-2); z-index: 1; box-shadow: 0 20px 50px rgba(0,0,0,.7); }
+  .badge-live { display: inline-flex; align-items: center; gap: 9px; font-size: 17px; font-weight: 700; color: var(--ok); }
+  .badge-live::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ok); animation: ping 1.8s infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(111,214,160,.7); } 100% { box-shadow: 0 0 0 12px rgba(111,214,160,0); } }
+
+  /* ---------- Celular em pé: tudo vira uma coluna ---------- */
+  .retrato .slide { padding: 48px 36px 70px; overflow-y: auto; justify-content: flex-start; padding-top: 70px; }
+  .retrato h1 { font-size: 64px; }
+  .retrato h2 { font-size: 42px; }
+  .retrato .quote { font-size: 44px; }
+  .retrato .row, .retrato .flow, .retrato .timeline { flex-direction: column; align-items: stretch; }
+  .retrato .grid-2, .retrato .grid-3 { grid-template-columns: 1fr; }
+  .retrato .grid-4 { grid-template-columns: 1fr 1fr; }
+  .retrato .stages { flex-wrap: wrap; }
+  .retrato .node { flex: none; }
+  .retrato .link { flex: 0 0 34px; width: 3px; height: auto; background: repeating-linear-gradient(180deg, var(--line) 0 8px, transparent 8px 14px); }
+  .retrato .slide.active .link::after { left: -5px; animation-name: packetV; }
+  @keyframes packetV { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 13px); opacity: 0; } }
+  .retrato .step { padding: 0 0 22px 40px; }
+  .retrato .step::before { top: 0; bottom: 0; left: 9px; right: auto; width: 3px; height: auto; }
+  .retrato .photo { width: 220px; height: 220px; align-self: center; }
+  .retrato .phone { align-self: center; }
+  .retrato .inset-photo { display: none; }
+  .retrato .bleed::after { background: linear-gradient(0deg, rgba(12,9,19,.97) 35%, rgba(12,9,19,.35) 100%); }
+
+  /* ---------- Rodapé ---------- */
+  #footer { position: absolute; left: 80px; right: 80px; bottom: 22px; display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); letter-spacing: 1px; pointer-events: none; z-index: 2; }
+  .retrato #footer { left: 36px; right: 36px; }
+  #progress { position: absolute; left: 0; bottom: 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .4s; z-index: 2; }
+
+  /* ---------- Notas (tecla N) ---------- */
+  .notes { display: none; }
+  #notes-panel { position: fixed; left: 0; right: 0; bottom: 0; max-height: 42vh; overflow: auto; background: rgba(12,9,18,.97); border-top: 2px solid var(--accent); padding: 18px 28px 22px; display: none; z-index: 10; }
+  #notes-panel.on { display: block; }
+  #notes-panel .lbl { font-size: 12px; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+  #notes-panel p { font-size: 17px; line-height: 1.5; color: var(--text); margin-bottom: 4px; }
+
+  /* ?estatico na URL: sem animação (computador fraco ou para gerar imagens) */
+  .estatico *, .estatico *::before, .estatico *::after { animation-duration: 0s !important; animation-delay: 0s !important; transition: none !important; }
+
+  #hint { position: fixed; right: 14px; top: 10px; font: 12px system-ui, sans-serif; color: #776a8a; z-index: 11; transition: opacity 1s; }
+</style>
+</head>
+<body>
+
+<!-- Ícones usados nos diagramas -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></symbol>
+    <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V5h6v16z"/><path d="M7 18h2M12 18h2M17 18h2"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3.5 3.5 0 0 0 0-7H9a3.5 3.5 0 0 1 0-7h7"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-desktop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 4v4M9 13h.01M15 13h.01M9.5 16h5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-teacher" viewBox="0 0 24 24"><rect x="9" y="3" width="12" height="9" rx="1"/><circle cx="6" cy="10" r="2.5"/><path d="M2 21c0-3 1.8-5 4-5s4 2 4 5M12 15l3-3"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 10a1.5 1.5 0 0 0 1.3 2h11.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7.5 15h9"/></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"/><path d="M8 3v5h7V3M8 21v-7h8v7"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M10 21v-6h4v6"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 1-5-5L13 2z"/><path d="M3 21l6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1.1 6.2L12 17.4l-5.6 2.9 1.1-6.2L3 9.7l6.2-.9z"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2M9 15l-3-3c1-4 4-8 11-9 0 7-5 10-9 11z"/><circle cx="14.5" cy="9.5" r="1.5"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+<div class="bg"><i></i><i></i><i></i></div>
+<div class="grid"></div>
+
+<!-- ============ ABERTURA ============ -->
+
+<!-- 1. Capa -->
+<section class="slide">
+  <div class="row" style="gap:80px">
+    <div class="f1">
+      <div class="kicker a">IMEPAC · 26 de outubro de 2026</div>
+      <h1 class="a" style="--d:1;font-size:96px">De estudante<br>a <span class="grad">palestrante</span></h1>
+      <p class="muted a lead" style="--d:2;font-size:34px">Um bom filho à casa torna.</p>
+      <p class="a" style="--d:3;margin-top:50px"><b>Rogélio Claro Fraga</b> <span class="muted">· Desenvolvedor Full Stack · Professor</span></p>
+    </div>
+    <img class="photo pop" style="--d:2;width:360px;height:360px" src="img/avatar.jpg" alt="Rogélio">
+  </div>
+  <aside class="notes">
+    <p>Agradecer o convite do professor Everton Hipolito e da coordenadora Cristiane Lemos. Dizer que é estranho e bom estar do outro lado: há pouco tempo eu estava sentado aí.</p>
+    <p>Combinar: perguntas no final, mas pode interromper.</p>
+  </aside>
+</section>
+
+<!-- 2. A pergunta -->
+<section class="slide">
+  <div class="kicker a">Antes de começar</div>
+  <p class="quote words">Quem aqui já desistiu de alguma coisa no meio do caminho?</p>
+  <p class="muted a lead" style="--d:9">Eu desisti de quase tudo. Menos de uma coisa.</p>
+  <aside class="notes"><p>Pedir para levantarem a mão. Levantar a sua também.</p></aside>
+</section>
+
+<!-- ============ QUEM É ============ -->
+
+<!-- 3. Quem é -->
+<section class="slide">
+  <div class="kicker a">Quem é o Rogélio</div>
+  <div class="row" style="gap:64px">
+    <img class="photo pop" style="--d:1" src="img/avatar.jpg" alt="">
+    <div class="f1">
+      <h2 class="a" style="--d:1;margin-bottom:22px">25 anos, de Araguari/MG</h2>
+      <ul class="clean">
+        <li class="a" style="--d:2">Um rapaz preto numa faculdade <b>majoritariamente branca</b></li>
+        <li class="a" style="--d:3"><b class="hl">O primeiro da família a se formar</b>: ADS, IMEPAC</li>
+        <li class="a" style="--d:4">Dev Full Stack no <b>InovaLayer3D</b>, UFU · bolsa FAPEMIG</li>
+        <li class="a" style="--d:5">Professor no <b>Trilhas do Futuro</b>: 2 turmas, 75 alunos</li>
+        <li class="a" style="--d:6">Criando um produto próprio: o <b>Razor</b></li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted a lead" style="--d:7;font-size:25px">Para ganhar um lugar de destaque, eu tive que fazer muito mais que todos. E foi isso que abriu as portas.</p>
+  <aside class="notes">
+    <p>Falar devagar nos dois primeiros itens. Não é para gerar pena: é de onde vem o "sangue nos olhos".</p>
+    <p>Ser o primeiro da família a se formar pesa e motiva ao mesmo tempo.</p>
+  </aside>
+</section>
+
+<!-- 4. Linha do tempo -->
+<section class="slide">
+  <div class="kicker a">Formação e trabalho</div>
+  <h2 class="a" style="--d:1;margin-bottom:50px">O currículo, numa linha do tempo</h2>
+  <div class="timeline">
+    <div class="step a" style="--d:1"><div class="when">2022 – 2023</div><p><b>IBGE</b><br><span class="muted">Agente Censitário Supervisor</span></p></div>
+    <div class="step a" style="--d:2"><div class="when">2024</div><p><b>Freelas</b><br><span class="muted">primeiros clientes</span></p></div>
+    <div class="step a" style="--d:3"><div class="when">ago – dez 2025</div><p><b>Abrigo Cristo Rei</b><br><span class="muted">Scrum Master, ~25 pessoas</span></p></div>
+    <div class="step a" style="--d:4"><div class="when">2026</div><p><b>InovaLayer3D</b><br><span class="muted">UFU · FAPEMIG</span></p></div>
+    <div class="step win a" style="--d:5"><div class="when">ago 2026 →</div><p><b>Professor</b><br><span class="muted">Trilhas do Futuro</span></p></div>
+  </div>
+  <aside class="notes">
+    <p>IBGE: supervisionar gente e cuidar de dado ensinou coisas que uso até hoje.</p>
+    <p>Abrigo Cristo Rei: a liderança caiu no meu colo de novo. ~25 pessoas, entregamos o módulo de doações com PIX.</p>
+  </aside>
+</section>
+
+<!-- 5. Desistências -->
+<section class="slide">
+  <div class="kicker a">Antes do código</div>
+  <h2 class="a" style="--d:1;margin-bottom:50px">Facilidade não é o mesmo que <span class="hl">constância</span></h2>
+  <div class="timeline">
+    <div class="step lost a" style="--d:1"><div class="when">tentei</div><p><span>Edição de fotos</span></p></div>
+    <div class="step lost a" style="--d:2"><div class="when">tentei</div><p><span>Criar vídeos</span></p></div>
+    <div class="step lost a" style="--d:3"><div class="when">tentei</div><p><span>Vídeo de música</span></p></div>
+    <div class="step lost a" style="--d:4"><div class="when">tentei</div><p><span>Manutenção de PCs</span></p></div>
+    <div class="step lost a" style="--d:5"><div class="when">parei</div><p><span><b>~2 anos</b> parado</span></p></div>
+    <div class="step win a" style="--d:7"><div class="when">última chance</div><p style="font-size:28px"><b class="hl">Programação</b></p></div>
+  </div>
+  <p class="muted a lead" style="--d:9;margin-top:60px">Sempre soube que levava jeito para TI. O problema era perder o interesse e largar.</p>
+  <aside class="notes">
+    <p>Ser honesto: deixei muito a desejar na minha vida por desistir. Fiquei quase 2 anos sem mexer em nada no computador.</p>
+    <p>Voltei para a programação como a última chance, e foi nela que me encontrei: um jeito de deixar um legado com algo em que eu era bom.</p>
+  </aside>
+</section>
+
+<!-- 6. A virada -->
+<section class="slide">
+  <div class="kicker a">A virada</div>
+  <h2 class="a" style="--d:1">Fazer mais do que o curso pedia</h2>
+  <div class="grid-3">
+    <div class="card top pop" style="--d:2"><h3>Todo tempo livre</h3><p class="muted">Horas vagas, intervalos, aula vaga. Se dava para programar, eu programava.</p></div>
+    <div class="card top cyan pop" style="--d:3"><h3>A liderança sobrava</h3><p class="muted">Foi assim a vida toda. Parei de recusar e assumi a gestão dos projetos.</p></div>
+    <div class="card top gold pop" style="--d:4"><h3>Abracei o “surtado”</h3><p class="muted">A fome de vencer, de ser o primeiro a se formar, virou motor.</p></div>
+  </div>
+  <aside class="notes">
+    <p>Nos trabalhos em grupo a gestão sempre acabava comigo. Em algum momento parei de brigar com isso.</p>
+  </aside>
+</section>
+
+<!-- 7. Portas -->
+<section class="slide">
+  <div class="kicker a">As oportunidades que o curso trouxe</div>
+  <h2 class="a" style="--d:1">Uma porta abre a outra</h2>
+  <div class="flow">
+    <div class="node pop" style="--d:1"><svg class="ico"><use href="#i-teacher"/></svg><b>Prof. Everton Hipolito</b><small>viu talento e falou com a coordenação</small></div>
+    <div class="link" style="--d:1"></div>
+    <div class="node pop" style="--d:2"><svg class="ico"><use href="#i-school"/></svg><b>Cristiane Lemos</b><small>a coordenadora recebe o pedido da UFU</small></div>
+    <div class="link" style="--d:2"></div>
+    <div class="node pop" style="--d:3"><svg class="ico"><use href="#i-flask"/></svg><b>Prof. Vinicius Lemes</b><small>Engenharia · UFU, precisava de um programador</small></div>
+    <div class="link" style="--d:3"></div>
+    <div class="node hot pop" style="--d:4"><svg class="ico"><use href="#i-rocket"/></svg><b>InovaLayer3D</b><small>bolsa FAPEMIG, desde o último período</small></div>
+  </div>
+  <p class="a lead" style="--d:6;margin-top:56px;font-size:34px">Ninguém indica quem ninguém vê.</p>
+  <p class="muted a" style="--d:7">Eu mostrava o que fazia aos professores, falava das dificuldades e do que podia fazer.</p>
+  <aside class="notes">
+    <p>Agradecer nominalmente: professor Everton Hipolito, coordenadora Cristiane Lemos, professor Vinicius Lemes (UFU).</p>
+    <p>Eu não mandei currículo para a UFU. A vaga chegou porque um professor lembrou de mim.</p>
+  </aside>
+</section>
+
+<!-- 8. Inglês -->
+<section class="slide">
+  <div class="kicker a">Até inglês eu tive que desenrolar</div>
+  <h2 class="a" style="--d:1">Meu cliente fala <span class="grad">inglês</span></h2>
+  <div class="row" style="align-items:stretch">
+    <div class="card left f1" style="--d:2">
+      <h3>Os stakeholders do InovaLayer</h3>
+      <div style="margin:12px 0 6px"><span class="tag">Vinicius Lemes</span><span class="tag">Rafael</span><span class="tag" style="border-color:var(--accent-2);color:var(--accent-2)">Moheb</span></div>
+      <p class="muted">Com o Moheb a reunião é em inglês. Meu nível é B1. Não tinha como fugir: fui, errei e me fiz entender.</p>
+    </div>
+    <ul class="clean f1" style="align-content:center">
+      <li class="right" style="--d:3">Documentação e mensagem de erro: em inglês</li>
+      <li class="right" style="--d:4">Os melhores cursos e respostas: em inglês</li>
+      <li class="right" style="--d:5">Vaga remota para fora: em inglês</li>
+      <li class="right" style="--d:6"><b class="hl">Não espere ficar fluente para começar a usar</b></li>
+    </ul>
+  </div>
+  <aside class="notes">
+    <p>Contar a primeira reunião com o Moheb: o nervosismo, o "desenrolar". Ele não queria inglês perfeito, queria entender o sistema.</p>
+    <p>Dica prática: IDE e celular em inglês, ler a documentação oficial antes do tutorial em português.</p>
+  </aside>
+</section>
+
+<!-- ============ PILARES ============ -->
+
+<!-- 9. Pilares -->
+<section class="slide">
+  <div class="kicker a">O que eu acredito</div>
+  <h2 class="a" style="--d:1">Os 3 pilares de um bom programador</h2>
+  <div class="grid-3">
+    <div class="card top pop" style="--d:2;padding:36px 32px"><div class="big-num" style="color:var(--accent)">1</div><h3 style="margin-top:16px;font-size:30px">Proatividade</h3><p class="muted">Pensar à frente do que o cliente precisa.</p></div>
+    <div class="card top cyan pop" style="--d:3;padding:36px 32px"><div class="big-num" style="color:var(--cyan)">2</div><h3 style="margin-top:16px;font-size:30px">Resolução de problemas</h3><p class="muted">Somos pagos para resolver o problema dos outros.</p></div>
+    <div class="card top gold pop" style="--d:4;padding:36px 32px"><div class="big-num">3</div><h3 style="margin-top:16px;font-size:30px">Sangue nos olhos</h3><p class="muted">Garra para vencer. Sem tempo para indecisão.</p></div>
+  </div>
+  <aside class="notes"><p>Apresentar os três rápido. Os próximos slides detalham cada um.</p></aside>
+</section>
+
+<!-- 10. Proatividade -->
+<section class="slide">
+  <div class="kicker a">Pilar 1 · Proatividade</div>
+  <h2 class="a" style="--d:1">Pediram um formulário.<br>Entreguei uma plataforma.</h2>
+  <div class="grid-2" style="grid-template-columns:1fr 1.35fr">
+    <div class="card left" style="--d:2;display:flex;flex-direction:column;justify-content:center">
+      <h3 class="muted">O pedido</h3>
+      <p style="font-size:28px">“Um sisteminha que coleta as informações de um formulário e faz o cálculo.”</p>
+    </div>
+    <div class="card glow right" style="--d:3">
+      <h3 class="ac">O que eu propus</h3>
+      <ul class="clean" style="margin-top:10px">
+        <li class="a" style="--d:4">Portal do cliente para pedir orçamento</li>
+        <li class="a" style="--d:5">Central com todos os orçamentos</li>
+        <li class="a" style="--d:6">Proposta em PDF e e-mails automáticos</li>
+        <li class="a" style="--d:7">Painel do engenheiro num <b>app desktop separado</b>, por segurança</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Se o cálculo é o coração do negócio, ele não pode ficar exposto na web. O admin foi para um projeto Electron à parte.</p>
+    <p>Proatividade não é fazer tudo que dá na telha: é enxergar o que o cliente vai precisar daqui a seis meses e propor antes.</p>
+  </aside>
+</section>
+
+<!-- 11. Resolução de problemas -->
+<section class="slide">
+  <div class="kicker a">Pilar 2 · Resolução de problemas</div>
+  <p class="quote words">O cliente não sabe do que precisa. A parte técnica é nossa.</p>
+  <p class="muted a lead" style="--d:10">O professor da UFU sabe tudo de soldagem e nada de banco de dados. É para isso que a gente existe.</p>
+  <aside class="notes"><p>Ninguém paga programador para escrever código: paga para o problema sumir.</p></aside>
+</section>
+
+<!-- 12. Sangue nos olhos -->
+<section class="slide">
+  <div class="kicker a">Pilar 3 · Sangue nos olhos</div>
+  <p class="quote words">Não temos tempo para indecisão.</p>
+  <p class="muted a lead" style="--d:6">A garra é o que faz você competir e ser melhor.</p>
+  <aside class="notes"><p>Ligar com o slide "Quem é": o meu sangue nos olhos tem endereço. Qual é o de vocês?</p></aside>
+</section>
+
+<!-- 13. Competitividade -->
+<section class="slide">
+  <div class="kicker a">A real sobre a área</div>
+  <h2 class="a" style="--d:1">Você não concorre com a sua sala</h2>
+  <div class="grid-3">
+    <div class="card top pop" style="--d:2"><h3>Concorre com o país</h3><p class="muted">Vaga remota recebe currículo do Brasil inteiro. A régua é a de quem mais se dedicou.</p></div>
+    <div class="card top cyan pop" style="--d:3"><h3>E com a IA</h3><p class="muted">Escrever código ficou barato. Entender o problema, decidir e assumir a responsabilidade, não.</p></div>
+    <div class="card top gold glow pop" style="--d:4"><h3>O que te destaca</h3><p class="muted">Projeto no ar, gente que te indica, inglês e saber explicar o que você fez.</p></div>
+  </div>
+  <p class="a lead" style="--d:6">Diploma é o mínimo. <span class="hl">O que você faz além dele é o que conta.</span></p>
+  <aside class="notes">
+    <p>Não é para assustar: é para mostrar que dá para se destacar, e que quase ninguém faz o "além".</p>
+    <p>Eu uso IA todo dia. Ela acelera, mas quem responde pelo que vai para o ar sou eu.</p>
+  </aside>
+</section>
+
+<!-- 14. Relato UFU -->
+<section class="slide">
+  <div class="kicker a">Um relato real</div>
+  <h2 class="a" style="--d:1">“Eu corro atrás de estágio <span class="hl">depois</span>.”</h2>
+  <div class="row" style="align-items:stretch">
+    <div class="card top gold left f1" style="--d:2;display:flex;flex-direction:column;justify-content:center">
+      <h3>Alunos da UFU</h3>
+      <p class="muted">Deixaram o estágio para o fim do curso. Quando chegou a hora de procurar, <b style="color:var(--text)">não tinha mais estágio</b>.</p>
+      <p class="muted" style="margin-top:12px">Começaram a desanimar. Alguns já se perguntam <b style="color:var(--text)">se valeu a pena investir na área</b>.</p>
+      <p style="margin-top:12px;color:var(--accent-2);font-weight:700">Não por falta de talento: a área está muito concorrida.</p>
+    </div>
+    <ul class="clean f1" style="flex:1.3;align-content:center">
+      <li class="right" style="--d:3">A IA já faz as tarefas que antes iam para o estagiário</li>
+      <li class="right" style="--d:4">Quanto mais a IA escreve, mais cobram <b>fundamento</b>: lógica, banco, HTTP, por que o código funciona</li>
+      <li class="right" style="--d:5">E a sua <b>individualidade</b>: o que você pensa, o que só você entrega</li>
+    </ul>
+  </div>
+  <p class="a lead" style="--d:7;font-size:32px"><span class="hl">O último período é tarde.</span> <span class="muted">Comece agora, no período em que você está.</span></p>
+  <aside class="notes">
+    <p>É uma universidade federal: não foi falta de talento, foi falta de tempo de estrada numa área que está muito concorrida. Quando foram procurar, a vaga de entrada tinha encolhido.</p>
+    <p>O pior efeito é o desânimo: tem gente boa se perguntando se foi uma boa ideia investir em TI. Por isso começar cedo importa: dá tempo de errar, de aparecer e de chegar no fim do curso com experiência.</p>
+    <p>Fundamento é o que te deixa conferir a IA em vez de ser substituído por ela. Individualidade é o que faz alguém lembrar de você.</p>
+    <p>Contraste: eu comecei no InovaLayer no início do último período, e mesmo assim só porque já vinha mostrando trabalho antes.</p>
+  </aside>
+</section>
+
+<!-- ============ PROJETOS ============ -->
+
+<!-- 15. Abertura projetos -->
+<section class="slide">
+  <div class="kicker a">Projetos</div>
+  <h2 class="a" style="--d:1">O que eu construí, e o que deu errado</h2>
+  <div class="grid-3">
+    <div class="card top gold pop" style="--d:2;padding:36px 32px"><div class="big-num" data-count="1000" data-prefix="+">+1.000</div><p class="muted" style="margin-top:10px">commits em 2026</p></div>
+    <div class="card top gold pop" style="--d:3;padding:36px 32px"><div class="big-num" data-count="5">5</div><p class="muted" style="margin-top:10px">sistemas em uso</p></div>
+    <div class="card top gold pop" style="--d:4;padding:36px 32px"><div class="big-num" data-count="75">75</div><p class="muted" style="margin-top:10px">alunos usando um deles toda semana</p></div>
+  </div>
+  <p class="muted a lead" style="--d:6">Para cada projeto: <b style="color:var(--text)">o que faz</b> · <b style="color:var(--text)">como funciona</b> · <b style="color:var(--text)">os erros que eu corrigi</b></p>
+  <aside class="notes">
+    <p>Os commits somam InovaLayer, WireArc, sistema de aulas, Razor e DevFlow. Em uso: a plataforma da InovaLayer, o WireArc no laboratório da UFU, o sistema de aulas, o site da psicóloga e o portfólio.</p>
+    <p>Projeto bom não é o que não tem erro, é o que tem erro encontrado e corrigido.</p>
+  </aside>
+</section>
+
+<!-- 16. InovaLayer foto -->
+<section class="slide">
+  <div class="bleed"><img src="img/inovalayer-equipamento.jpg" alt="Robô de solda da UFU"></div>
+  <div class="on-top" style="max-width:700px">
+    <div class="kicker a">InovaLayer3D · UFU · FAPEMIG</div>
+    <h1 class="a" style="--d:1;font-size:76px">Impressão 3D<br>de <span class="grad">metais</span></h1>
+    <p class="a" style="--d:2;margin-top:14px;font-size:22px;letter-spacing:1px;color:var(--cyan)">Manufatura aditiva por deposição a arco (WAAM)</p>
+    <p class="a" style="--d:3;margin-top:24px">Um robô de solda “imprime” a peça camada por camada, com arame de metal. Eu fiz o sistema que diz <b class="hl">quanto ela custa</b>, em cima da metodologia dos doutores da UFU, e ajudo a melhorar o software que <b class="hl">fatia a peça</b>.</p>
+    <p class="a" style="--d:4;margin-top:26px"><span class="badge-live">no ar · inovalayer.com.br</span></p>
+  </div>
+  <img class="inset-photo pop" style="--d:5" src="img/inovalayer-peca.jpg" alt="Peça impressa">
+  <aside class="notes">
+    <p>WAAM: Wire Arc Additive Manufacturing. Essa é a máquina real do laboratório da UFU, e a peça ao lado foi impressa nela.</p>
+    <p>A plataforma de orçamentos é minha: transformei em software a metodologia de custo que os doutores da UFU criaram. No WireArc, o fatiador, eu entro com melhorias.</p>
+  </aside>
+</section>
+
+<!-- 17. InovaLayer como funciona -->
+<section class="slide">
+  <div class="kicker a">InovaLayer3D · como funciona</div>
+  <h2 class="a" style="--d:1">Do pedido do cliente à proposta em PDF</h2>
+  <div class="flow">
+    <div class="node pop" style="--d:1"><svg class="ico"><use href="#i-factory"/></svg><b>Cliente</b><small>pede o orçamento no site e manda o arquivo 3D</small></div>
+    <div class="link" style="--d:1"></div>
+    <div class="node pop" style="--d:2"><svg class="ico"><use href="#i-layers"/></svg><b>WireArc IL</b><small>o engenheiro fatia a peça em camadas</small></div>
+    <div class="link" style="--d:2"></div>
+    <div class="node hot pop" style="--d:3"><svg class="ico"><use href="#i-calc"/></svg><b>Cálculo do custo</b><small>metodologia dos doutores da UFU</small></div>
+    <div class="link" style="--d:3"></div>
+    <div class="node pop" style="--d:4"><svg class="ico"><use href="#i-desktop"/></svg><b>Engenheiro</b><small>revisa e aprova no app desktop</small></div>
+    <div class="link" style="--d:4"></div>
+    <div class="node pop" style="--d:5"><svg class="ico"><use href="#i-doc"/></svg><b>Proposta</b><small>PDF por e-mail para o cliente</small></div>
+  </div>
+  <div class="lane a" style="--d:6;margin-top:44px">O que entra no preço</div>
+  <div class="stages a" style="--d:6">
+    <span style="--i:0">Arame de metal</span><em>+</em><span style="--i:1">Gás de proteção</span><em>+</em><span style="--i:2">Máquina e energia</span><em>+</em><span style="--i:3">Chapa base</span><em>+</em><span style="--i:4">Serviços extras</span><em>=</em><span class="end" style="--i:5">Preço final</span>
+  </div>
+  <p class="a" style="--d:8;margin-top:30px">Bate com a planilha da UFU em <b class="hl">24 de 24 itens</b>, erro ≤ 0,0024%.</p>
+  <aside class="notes">
+    <p>O WireArc exporta o tempo de arco, o número de camadas e o volume, e o painel do engenheiro preenche o cálculo sozinho.</p>
+    <p>As taxas ficam "congeladas" no orçamento: mudar a configuração depois não altera proposta já emitida.</p>
+  </aside>
+</section>
+
+<!-- 18. WireArc -->
+<section class="slide">
+  <div class="kicker a">WireArc IL · o fatiador da InovaLayer</div>
+  <h2 class="a" style="--d:1">Do modelo 3D ao caminho do robô</h2>
+  <div class="flow">
+    <div class="node pop" style="--d:1"><svg class="ico"><use href="#i-cube"/></svg><b>Modelo 3D</b><small>arquivo STL da peça</small></div>
+    <div class="link" style="--d:1"></div>
+    <div class="node pop" style="--d:2"><svg class="ico"><use href="#i-layers"/></svg><b>Fatiamento</b><small>corta a peça em camadas</small></div>
+    <div class="link" style="--d:2"></div>
+    <div class="node hot pop" style="--d:3"><svg class="ico"><use href="#i-route"/></svg><b>Trajetória</b><small>o caminho da tocha em cada camada</small></div>
+    <div class="link" style="--d:3"></div>
+    <div class="node pop" style="--d:4"><svg class="ico"><use href="#i-zap"/></svg><b>G-code</b><small>as instruções para o robô</small></div>
+    <div class="link" style="--d:4"></div>
+    <div class="node pop" style="--d:5"><svg class="ico"><use href="#i-calc"/></svg><b>Orçamento</b><small>os dados vão direto para o cálculo</small></div>
+  </div>
+  <div class="grid-2" style="margin-top:36px">
+    <div class="card left" style="--d:6">
+      <h3>Como</h3>
+      <span class="tag">Python</span><span class="tag">PyQt5</span><span class="tag">PyVista (3D)</span><span class="tag">GPU NVIDIA</span>
+      <p class="muted" style="margin-top:6px">App desktop criado pelo Paulo Pinheiro. <b style="color:var(--text)">Eu ajudo com melhorias</b> e liguei ele ao orçamento.</p>
+    </div>
+    <div class="card right" style="--d:7">
+      <ul class="bugs">
+        <li>A barra mostrava <b>100% travado</b> com o cálculo ainda rodando <span class="fix">→ progresso real</span></li>
+        <li>A <b>GPU não rodava de verdade</b> no Windows <span class="fix">→ corrigido</span></li>
+        <li>Cancelar não parava o cálculo <span class="fix">→ agora para</span></li>
+        <li>Rotas lentas <span class="fix">→ até 15x mais rápidas</span></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>Fatiar é a mesma ideia de uma impressora 3D de plástico, só que o "bico" é uma tocha de solda e o material é arame de metal.</p>
+    <p>Três estratégias de caminho: zigue-zague, contornos paralelos e "pixel", que usa um algoritmo do caixeiro-viajante (LKH) para ordenar os pontos.</p>
+    <p>Pegar um projeto que outra pessoa começou é a realidade do mercado: primeiro entender, depois mexer.</p>
+  </aside>
+</section>
+
+<!-- 19. InovaLayer site -->
+<section class="slide">
+  <div class="kicker a">InovaLayer3D · a plataforma</div>
+  <div class="row" style="gap:44px">
+    <div class="browser right" style="--d:1;flex:1.6"><div class="bar"><i></i><i></i><i></i><span>inovalayer.com.br</span></div><img src="img/inovalayer-site.png" alt="Site InovaLayer"></div>
+    <div class="f1">
+      <h2 class="a" style="--d:2;font-size:42px">Dois repositórios, ~235 commits</h2>
+      <div class="a" style="--d:3"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">Angular 21</span><span class="tag">Electron</span><span class="tag">AWS</span><span class="tag">GitHub Actions</span></div>
+      <p class="muted a" style="--d:4;margin-top:14px;font-size:22px">Site em português e inglês, login com Google, upload do arquivo 3D, e-mails automáticos e deploy a cada push.</p>
+    </div>
+  </div>
+  <aside class="notes"><p>mada-core é a API; mada-web é o portal web e o app desktop do engenheiro.</p></aside>
+</section>
+
+<!-- 20. InovaLayer erros -->
+<section class="slide">
+  <div class="kicker a">InovaLayer3D · o que deu errado</div>
+  <h2 class="a" style="--d:1">Os erros que viraram aprendizado</h2>
+  <div class="grid-3">
+    <div class="card glow pop" style="--d:2"><ul class="bugs"><li>O custo do gás e da máquina era <b>multiplicado duas vezes</b> pelas camadas: o preço saía inflado. <span class="fix">→ o fatiador já manda o total.</span></li></ul></div>
+    <div class="card pop" style="--d:3"><ul class="bugs"><li><b>Dinheiro em <code>double</code></b>: o arredondamento acumulava erro. <span class="fix">→ BigDecimal, centavo por centavo.</span></li></ul></div>
+    <div class="card pop" style="--d:4"><ul class="bugs"><li>Um cliente via o <b>endereço de outro</b> trocando um número na URL. <span class="fix">→ checagem de dono + teste.</span></li></ul></div>
+    <div class="card pop" style="--d:5"><ul class="bugs"><li>O <b>backup nunca rodou</b>, e não tinha log, porque o erro era justamente criar o log. <span class="fix">→ de 0 para 2 cópias no dia.</span></li></ul></div>
+    <div class="card pop" style="--d:6"><ul class="bugs"><li>O <b>alarme de backup tocava</b> com o backup funcionando. <span class="fix">→ faltava uma permissão.</span></li></ul></div>
+    <div class="card pop" style="--d:7"><ul class="bugs"><li>A tela dizia <b>“a API não respondeu”</b> com a API no ar. <span class="fix">→ uma linha de CORS.</span></li></ul></div>
+  </div>
+  <aside class="notes">
+    <p>O custo dobrado: o fatiador já mandava o tempo total de todas as camadas, e o cálculo multiplicava de novo pelo número de camadas. Deixei um comentário no código para ninguém reintroduzir.</p>
+    <p>O backup: o agendador tentava todo dia, mas não tinha permissão para escrever o arquivo de log, então o script nem começava, e sem log ninguém via. Testando à mão com sudo funcionava, o que dava a falsa impressão de estar tudo certo.</p>
+    <p>O alarme: "alarme que toca sozinho é alarme que a gente aprende a ignorar". Por isso consertar o alarme importa tanto quanto o backup.</p>
+    <p>O IDOR foi achado numa auditoria de segurança e virou teste automatizado.</p>
+  </aside>
+</section>
+
+<!-- 21. Sistema de aulas: a loucura -->
+<section class="slide">
+  <div class="kicker a">Sistema de aulas · a maior loucura</div>
+  <div class="row" style="gap:60px">
+    <div class="f1">
+      <div class="big-num pop" style="--d:1;font-size:170px"><span data-count="48">48</span>h</div>
+      <h2 class="a" style="--d:2;margin:8px 0 18px">do primeiro commit à primeira aula.<br><span class="grad">Testado ao vivo</span> com os alunos.</h2>
+      <p class="muted a" style="--d:3">O laboratório não deixava instalar nada. Então fiz um sistema que roda no navegador, e até no celular.</p>
+    </div>
+    <div class="f1" style="display:grid;gap:12px">
+      <div class="card left" style="--d:3;padding:16px 22px"><span class="tag">06/08</span> <b>O material da aula 1.</b> <span class="muted">Slides e quiz, ainda em arquivo.</span></div>
+      <div class="card left" style="--d:4;padding:16px 22px"><span class="tag">10/08 · 18h26</span> <b>Primeiro commit do sistema.</b> <span class="muted">Quiz e editor.</span></div>
+      <div class="card left" style="--d:5;padding:16px 22px"><span class="tag">11/08</span> <b>21 commits num dia.</b> <span class="muted">Painel, slides, tarefas.</span></div>
+      <div class="card glow left" style="--d:6;padding:16px 22px"><span class="tag" style="color:var(--accent-2);border-color:var(--accent-2)">12/08 · 19h</span> <b>Primeira aula.</b> <span class="muted">A turma da noite usando.</span></div>
+      <div class="card left" style="--d:7;padding:16px 22px"><span class="tag">13/08</span> <b>23 commits.</b> <span class="muted">Corrigindo entre uma aula e outra.</span></div>
+      <div class="card left" style="--d:8;padding:16px 22px"><span class="tag" style="color:var(--ok);border-color:var(--ok)">hoje</span> <b>Estável.</b> <span class="muted">Versão 102, 75 alunos, toda semana.</span></div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>O material da aula 1 começou em 06/08. O sistema em si teve o primeiro commit em 10/08 às 18h26, e a primeira aula com ele foi em 12/08 às 19h, com a turma da noite. Umas 48 horas.</p>
+    <p>Na primeira semana foram uns 70 commits, muitos entre uma aula e outra, com aluno reportando bug ao vivo. kkk</p>
+    <p>Hoje está estável: mais de 500 commits somando o sistema e o material das aulas.</p>
+  </aside>
+</section>
+
+<!-- 22. Sistema de aulas como funciona -->
+<section class="slide">
+  <div class="kicker a">Sistema de aulas · como funciona</div>
+  <h2 class="a" style="--d:1">Na sala e no deploy</h2>
+  <div class="lane a" style="--d:1">Na sala</div>
+  <div class="flow">
+    <div class="node pop" style="--d:1"><svg class="ico"><use href="#i-user"/></svg><b>Aluno</b><small>no laboratório ou no celular</small></div>
+    <div class="link" style="--d:1"></div>
+    <div class="node pop" style="--d:2"><svg class="ico"><use href="#i-code"/></svg><b>Editor + Quiz</b><small>resultado ao lado, salva sozinho</small></div>
+    <div class="link" style="--d:2"></div>
+    <div class="node hot pop" style="--d:3"><svg class="ico"><use href="#i-db"/></svg><b>Spring Boot</b><small>+ PostgreSQL · prazo automático</small></div>
+    <div class="link" style="--d:3"></div>
+    <div class="node pop" style="--d:4"><svg class="ico"><use href="#i-teacher"/></svg><b>Professor</b><small>painel no projetor, ranking ao vivo</small></div>
+  </div>
+  <div class="lane a" style="--d:5;margin-top:40px">No deploy</div>
+  <div class="flow">
+    <div class="node pop" style="--d:5"><svg class="ico"><use href="#i-upload"/></svg><b>git push</b><small>na main</small></div>
+    <div class="link" style="--d:5"></div>
+    <div class="node pop" style="--d:6"><svg class="ico"><use href="#i-flask"/></svg><b>Testes</b><small>GitHub Actions</small></div>
+    <div class="link" style="--d:6"></div>
+    <div class="node pop" style="--d:7"><svg class="ico"><use href="#i-save"/></svg><b>Backup</b><small>do banco, antes de tudo</small></div>
+    <div class="link" style="--d:7"></div>
+    <div class="node hot pop" style="--d:8"><svg class="ico"><use href="#i-lock"/></svg><b>Deploy</b><small>travado em horário de aula</small></div>
+  </div>
+  <aside class="notes">
+    <p>A trava de horário nasceu de um erro: um deploy no meio da aula derrubou o sistema com a turma usando.</p>
+  </aside>
+</section>
+
+<!-- 23. Sistema de aulas telas -->
+<section class="slide">
+  <div class="kicker a">Sistema de aulas · as telas</div>
+  <div class="row" style="gap:26px;align-items:center">
+    <div class="browser left" style="--d:1;flex:1.4"><div class="bar"><i></i><i></i><i></i><span>sistema de aulas · editor</span></div><img src="img/aulas-editor.png" alt="Editor do aluno"></div>
+    <div class="f1" style="display:grid;gap:20px">
+      <div class="browser right" style="--d:2"><div class="bar"><i></i><i></i><i></i><span>quiz ao vivo</span></div><img src="img/aulas-quiz-ao-vivo.png" alt="Ranking do quiz ao vivo"></div>
+      <div class="browser right" style="--d:3"><div class="bar"><i></i><i></i><i></i><span>painel do professor</span></div><img src="img/aulas-painel.png" alt="Painel do professor"></div>
+    </div>
+    <div class="phone pop float" style="--d:4"><img src="img/aulas-celular.png" alt="Sistema no celular"></div>
+  </div>
+  <aside class="notes">
+    <p>O editor mostra o resultado ao lado e salva sozinho. O quiz tem ranking ao vivo no projetor, e a turma vai à loucura.</p>
+    <p>Abre no celular: acabou a desculpa de não ter computador. (Os nomes nas telas são de exemplo.)</p>
+  </aside>
+</section>
+
+<!-- 24. Sistema de aulas erros -->
+<section class="slide">
+  <div class="kicker a">Sistema de aulas · testado ao vivo</div>
+  <h2 class="a" style="--d:1">Os alunos foram os melhores testadores</h2>
+  <div class="grid-3">
+    <div class="card glow pop" style="--d:2"><ul class="bugs"><li>Eles descobriram: <b>a certa era sempre a alternativa mais longa</b>. <span class="fix">→ virou regra no gerador.</span></li></ul></div>
+    <div class="card pop" style="--d:3"><ul class="bugs"><li>Teve aluno <b>colando o código inteiro</b>: 206 letras por segundo, contra ~1 digitando. <span class="fix">→ trava de colagem.</span></li></ul></div>
+    <div class="card pop" style="--d:4"><ul class="bugs"><li>A palavra <code>undefined</code> <b>virou o gabarito</b> de dois exercícios: 47 entregas presas. <span class="fix">→ consertado no banco.</span></li></ul></div>
+    <div class="card pop" style="--d:5"><ul class="bugs"><li>Um deploy com 20 mudanças no banco <b>derrubou o sistema</b>. <span class="fix">→ de volta em 12 minutos.</span></li></ul></div>
+    <div class="card pop" style="--d:6"><ul class="bugs"><li>No celular, um botão <b>cobria o “Começar”</b>: o aluno não entrava na atividade. <span class="fix">→ camadas com nome.</span></li></ul></div>
+    <div class="card pop" style="--d:7"><ul class="bugs"><li>No jogo de revisão, <b>errar até morrer dava mais pontos</b>. <span class="fix">→ conta nova.</span></li></ul></div>
+  </div>
+  <aside class="notes">
+    <p>A da alternativa mais longa sempre arranca risada. Os alunos são mais espertos que o gerador de quiz.</p>
+    <p>Colagem: o sistema guarda cada salvamento. Digitando, o aluno faz de 0,5 a 1,6 caracteres por segundo; 206 por segundo é Ctrl+V. O limite ficou com folga, porque acusar quem não colou é pior do que deixar um passar.</p>
+    <p>O "undefined": um campo vazio virou o TEXTO "undefined" ao salvar, e o exercício passou a comparar a entrega com essa palavra. Nenhuma tela deu erro.</p>
+    <p>O deploy de 05/09: 20 migrações de uma vez, uma delas derrubou a produção. Voltou em 12 minutos. Lição: migração tem que ser ensaiada contra uma cópia dos dados reais.</p>
+  </aside>
+</section>
+
+<!-- 25. Razor -->
+<section class="slide">
+  <div class="kicker a">Razor · antigo BarberBot · produto próprio</div>
+  <h2 class="a" style="--d:1">A barbearia no piloto automático</h2>
+  <div class="row" style="gap:40px">
+    <div class="browser left" style="--d:2;flex:1.1"><div class="bar"><i></i><i></i><i></i><span>razor · landing</span></div><img src="img/razor-site.png" alt="Site do Razor"></div>
+    <div class="f1">
+      <div class="flow">
+        <div class="node pop" style="--d:3"><svg class="ico"><use href="#i-chat"/></svg><b>Cliente</b><small>texto ou áudio no WhatsApp</small></div>
+        <div class="link" style="--d:3;flex-basis:36px"></div>
+        <div class="node hot pop" style="--d:4"><svg class="ico"><use href="#i-cal"/></svg><b>Razor</b><small>agenda da barbearia</small></div>
+        <div class="link" style="--d:4;flex-basis:36px"></div>
+        <div class="node pop" style="--d:5"><svg class="ico"><use href="#i-bot"/></svg><b>IA</b><small>GPT-4o + Whisper</small></div>
+      </div>
+      <p class="muted a" style="--d:6;margin-top:26px;font-size:22px">O dono comanda por voz e manda <b style="color:var(--text)">a foto da agenda de papel</b>: a IA lê e cadastra os horários. Lembrete 1h antes, avaliação 1h depois.</p>
+    </div>
+  </div>
+  <aside class="notes"><p>Começou como BarberBot em fevereiro e virou o Razor: SaaS com várias barbearias, preço, roadmap e análise de concorrência. ~186 commits.</p></aside>
+</section>
+
+<!-- 26. Razor erros -->
+<section class="slide">
+  <div class="kicker a">Razor · o que deu errado</div>
+  <h2 class="a" style="--d:1">IA é ótima. Até o cliente dizer “obrigado”.</h2>
+  <div class="grid-2">
+    <div class="card glow pop" style="--d:2"><ul class="bugs"><li>O cliente dizia “obrigado” e a <b>IA criava outro agendamento</b>. <span class="fix">→ checagem de duplicata no banco.</span></li></ul></div>
+    <div class="card pop" style="--d:3"><ul class="bugs"><li>A agenda era um <b><code>agenda.json</code></b> que corrompia com acessos ao mesmo tempo. <span class="fix">→ PostgreSQL.</span></li></ul></div>
+    <div class="card pop" style="--d:4"><ul class="bugs"><li><b>Estados zumbis</b>: quem abandonava a conversa ficava preso na memória. <span class="fix">→ expiração + limpeza.</span></li></ul></div>
+    <div class="card pop" style="--d:5"><ul class="bugs"><li>Injeção pelo webhook e força bruta no login. <span class="fix">→ fechados.</span></li></ul></div>
+  </div>
+  <aside class="notes"><p>Lição: IA ajuda muito, mas você confere o que ela faz com o seu banco de dados.</p></aside>
+</section>
+
+<!-- 28. DevFlow -->
+<section class="slide">
+  <div class="kicker a">DevFlow Solutions · último projeto integrador do IMEPAC</div>
+  <div class="row" style="gap:44px">
+    <div class="browser left" style="--d:1;flex:1.5"><div class="bar"><i></i><i></i><i></i><span>devflow · dashboard</span></div><img src="img/devflow-dashboard.png" alt="Dashboard DevFlow"></div>
+    <div class="f1">
+      <h2 class="a" style="--d:2;font-size:40px;margin-bottom:14px">Nosso último projeto aqui dentro</h2>
+      <p class="muted a" style="--d:3;font-size:21px">Gestão de projetos com motor financeiro e timesheets. <b style="color:var(--text)">Criei a arquitetura de tudo, fiz o code review e ainda fiz o backend.</b></p>
+      <ul class="bugs a" style="--d:4;margin-top:18px">
+        <li>N+1 e <code>LazyInitializationException</code> <span class="fix">→ JOIN FETCH</span></li>
+        <li>“Budget Guard” deixava estourar 100% <span class="fix">→ rollback</span></li>
+        <li>Cliente via dado de outro <span class="fix">→ isolamento</span></li>
+        <li>Dados falsos na tela <span class="fix">→ removidos</span></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes"><p>Foi o último projeto integrador do curso. Eu desenhei a arquitetura, revisei o código antes de entrar e fiz o backend.</p><p>Dá para levar o projeto integrador a sério, como produto. Dado falso na tela é tentação comum; na vida real, cliente percebe.</p></aside>
+</section>
+
+<!-- 29. Landing pages -->
+<section class="slide">
+  <div class="kicker a">Duas landing pages · HTML, CSS e JS puros</div>
+  <h2 class="a" style="--d:1;margin-bottom:6px">Nem todo projeto precisa ser gigante.</h2>
+  <p class="a" style="--d:2;margin-bottom:22px;font-size:26px"><span class="hl">Precisa ser funcional e corresponder ao que o cliente quer.</span></p>
+  <div class="grid-2" style="gap:36px">
+    <div class="left" style="--d:3">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>rogeliofraga.com.br</span></div><img style="height:290px;object-fit:cover;object-position:top" src="img/portfolio-site.png" alt="Portfólio do Rogélio"></div>
+      <h3 style="margin-top:16px">O meu portfólio</h3>
+      <p class="muted" style="font-size:20px">Minha vitrine: projetos, currículo e contato. O link que eu mando em toda conversa.</p>
+    </div>
+    <div class="right" style="--d:4">
+      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>psialvesvanessa.com.br</span></div><img style="height:290px;object-fit:cover;object-position:top" src="img/vanessa-site.png" alt="Site da psicóloga Vanessa"></div>
+      <h3 style="margin-top:16px">Psicóloga Vanessa Alves</h3>
+      <p class="muted" style="font-size:20px">Cliente real, feito para trazer pacientes: SEO, celular primeiro e anúncio no Google.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>O tamanho do projeto não importa: importa funcionar e entregar o que o cliente pediu. A Vanessa queria pacientes, não um sistema complexo.</p>
+    <p>Uma landing page simples, bem feita, já é portfólio e já pode ser o primeiro cliente pago. Não precisa de framework.</p>
+    <p>O portfólio é o que faz alguém lembrar de você depois da entrevista.</p>
+  </aside>
+</section>
+
+<!-- ============ CARREIRA ============ -->
+
+<!-- 30. Desanimar -->
+<section class="slide">
+  <div class="kicker a">Sobre desanimar no meio do caminho</div>
+  <h2 class="a" style="--d:1">Vai acontecer. <span class="muted">Comigo durou 2 anos.</span></h2>
+  <div class="grid-2" style="grid-template-columns:1fr 1.75fr">
+    <div class="card left" style="--d:2">
+      <h3 class="muted">O que me fazia largar</h3>
+      <ul class="clean" style="margin-top:10px"><li>Querer resultado rápido</li><li>Estudar sem um objetivo</li><li>Fazer sozinho, sem ninguém esperando</li></ul>
+    </div>
+    <div class="card glow right" style="--d:3">
+      <h3 class="ac">O que me segurou</h3>
+      <ul class="clean" style="margin-top:10px">
+        <li><b>Ver que eu estava melhorando</b> de verdade</li>
+        <li>Virar noites: eu pensava em programação o dia inteiro, e <b>enquanto não funcionava, eu não sossegava</b></li>
+        <li>Travou? <b>Apaguei e refiz do zero</b>, aprendendo com o meu próprio erro</li>
+        <li>Quebrar o problema grande em <b>partes pequenas</b>: cada parte se resolve melhor que o todo</li>
+        <li>Um motivo maior que eu: ser o primeiro da família a se formar, <b class="hl">pelo orgulho dos meus avós</b></li>
+      </ul>
+    </div>
+  </div>
+  <p class="a lead" style="--d:5;margin-top:24px"><span class="hl">Desanimar não é desistir.</span> <span class="muted">Desiste quem para de aparecer.</span></p>
+  <aside class="notes">
+    <p>Todo mundo aqui vai ter uma matéria, um semestre ou um bug que vai dar vontade de largar tudo. É normal.</p>
+    <p>No dia ruim, faça o mínimo, mas faça. Constância vence motivação.</p>
+    <p>Contar das noites viradas: eu pensava em programação 24 horas por dia, e enquanto a coisa não funcionava eu não ficava satisfeito. Mais de uma vez apaguei um projeto inteiro e refiz do zero porque tinha travado, e foi refazendo que eu aprendi.</p>
+    <p>Problema grande assusta; problema pequeno se resolve. Quebre em partes e resolva uma de cada vez.</p>
+    <p>E o motivo: ser o primeiro da família a se formar, para dar orgulho aos meus avós.</p>
+  </aside>
+</section>
+
+<!-- 31. Usar IA -->
+<section class="slide">
+  <div class="kicker a">Um conselho sobre IA</div>
+  <h2 class="a" style="--d:1">IA é <span class="grad">copiloto</span>. Quem pilota é você.</h2>
+  <div class="grid-2">
+    <div class="card glow left" style="--d:2">
+      <h3 style="color:var(--ok)">✓ Como eu uso, todo dia</h3>
+      <ul class="clean" style="margin-top:10px">
+        <li>No trabalho repetitivo, para ir mais rápido</li>
+        <li>Para <b>me explicar</b> um erro ou um código que eu não entendi</li>
+        <li>Como <b>revisor</b>: revisões com agentes acharam falhas de segurança e de cálculo no Razor</li>
+      </ul>
+    </div>
+    <div class="card right" style="--d:3">
+      <h3 style="color:var(--danger)">✗ Como não usar</h3>
+      <ul class="clean" style="margin-top:10px">
+        <li>Copiar e colar sem entender</li>
+        <li>Deixar ela decidir a arquitetura por você</li>
+        <li>Subir para produção sem testar o que ela fez</li>
+        <li>No começo do curso: pedir a resposta em vez da explicação</li>
+      </ul>
+    </div>
+  </div>
+  <p class="a lead" style="--d:5">A regra: <span class="hl">se você não consegue explicar a linha, ela não sobe.</span></p>
+  <aside class="notes">
+    <p>Ser honesto: eu uso IA o tempo todo, e não tenho vergonha disso. A diferença é que eu sei o que ela está fazendo e confiro.</p>
+    <p>Quem usa IA sem fundamento vira só um intermediário, e intermediário é o primeiro a ser cortado.</p>
+    <p>Dica: no início, peça "me explica por que isso dá erro" em vez de "conserta para mim".</p>
+  </aside>
+</section>
+
+<!-- 32. Entrevista -->
+<section class="slide">
+  <div class="kicker a">Seja melhor que você mesmo</div>
+  <p class="quote words">Na hora da entrevista, você só tem você.</p>
+  <div class="grid-3" style="margin-top:50px">
+    <div class="card top pop" style="--d:6"><h3>Sem IA, sem grupo</h3><p class="muted">Não tem colega do trabalho em grupo nem prompt para salvar.</p></div>
+    <div class="card top cyan pop" style="--d:7"><h3>Só o que você sabe</h3><p class="muted">Explicar o que fez, por que fez e o que deu errado.</p></div>
+    <div class="card top gold glow pop" style="--d:8"><h3>Compare-se com você</h3><p class="muted">Não com o colega. Com quem você era no semestre passado.</p></div>
+  </div>
+  <aside class="notes">
+    <p>Na entrevista ninguém pergunta quem do grupo fez o backend. Perguntam para você, e você precisa saber.</p>
+    <p>Por isso todo projeto em grupo tem que ter uma parte que é sua de verdade, que você consegue explicar de olhos fechados.</p>
+    <p>A única competição justa é com você mesmo de ontem.</p>
+  </aside>
+</section>
+
+<!-- 33. Empreendedor x funcionário -->
+<section class="slide">
+  <div class="kicker a">Visão de empreendedor</div>
+  <h2 class="a" style="--d:1">Não cruze os braços</h2>
+  <div class="grid-2">
+    <div class="card left" style="--d:2"><h3 class="muted">Funcionário</h3><ul class="clean" style="margin-top:10px"><li>Espera a tarefa chegar</li><li>Entrega o que foi pedido</li><li>“Não é minha função”</li></ul></div>
+    <div class="card glow right" style="--d:3"><h3 class="hl">Empreendedor (até sendo funcionário)</h3><ul class="clean" style="margin-top:10px"><li>Enxerga o problema antes</li><li>Propõe o que o cliente vai precisar</li><li>Trata o projeto como se fosse dele</li></ul></div>
+  </div>
+  <p class="muted a lead" style="--d:5;font-size:25px">O InovaLayer era um formulário e virou produto. O Razor é meu, com preço, roadmap e concorrente.</p>
+  <aside class="notes"><p>Você não precisa abrir empresa para pensar como dono.</p></aside>
+</section>
+
+<!-- 34. Conselhos -->
+<section class="slide">
+  <div class="kicker a">Conselhos de quem sentou aí</div>
+  <h2 class="a" style="--d:1">8 coisas que eu queria ter ouvido</h2>
+  <div class="grid-4">
+    <div class="card top gold pop" style="--d:2;padding:22px"><h3 style="font-size:21px">1. Constância vence talento</h3><p class="muted" style="font-size:18px">Eu tinha facilidade e perdi 2 anos.</p></div>
+    <div class="card top gold pop" style="--d:3;padding:22px"><h3 style="font-size:21px">2. Trabalho de faculdade é cliente</h3><p class="muted" style="font-size:18px">Trate o integrador como produto.</p></div>
+    <div class="card top gold pop" style="--d:4;padding:22px"><h3 style="font-size:21px">3. Mostre o que você faz</h3><p class="muted" style="font-size:18px">A vaga da UFU veio de uma indicação.</p></div>
+    <div class="card top gold pop" style="--d:5;padding:22px"><h3 style="font-size:21px">4. Comece antes de estar pronto</h3><p class="muted" style="font-size:18px">O sistema de aulas foi para a sala em 48 horas.</p></div>
+    <div class="card top gold pop" style="--d:6;padding:22px"><h3 style="font-size:21px">5. Erro é currículo</h3><p class="muted" style="font-size:18px">Anote o que quebrou e como resolveu.</p></div>
+    <div class="card top gold pop" style="--d:7;padding:22px"><h3 style="font-size:21px">6. IA é ferramenta, não muleta</h3><p class="muted" style="font-size:18px">Fundamento é o que ela não tira de você.</p></div>
+    <div class="card top gold pop" style="--d:8;padding:22px"><h3 style="font-size:21px">7. Aceite a responsabilidade</h3><p class="muted" style="font-size:18px">Liderança se aprende assumindo.</p></div>
+    <div class="card top gold pop" style="--d:9;padding:22px"><h3 style="font-size:21px">8. Inglês desde já</h3><p class="muted" style="font-size:18px">Não espere a fluência para usar.</p></div>
+  </div>
+  <aside class="notes">
+    <p>Passar por cada um em uma frase e com o exemplo da palestra. Não ler o slide.</p>
+    <p>O 5 é o que mais pega em entrevista: "me conta um bug que você resolveu" é pergunta clássica.</p>
+  </aside>
+</section>
+
+<!-- 35. Desafio -->
+<section class="slide">
+  <div class="kicker a">Desafio para esta semana</div>
+  <h2 class="a" style="--d:1">Saiam daqui com 3 tarefas</h2>
+  <div class="grid-3">
+    <div class="card top pop" style="--d:2;padding:34px 32px"><div class="big-num" style="font-size:68px">01</div><h3 style="margin-top:14px">Publique um projeto</h3><p class="muted">Um trabalho da faculdade no GitHub, com README e print.</p></div>
+    <div class="card top cyan pop" style="--d:3;padding:34px 32px"><div class="big-num" style="font-size:68px">02</div><h3 style="margin-top:14px">Mostre a um professor</h3><p class="muted">Peça uma opinião sincera. É assim que você passa a ser lembrado.</p></div>
+    <div class="card top gold pop" style="--d:4;padding:34px 32px"><div class="big-num" style="font-size:68px">03</div><h3 style="margin-top:14px">Poste no LinkedIn</h3><p class="muted">O que você fez, o que deu errado e como resolveu.</p></div>
+  </div>
+  <aside class="notes"><p>Pedir para me marcarem no LinkedIn quando postarem. Eu respondo todos.</p></aside>
+</section>
+
+<!-- 36. Fechamento -->
+<section class="slide">
+  <div class="kicker a">Para levar</div>
+  <p class="quote words">Não quero ser apenas útil. Quero ser necessário.</p>
+  <p class="muted a lead" style="--d:10">Proatividade · Resolução de problemas · Sangue nos olhos</p>
+  <aside class="notes">
+    <p>Retomar o começo: eu era o cara que desistia de tudo. Sentei nessas cadeiras. Hoje volto aqui como palestrante.</p>
+    <p>Fechar com: um bom filho à casa torna. Obrigado.</p>
+  </aside>
+</section>
+
+<!-- 37. Perguntas -->
+<section class="slide">
+  <div class="row" style="gap:80px">
+    <div class="f1">
+      <div class="kicker a">Obrigado, IMEPAC</div>
+      <h1 class="a" style="--d:1;font-size:96px">Perguntas?</h1>
+      <div style="margin-top:44px;display:grid;gap:12px">
+        <p class="a" style="--d:2"><span class="muted">Portfólio</span> &nbsp; rogeliofraga.com.br</p>
+        <p class="a" style="--d:3"><span class="muted">LinkedIn</span> &nbsp; /in/rogelio-fraga-dev</p>
+        <p class="a" style="--d:4"><span class="muted">GitHub</span> &nbsp; /rogelio-fraga-dev</p>
+      </div>
+    </div>
+    <img class="photo pop" style="--d:2;width:360px;height:360px" src="img/avatar.jpg" alt="">
+  </div>
+  <aside class="notes"><p>Se sobrar tempo: abrir ao vivo inovalayer.com.br ou o sistema de aulas no celular.</p></aside>
+</section>
+
+<div id="footer"><span>Rogélio Claro Fraga · IMEPAC</span><span id="counter"></span></div>
+<div id="progress"></div>
+</div>
+
+<div id="notes-panel"><div class="lbl">Notas do palestrante · slide <span id="notes-n"></span></div><div id="notes-body"></div></div>
+<div id="hint">← → navega · N notas · F tela cheia</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const stage = document.getElementById('stage');
+  const counter = document.getElementById('counter');
+  const progress = document.getElementById('progress');
+  const panel = document.getElementById('notes-panel');
+  const notesBody = document.getElementById('notes-body');
+  const notesN = document.getElementById('notes-n');
+  const estatico = location.search.includes('estatico');
+  let atual = 0;
+
+  if (estatico) document.body.classList.add('estatico');
+
+  // Quebra os textos .words em palavras que entram uma a uma
+  document.querySelectorAll('.words').forEach(el => {
+    const palavras = el.textContent.trim().split(/\s+/);
+    el.innerHTML = palavras.map((p, i) => '<span class="w" style="animation-delay:' + (i * 110 + 150) + 'ms">' + p + '</span>').join(' ');
+  });
+
+  // Números que contam de 0 até o valor
+  function contar(slide) {
+    slide.querySelectorAll('[data-count]').forEach(el => {
+      const alvo = +el.dataset.count, prefixo = el.dataset.prefix || '';
+      const fim = v => { el.textContent = prefixo + v.toLocaleString('pt-BR'); };
+      if (estatico) return fim(alvo);
+      const inicio = performance.now(), dur = 1400;
+      (function passo(t) {
+        const k = Math.min(1, (t - inicio) / dur);
+        fim(Math.round(alvo * (1 - Math.pow(1 - k, 3))));
+        if (k < 1) requestAnimationFrame(passo);
+      })(inicio);
+    });
+  }
+
+  // O palco acompanha a proporção da tela: 1280 de largura deitado, 720 em pé
+  function escalar() {
+    const w = window.innerWidth, h = window.innerHeight;
+    const retrato = w / h < 1;
+    const base = retrato ? 720 : 1280;
+    const s = w / base;
+    stage.classList.toggle('retrato', retrato);
+    stage.style.width = base + 'px';
+    stage.style.height = Math.max(h / s, retrato ? 0 : 640) + 'px';
+    stage.style.transform = 'scale(' + Math.min(s, h / Math.max(h / s, retrato ? 0 : 640)) + ')';
+  }
+
+  function lerHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    return Number.isInteger(n) && n >= 1 && n <= slides.length ? n - 1 : 0;
+  }
+
+  function mostrar(i) {
+    atual = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, k) => s.classList.toggle('active', k === atual));
+    slides[atual].scrollTop = 0;
+    contar(slides[atual]);
+    counter.textContent = (atual + 1) + ' / ' + slides.length;
+    progress.style.width = ((atual + 1) / slides.length * 100) + '%';
+    const notas = slides[atual].querySelector('.notes');
+    notesBody.innerHTML = notas ? notas.innerHTML : '<p class="muted">Sem notas.</p>';
+    notesN.textContent = atual + 1;
+    history.replaceState(null, '', '#' + (atual + 1));
+  }
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); mostrar(atual + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); mostrar(atual - 1); }
+    else if (e.key === 'Home') mostrar(0);
+    else if (e.key === 'End') mostrar(slides.length - 1);
+    else if (e.key === 'n' || e.key === 'N') panel.classList.toggle('on');
+    else if (e.key === 'f' || e.key === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen().catch(() => {});
+    }
+  });
+
+  // Clique: metade direita avança, metade esquerda volta. No celular: deslizar.
+  stage.addEventListener('click', e => {
+    if (stage.classList.contains('retrato')) return;
+    mostrar(atual + (e.clientX > window.innerWidth / 2 ? 1 : -1));
+  });
+  let toqueX = null;
+  stage.addEventListener('touchstart', e => { toqueX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    if (toqueX === null) return;
+    const dx = e.changedTouches[0].clientX - toqueX;
+    if (Math.abs(dx) > 50) mostrar(atual + (dx < 0 ? 1 : -1));
+    toqueX = null;
+  });
+
+  window.addEventListener('resize', escalar);
+  window.addEventListener('hashchange', () => mostrar(lerHash()));
+  setTimeout(() => { document.getElementById('hint').style.opacity = 0; }, 4000);
+
+  escalar();
+  mostrar(lerHash());
+</script>
+</body>
+</html>
