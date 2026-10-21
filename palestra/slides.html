@@ -23,8 +23,9 @@
   body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; color: var(--text); }
 
   /* ---------- Palco ----------
-     O palco tem 1280px de largura (720px no celular em pé) e a altura acompanha
-     a proporção da tela: ocupa a tela toda, sem faixas pretas, e é escalado. */
+     Deitado, o palco tem 1280x720 e cresce na largura ou na altura para ter a
+     mesma proporção da tela; em pé (celular), tem 480 de largura. Depois é
+     escalado: ocupa a tela toda, sem faixas pretas. */
   #stage { position: fixed; left: 0; top: 0; overflow: hidden; background: var(--bg); transform-origin: 0 0; }
   #stage .bg { position: absolute; inset: -20%; pointer-events: none; filter: blur(80px); opacity: .5; }
   #stage .bg i { position: absolute; border-radius: 50%; }
@@ -178,13 +179,30 @@
   @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(111,214,160,.7); } 100% { box-shadow: 0 0 0 12px rgba(111,214,160,0); } }
 
   /* ---------- Celular em pé: tudo vira uma coluna ---------- */
-  .retrato .slide { padding: 48px 36px 70px; overflow-y: auto; justify-content: flex-start; padding-top: 70px; }
-  .retrato h1 { font-size: 64px; }
-  .retrato h2 { font-size: 42px; }
-  .retrato .quote { font-size: 44px; }
+  .retrato .slide { padding: 44px 24px 64px; overflow-y: auto; justify-content: safe center; }
+  .retrato h1 { font-size: 50px !important; letter-spacing: -1px; }
+  .retrato h2 { font-size: 32px !important; margin-bottom: 20px !important; }
+  .retrato h3 { font-size: 21px !important; }
+  .retrato p, .retrato li { font-size: 19px !important; }
+  .retrato .card { padding: 20px !important; }
+  .retrato .quote { font-size: 34px !important; padding-left: 20px; border-left-width: 5px; }
+  .retrato .lead { margin-top: 22px !important; font-size: 21px !important; }
+  .retrato .big-num { font-size: 72px !important; }
+  .retrato .kicker { font-size: 13px; letter-spacing: 2px; }
+  .retrato .row { gap: 26px !important; }
+  .retrato .grid-2, .retrato .grid-3, .retrato .grid-4 { gap: 14px !important; }
+  /* no celular o diagrama vira uma lista: ícone à esquerda, texto à direita */
+  .retrato .node { flex-direction: row; align-items: center; justify-content: flex-start; text-align: left; gap: 14px; padding: 10px 14px; }
+  .retrato .node .ico { width: 30px; height: 30px; margin: 0; flex-shrink: 0; }
+  .retrato .node b { font-size: 17px; }
+  .retrato .node small { font-size: 14px; margin-top: 2px; }
+  .retrato .link { flex-basis: 18px !important; margin-left: 28px; align-self: flex-start; }
+  .retrato .lane { margin-top: 20px !important; }
+  .retrato .stages span { font-size: 15px; padding: 8px 11px; }
+  .retrato .tag { font-size: 13px; }
   .retrato .row, .retrato .flow, .retrato .timeline { flex-direction: column; align-items: stretch; }
-  .retrato .grid-2, .retrato .grid-3 { grid-template-columns: 1fr; }
-  .retrato .grid-4 { grid-template-columns: 1fr 1fr; }
+  .retrato .grid-2, .retrato .grid-3 { grid-template-columns: 1fr !important; }
+  .retrato .grid-4 { grid-template-columns: 1fr 1fr !important; }
   .retrato .stages { flex-wrap: wrap; }
   .retrato .node { flex: none; }
   .retrato .link { flex: 0 0 34px; width: 3px; height: auto; background: repeating-linear-gradient(180deg, var(--line) 0 8px, transparent 8px 14px); }
@@ -192,14 +210,14 @@
   @keyframes packetV { 0% { top: 0; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 13px); opacity: 0; } }
   .retrato .step { padding: 0 0 22px 40px; }
   .retrato .step::before { top: 0; bottom: 0; left: 9px; right: auto; width: 3px; height: auto; }
-  .retrato .photo { width: 220px; height: 220px; align-self: center; }
+  .retrato .photo { width: 200px !important; height: 200px !important; align-self: center; }
   .retrato .phone { align-self: center; }
   .retrato .inset-photo { display: none; }
   .retrato .bleed::after { background: linear-gradient(0deg, rgba(12,9,19,.97) 35%, rgba(12,9,19,.35) 100%); }
 
   /* ---------- Rodapé ---------- */
   #footer { position: absolute; left: 80px; right: 80px; bottom: 22px; display: flex; justify-content: space-between; font-size: 14px; color: var(--muted); letter-spacing: 1px; pointer-events: none; z-index: 2; }
-  .retrato #footer { left: 36px; right: 36px; }
+  .retrato #footer { left: 0; right: 0; bottom: 0; padding: 22px 24px 14px; font-size: 12px; background: linear-gradient(transparent, var(--bg) 55%); }
   #progress { position: absolute; left: 0; bottom: 0; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .4s; z-index: 2; }
 
   /* ---------- Notas (tecla N) ---------- */
@@ -987,16 +1005,18 @@
     });
   }
 
-  // O palco acompanha a proporção da tela: 1280 de largura deitado, 720 em pé
+  // O palco ganha a proporção da tela e é escalado para ocupá-la inteira
   function escalar() {
-    const w = window.innerWidth, h = window.innerHeight;
-    const retrato = w / h < 1;
-    const base = retrato ? 720 : 1280;
-    const s = w / base;
+    const w = window.innerWidth, h = window.innerHeight, r = w / h;
+    const retrato = r < 1;
+    let largura, altura;
+    if (retrato) { largura = 480; altura = largura / r; }
+    else if (r >= 16 / 9) { altura = 720; largura = altura * r; }
+    else { largura = 1280; altura = largura / r; }
     stage.classList.toggle('retrato', retrato);
-    stage.style.width = base + 'px';
-    stage.style.height = Math.max(h / s, retrato ? 0 : 640) + 'px';
-    stage.style.transform = 'scale(' + Math.min(s, h / Math.max(h / s, retrato ? 0 : 640)) + ')';
+    stage.style.width = largura + 'px';
+    stage.style.height = altura + 'px';
+    stage.style.transform = 'scale(' + (w / largura) + ')';
   }
 
   function lerHash() {
