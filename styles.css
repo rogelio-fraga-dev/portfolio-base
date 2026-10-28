@@ -330,9 +330,12 @@ h4 {
     opacity: 0.8;
   }
 }
+/* minmax(0, ...): sem ele a coluna do texto cresce até caber a palavra mais
+   larga do título, e a foto encolhe. "DESENVOLVEDOR" é bem mais larga que
+   "FULL STACK", então a foto do PT saía com 354px e a do EN com 500px. */
 .masthead-container {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 4rem;
   align-items: center;
   width: 100%;
@@ -346,6 +349,7 @@ h4 {
 }
 .masthead-text {
   text-align: left;
+  container-type: inline-size;
 }
 .masthead-name {
   font-size: 4rem;
@@ -371,8 +375,14 @@ h4 {
   gap: 0.3rem;
   margin-bottom: 2rem;
 }
+/* o título usa o tamanho máximo, mas encolhe para caber na coluna do texto.
+   --role-fit é a largura da coluna dividida pela largura da palavra em 1px
+   de fonte, medida no navegador: "FULL STACK" ocupa 6,3x o tamanho da fonte,
+   e "DESENVOLVEDOR" 9,4x. */
 .role-large {
-  font-size: 6rem;
+  --role-max: 6rem;
+  --role-fit: 15.5cqi;
+  font-size: min(var(--role-max), var(--role-fit));
   font-weight: 900;
   line-height: 0.85;
   color: var(--accent-color);
@@ -388,6 +398,9 @@ h4 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.role-large:lang(pt) {
+  --role-fit: 10.4cqi;
 }
 .role-accent {
   font-size: 4rem;
@@ -783,6 +796,51 @@ h4 {
 .imepac-link:hover {
   color: var(--accent-color);
   border-bottom-color: var(--accent-color);
+}
+/* fotos da seção Sobre: a segunda desce um pouco, para o par não ficar
+   alinhado como grade. O deslocamento fica no link, e o zoom do hover
+   só na imagem, para um transform não sobrescrever o outro. */
+.about-photos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  padding-bottom: 2.5rem;
+}
+.about-photo {
+  display: block;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 2px solid var(--card-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.about-photo:nth-child(even) {
+  transform: translateY(2.5rem);
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.about-photo:hover,
+.about-photo:focus-visible {
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 50px rgba(156, 106, 214, 0.3);
+}
+.about-photo:hover img,
+.about-photo:focus-visible img {
+  transform: scale(1.04);
+}
+.about-photo:focus-visible {
+  outline: 3px solid var(--divider-light-color);
+  outline-offset: 4px;
 }
 .about-approach-section {
   margin: 4rem 0;
@@ -2307,7 +2365,7 @@ textarea.form-control {
     font-size: 3.5rem;
   }
   .role-large {
-    font-size: 5rem;
+    --role-max: 5rem;
   }
   .role-accent {
     font-size: 3.5rem;
@@ -2410,6 +2468,13 @@ textarea.form-control {
   }
 }
 @media (max-width: 767.98px) {
+  .about-photos {
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+  }
+  .about-photo:nth-child(even) {
+    transform: translateY(1.5rem);
+  }
   .navbar .container {
     flex-direction: column;
   }
@@ -2428,7 +2493,7 @@ textarea.form-control {
     font-size: 2.5rem;
   }
   .role-large {
-    font-size: 3.5rem;
+    --role-max: 3.5rem;
   }
   .role-accent {
     font-size: 2.5rem;
