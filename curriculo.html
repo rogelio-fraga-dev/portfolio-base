@@ -59,12 +59,13 @@ body{
 }
 
 /* ---------- cabecalho ---------- */
+/* Cabecalho claro: texto escuro sobre branco. Se o leitor do PDF descartar
+   fundos, nada some. */
 .band{
-  background:var(--band);
-  color:var(--band-text);
-  padding:5mm 7mm 4.5mm 7mm;
+  color:var(--ink);
+  padding:0 0 3mm 0;
   border-bottom:3px solid var(--accent-bright);
-  margin-bottom:5mm;
+  margin-bottom:4mm;
 }
 /* letter-spacing acima de ~0.3px faz o pdftotext ler os vaos entre glifos como
    quebra de palavra e extrair "R o g e l i o". Manter minimo. */
@@ -78,22 +79,22 @@ body{
 .band .role{
   font-size:11pt;
   font-weight:bold;
-  color:#c9b6e0;
-  margin-bottom:3.5mm;
+  color:var(--accent);
+  margin-bottom:2.5mm;
 }
 /* Contato: texto puro, com rotulo escrito. Sem icone, sem tabela.       */
 /* Cada linha e um <p> proprio para o parser nao grudar tudo numa string. */
 .band .contact{
   font-size:9.5pt;
   line-height:1.55;
-  color:var(--band-soft);
+  color:var(--ink-soft);
 }
 /* Precisa vir com especificidade maior que a regra generica `p{color:...}`
    la embaixo, senao os VALORES do contato herdam a cor escura do corpo e
    ficam escuro-sobre-escuro dentro da faixa. */
-.band .contact p{color:var(--band-soft);font-size:9.5pt;}
-.band .contact a{color:var(--band-soft);text-decoration:none;}
-.band .contact strong{color:#fff;font-weight:bold;}
+.band .contact p{color:var(--ink-soft);font-size:9.5pt;}
+.band .contact a{color:var(--ink-soft);text-decoration:none;}
+.band .contact strong{color:var(--ink);font-weight:bold;}
 
 /* ---------- corpo ---------- */
 section{margin-bottom:3.8mm;}
@@ -194,8 +195,8 @@ li::before{
     <h1>Rogélio Claro Fraga</h1>
     <p class="role">Desenvolvedor Full Stack | Java, Spring Boot e Angular</p>
     <div class="contact">
-      <p><strong>WhatsApp:</strong> (34) 98444-2479 &nbsp;|&nbsp; <strong>Telefone:</strong> (34) 98414-1504 &nbsp;|&nbsp; <strong>E-mail:</strong> <a href="mailto:rogelio.claro@gmail.com">rogelio.claro@gmail.com</a></p>
-      <p><strong>Localização:</strong> Araguari, MG — Brasil &nbsp;|&nbsp; Disponível para Remoto, Híbrido ou Presencial</p>
+      <p><strong>Telefone:</strong> (34) 98414-1504 &nbsp;|&nbsp; <strong>E-mail:</strong> <a href="mailto:rogelio.claro@gmail.com">rogelio.claro@gmail.com</a></p>
+      <p><strong>Localização:</strong> Araguari, MG (30 km de Uberlândia) &nbsp;|&nbsp; Presencial ou híbrido em Uberlândia, ou remoto</p>
       <p><strong>LinkedIn:</strong> linkedin.com/in/rogelio-fraga-dev &nbsp;|&nbsp; <strong>GitHub:</strong> github.com/rogelio-fraga-dev &nbsp;|&nbsp; <strong>Portfólio:</strong> rogeliofragadev.com.br</p>
     </div>
   </header>
@@ -204,149 +205,43 @@ li::before{
 
     <section>
       <h2>Resumo Profissional</h2>
-      <p>Desenvolvedor Full Stack graduado em Análise e Desenvolvimento de Sistemas, com atuação
-      em sistemas web corporativos e APIs REST. Trabalho com Java 21 e Spring Boot no backend e
-      Angular, TypeScript e React no frontend, aplicando Programação Orientada a Objetos, Clean
-      Code, SOLID e Design Patterns. Experiência com JPA/Hibernate, Spring Security, autenticação
-      JWT, RBAC, multi-tenancy, modelagem de dados em PostgreSQL, testes automatizados e
-      integração com APIs externas. Atuo também na infraestrutura: Docker, AWS provisionada em
-      Terraform (Infraestrutura como Código) e CI/CD em GitHub Actions. Sou o único desenvolvedor
-      de um SaaS B2B em ambiente de pesquisa vinculado à UFU e professor de Técnicas de
-      Programação para Internet em curso técnico, onde mantenho em produção a plataforma usada
-      pelas minhas turmas. Vivência com metodologias ágeis (Scrum).</p>
+      <p>Desenvolvedor Full Stack com foco em Java, Spring Boot e Angular, formado em Análise e
+      Desenvolvimento de Sistemas (2026). Sou o único desenvolvedor de uma plataforma web e desktop
+      de orçamentos industriais em projeto de pesquisa da UFU, da modelagem de dados ao deploy na
+      Amazon Web Services (AWS), e professor de programação em curso técnico. Busco uma posição
+      júnior em time de desenvolvimento.</p>
     </section>
 
     <section>
       <h2>Habilidades Técnicas</h2>
-
-      <div class="skill-row">
-        <span class="skill-label">Linguagens:</span>
-        <span class="chip">Java 21</span>
-        <span class="chip">TypeScript</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">Python</span>
-        <span class="chip">SQL</span>
-        <span class="chip">HTML5</span>
-        <span class="chip">CSS3</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Backend:</span>
-        <span class="chip">Spring Boot 3</span>
-        <span class="chip">Spring Security</span>
-        <span class="chip">Spring Data JPA</span>
-        <span class="chip">Spring Cloud</span>
-        <span class="chip">JPA/Hibernate</span>
-        <span class="chip">API REST</span>
-        <span class="chip">Microserviços</span>
-        <span class="chip">NestJS</span>
-        <span class="chip">Node.js</span>
-        <span class="chip">Thymeleaf</span>
-        <span class="chip">JWT</span>
-        <span class="chip">RBAC</span>
-        <span class="chip">Swagger/OpenAPI</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Frontend:</span>
-        <span class="chip">Angular</span>
-        <span class="chip">RxJS</span>
-        <span class="chip">PrimeNG</span>
-        <span class="chip">React</span>
-        <span class="chip">Next.js</span>
-        <span class="chip">Electron</span>
-        <span class="chip">Tailwind CSS</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Banco de Dados:</span>
-        <span class="chip">PostgreSQL</span>
-        <span class="chip">MySQL</span>
-        <span class="chip">Redis</span>
-        <span class="chip">Flyway</span>
-        <span class="chip">Modelagem de Dados</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Cloud e DevOps:</span>
-        <span class="chip">AWS</span>
-        <span class="chip">EC2</span>
-        <span class="chip">RDS</span>
-        <span class="chip">S3</span>
-        <span class="chip">CloudFront</span>
-        <span class="chip">IAM</span>
-        <span class="chip">CloudWatch</span>
-        <span class="chip">Terraform</span>
-        <span class="chip">Infraestrutura como Código</span>
-        <span class="chip">Docker</span>
-        <span class="chip">CI/CD</span>
-        <span class="chip">GitHub Actions</span>
-        <span class="chip">Nginx</span>
-        <span class="chip">Linux</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Testes e Qualidade:</span>
-        <span class="chip">JUnit</span>
-        <span class="chip">Mockito</span>
-        <span class="chip">Testcontainers</span>
-        <span class="chip">Testes Unitários</span>
-        <span class="chip">Testes de Integração</span>
-        <span class="chip">Prometheus</span>
-        <span class="chip">Grafana</span>
-        <span class="chip">Observabilidade</span>
-      </div>
-
-      <div class="skill-row">
-        <span class="skill-label">Práticas e Arquitetura:</span>
-        <span class="chip">Clean Code</span>
-        <span class="chip">SOLID</span>
-        <span class="chip">Design Patterns</span>
-        <span class="chip">DDD</span>
-        <span class="chip">Arquitetura Hexagonal</span>
-        <span class="chip">Multi-tenancy</span>
-        <span class="chip">Scrum</span>
-        <span class="chip">Metodologias Ágeis</span>
-        <span class="chip">Git</span>
-        <span class="chip">GitHub</span>
-      </div>
+      <p><span class="skill-label">Backend:</span> Java, Spring Boot, Spring Security, JPA/Hibernate, APIs REST</p>
+      <p><span class="skill-label">Frontend:</span> Angular, TypeScript, JavaScript, HTML e CSS</p>
+      <p><span class="skill-label">Banco de dados:</span> PostgreSQL, SQL, Flyway</p>
+      <p><span class="skill-label">Cloud e DevOps:</span> Amazon Web Services (AWS), Docker, Terraform, CI/CD com GitHub Actions, Linux</p>
+      <p><span class="skill-label">Testes e práticas:</span> JUnit, Mockito, testes unitários e de integração, Git, Scrum</p>
     </section>
 
     <section>
       <h2>Experiência Profissional</h2>
 
       <div class="entry">
+        <p class="entry-title">Desenvolvedor de Software Full Stack</p>
+        <p class="entry-meta">UFU — Universidade Federal de Uberlândia · Projeto de inovação tecnológica (FAPEMIG) · Remoto &nbsp;|&nbsp; <span class="dates">Mar/2026 – Atual</span></p>
+        <ul>
+          <li>Único desenvolvedor de uma plataforma web e desktop que gera orçamentos para manufatura aditiva metálica, da modelagem ao deploy; hoje em fase de testes com a equipe de pesquisa.</li>
+          <li>Construí a API REST em Java 21 e Spring Boot, com Spring Security, autenticação JWT, login com Google (OAuth2) e controle de acesso por perfil, coberta por 255 testes automatizados.</li>
+          <li>Desenvolvi o frontend em Angular e TypeScript, em português e inglês, com 230 testes; a mesma base de código gera o aplicativo desktop.</li>
+          <li>Modelei o banco PostgreSQL no Amazon RDS com migrações versionadas em Flyway e conferi os cálculos contra a planilha de referência dos pesquisadores: 24 de 24 itens batem.</li>
+          <li>Provisionei a infraestrutura AWS em Terraform (66 recursos) e automatizei o deploy em GitHub Actions, com 23 verificações automáticas após cada publicação e restauração de backup ensaiada.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <p class="entry-title">Professor de Técnicas de Programação para Internet</p>
         <p class="entry-meta">Educare Araguari — Programa Trilhas do Futuro · Araguari, MG · Presencial &nbsp;|&nbsp; <span class="dates">Ago/2026 – Atual</span></p>
         <ul>
-          <li>Responsável pela disciplina de 80h do curso técnico em Informática Operacional, em duas turmas com 73 alunos.</li>
-          <li>Autoria do plano de ensino, da apostila e do material de todas as aulas, com ensino de HTML, CSS e JavaScript.</li>
-          <li>Desenvolvimento e operação da plataforma de ensino usada em sala, em Spring Boot 3.4, Java 21, Thymeleaf e PostgreSQL, publicada em AWS EC2 com Nginx.</li>
-          <li>Avaliação por quizzes, entregas de código e projetos, com acompanhamento individual do progresso.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <p class="entry-title">Desenvolvedor de Software Full-Stack — Inovação Tecnológica (FAPEMIG)</p>
-        <p class="entry-meta">UFU — Universidade Federal de Uberlândia · InovaLayer · Araguari, MG · Remoto &nbsp;|&nbsp; <span class="dates">Mar/2026 – Atual</span></p>
-        <ul>
-          <li>Único desenvolvedor e responsável técnico do CostPro IL, SaaS B2B de orçamentação para manufatura aditiva metálica (WAAM), do zero ao deploy em produção.</li>
-          <li>Motor de custo validado contra a planilha oficial da UFU: 24 de 24 rubricas, erro máximo de 0,0024%, com todo o cálculo em BigDecimal.</li>
-          <li>API REST em Java 21 e Spring Boot 4.1, com autenticação JWT em cookie httpOnly, Google OAuth2, RBAC, rate limiting e tratamento padronizado de erros.</li>
-          <li>Frontend em Angular 21 com SSR, internacionalização PT/EN, lazy loading, RxJS e PrimeNG; app desktop em Electron a partir da mesma base de código.</li>
-          <li>Modelagem em PostgreSQL 16 no Amazon RDS com migrações versionadas em Flyway; arquitetura em monolito modular com Design Patterns (Strategy, Repository e Event-Driven).</li>
-          <li>Infraestrutura AWS inteira provisionada em Terraform (VPC, EC2, RDS, S3, CloudFront, ACM, SES, SSM, IAM e CloudWatch), 66 recursos com alarmes, backup e teto de custo; CI/CD em GitHub Actions, com OIDC no deploy do portal e do desktop.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <p class="entry-title">Desenvolvedor Full Stack (Autônomo)</p>
-        <p class="entry-meta">Projetos próprios e acadêmicos · Araguari, MG · Remoto &nbsp;|&nbsp; <span class="dates">Jun/2024 – Mar/2026</span></p>
-        <ul>
-          <li>Desenvolvimento de APIs REST em Java com Spring Boot e em TypeScript com NestJS, incluindo JWT, RBAC e modelagem de domínio.</li>
-          <li>Aplicações completas em Angular e React consumindo APIs próprias; modelagem de bancos PostgreSQL e MySQL.</li>
-          <li>Arquitetura de microserviços com Spring Cloud, API Gateway e Service Discovery (Eureka).</li>
-          <li>Integração com serviços externos (WhatsApp API e OpenAI) e ambientes em Docker Compose com observabilidade via Prometheus e Grafana.</li>
+          <li>Leciono HTML, CSS e JavaScript em disciplina de 80 horas do curso técnico em Informática, para duas turmas e 73 alunos, com plano de ensino, apostila e material de autoria própria.</li>
+          <li>Desenvolvi e mantenho em produção a plataforma usada nas aulas (ver Projetos).</li>
         </ul>
       </div>
 
@@ -354,9 +249,8 @@ li::before{
         <p class="entry-title">Scrum Master e Referência Técnica</p>
         <p class="entry-meta">Abrigo Cristo Rei — Projeto de Extensão · Araguari, MG · Híbrido &nbsp;|&nbsp; <span class="dates">Ago/2025 – Dez/2025</span></p>
         <ul>
-          <li>Liderança de equipe multidisciplinar de aproximadamente 25 pessoas em projeto de transformação digital.</li>
-          <li>Gestão de backlog, facilitação das cerimônias Scrum e tradução de requisitos da diretoria em soluções técnicas viáveis.</li>
-          <li>Entrega do módulo de doações, incluindo pagamento via PIX.</li>
+          <li>Conduzi uma equipe de cerca de 25 pessoas com Scrum: backlog, cerimônias e tradução dos pedidos da diretoria em tarefas técnicas.</li>
+          <li>Entregamos o módulo de doações, com pagamento via PIX.</li>
         </ul>
       </div>
 
@@ -364,9 +258,7 @@ li::before{
         <p class="entry-title">Agente Censitário Supervisor</p>
         <p class="entry-meta">IBGE — Instituto Brasileiro de Geografia e Estatística · Araguari, MG · Presencial &nbsp;|&nbsp; <span class="dates">Jun/2022 – Jun/2023</span></p>
         <ul>
-          <li>Supervisão de equipes de recenseadores e validação da integridade dos dados coletados.</li>
-          <li>Análise de produtividade com apoio de SIG e ajustes operacionais.</li>
-          <li>Resolução de conflitos e suporte técnico ao time.</li>
+          <li>Supervisionei equipes de recenseadores no Censo e validei a integridade dos dados coletados.</li>
         </ul>
       </div>
     </section>
@@ -377,48 +269,32 @@ li::before{
       <div class="entry">
         <p class="entry-title">Sistema de Aulas — Plataforma de Ensino em Produção</p>
         <ul>
-          <li>Plataforma que construí para as minhas próprias turmas, hoje usada por 73 alunos: editor de código com prévia ao vivo, quiz com ranking em tempo real e painel-modelo que acompanha o progresso do aluno linha a linha.</li>
-          <li>487 testes automatizados e 95 migrações Flyway; deploy em dois minutos por GitHub Actions com OIDC e SSM, com backup do banco antes de cada migração.</li>
+          <li>Plataforma usada por 73 alunos: editor de código com prévia ao vivo, quiz com ranking em tempo real e acompanhamento do progresso de cada aluno.</li>
+          <li>515 testes automatizados e 110 migrações Flyway; deploy automático por GitHub Actions, com backup do banco antes de cada migração.</li>
         </ul>
-        <p class="stack"><strong>Stack:</strong> Spring Boot 3.4, Java 21, Thymeleaf, PostgreSQL, Flyway, Docker, AWS EC2, Nginx, GitHub Actions</p>
+        <p class="stack"><strong>Stack:</strong> Java 21, Spring Boot, Thymeleaf, PostgreSQL, Docker, AWS EC2. <strong>Estudo de caso:</strong> rogeliofragadev.com.br</p>
       </div>
 
       <div class="entry">
         <p class="entry-title">Razor — SaaS Multi-tenant para Barbearias</p>
         <ul>
-          <li>SaaS B2B2C onde uma IA conversacional atende, agenda e cobra pelo WhatsApp, com painel web para o lojista: agenda multiprofissional, financeiro com DRE, comissões, estoque e PIX.</li>
-          <li>Multi-tenancy de schema compartilhado com resolução de tenant fail-closed: instância desconhecida tem a mensagem descartada e nunca cai em um tenant padrão.</li>
-          <li>486 testes, com integração em PostgreSQL e Redis reais via Testcontainers; auditoria de segurança fechou três falhas críticas antes do piloto.</li>
+          <li>Assistente com inteligência artificial que atende e agenda pelo WhatsApp, com painel web para o dono: agenda, financeiro, comissões e estoque.</li>
+          <li>486 testes, com integração em PostgreSQL e Redis reais via Testcontainers; isolamento entre clientes (multi-tenancy) e três falhas críticas de segurança corrigidas em auditoria própria.</li>
         </ul>
-        <p class="stack"><strong>Stack:</strong> Spring Boot 3, Java, React 18, Vite, PostgreSQL, Flyway, OpenAI GPT-4o, Whisper, LangChain4j, Evolution API</p>
+        <p class="stack"><strong>Stack:</strong> Java, Spring Boot, React, PostgreSQL, Redis, API da OpenAI. <strong>Estudo de caso:</strong> rogeliofragadev.com.br</p>
       </div>
 
       <div class="entry">
-        <p class="entry-title">DevFlow Solutions — Gestão Financeira de Projetos (B2B Multi-tenant)</p>
+        <p class="entry-title">DevFlow Solutions — Gestão Financeira de Projetos de TI</p>
         <ul>
-          <li>Plataforma de viabilidade financeira de contratos de TI: dashboards executivos, gestão de timesheets, controle de custos de nuvem e DRE em tempo real.</li>
-          <li>Budget Guard: o projeto passa sozinho para alerta em 80% e para estourado em 100% do orçamento. Isolamento por empresa com JWT e RBAC.</li>
+          <li>Projeto em equipe de seis pessoas, com Git e revisão de código: dashboards, timesheets, controle de custos e alerta automático quando o projeto chega a 80% e a 100% do orçamento.</li>
         </ul>
-        <p class="stack"><strong>Stack:</strong> Angular 21, Spring Boot 4, Java 21, PostgreSQL 16, Docker, Swagger</p>
+        <p class="stack"><strong>Stack:</strong> Angular, Java 21, Spring Boot, PostgreSQL, Docker. <strong>Repositório:</strong> github.com/rogelio-fraga-dev/devflow-solutions</p>
       </div>
 
       <div class="entry">
-        <p class="entry-title">ObraCerta — Marketplace de Construção Civil</p>
-        <ul>
-          <li>Marketplace bilateral que conecta profissionais da construção civil a clientes, com reputação verificada, avaliação dupla-cega e busca geoespacial.</li>
-          <li>Monorepo com arquitetura hexagonal e DDD, contratos tipados de ponta a ponta e decisões registradas em ADRs e diagramas C4.</li>
-        </ul>
-        <p class="stack"><strong>Stack:</strong> Turborepo, Next.js 15, NestJS, PostgreSQL com PostGIS, Redis, Zod, TypeScript</p>
-      </div>
-
-      <div class="entry">
-        <p class="entry-title">Sistema de Gestão de Clínicas — Full Stack</p>
-        <p class="stack">Módulos de pacientes, funcionários, consultas e prontuários. Backend em NestJS com JWT, RBAC e TypeORM, e versão em Java com microserviços, Spring Cloud, API Gateway e Eureka; frontend Angular com Signals e PrimeNG. <strong>Stack:</strong> Angular, NestJS, Java, Spring Boot, TypeORM, PostgreSQL, Docker, Prometheus, Grafana</p>
-      </div>
-
-      <div class="entry">
-        <p class="entry-title">WireArc IL — Trajetórias para Manufatura Aditiva (colaborador)</p>
-        <p class="stack">Aplicação desktop que lê modelos STL, fatia a peça em camadas, resolve um problema de caixeiro-viajante para ordenar o percurso e exporta o G-code, com visualização 3D acelerada por GPU. <strong>Stack:</strong> Python 3.12, PyQt5, PyVista, CUDA/CuPy, FastAPI</p>
+        <p class="entry-title">Outros projetos</p>
+        <p class="stack">ObraCerta, marketplace de construção civil (Next.js, NestJS, PostgreSQL); Sistema de Gestão de Clínicas (Angular, NestJS e versão em microsserviços com Spring Cloud); WireArc IL, aplicativo desktop de trajetórias para manufatura aditiva, em equipe de três desenvolvedores (Python).</p>
       </div>
     </section>
 
@@ -426,21 +302,13 @@ li::before{
       <h2>Formação Acadêmica</h2>
       <div class="entry">
         <p class="entry-title">Tecnólogo em Análise e Desenvolvimento de Sistemas</p>
-        <p class="entry-meta">Centro Universitário IMEPAC · Araguari, MG &nbsp;|&nbsp; <span class="dates">Fev/2024 – Ago/2026</span></p>
-        <ul>
-          <li>Curso concluído, com colação de grau em 26 de agosto de 2026.</li>
-        </ul>
+        <p class="entry-meta">Centro Universitário IMEPAC · Araguari, MG &nbsp;|&nbsp; <span class="dates">Fev/2024 – Ago/2026</span> · Concluído</p>
       </div>
     </section>
 
     <section>
       <h2>Idiomas</h2>
-      <div class="entry">
-        <ul>
-          <li><strong>Português:</strong> nativo.</li>
-          <li><strong>Inglês:</strong> B1 — intermediário. Leitura técnica de documentação e escrita de código e commits em inglês.</li>
-        </ul>
-      </div>
+      <p>Português nativo. Inglês intermediário (B1): leitura de documentação técnica e escrita de código e commits.</p>
     </section>
 
   </div>
